@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "NXLTTMYrOOC+0sQqGB4EMPSUI4uveUQR4jiuktPiqRSCmFZPPxhnqxfcLMxwysVBk80n8pTwb1W7tVEkJLnq/w==",
+  "success": true,
+  "projectFilePath": "E:\\Project C#\\FinancialManagementSystem\\FMSystem.Shared\\FMSystem.Shared.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Wither\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

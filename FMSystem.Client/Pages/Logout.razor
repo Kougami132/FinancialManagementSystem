@@ -1,0 +1,17 @@
+﻿@page "/logout"
+@layout LoginLayout
+
+@inject NavigationManager navigationManager
+@inject AuthenticationStateProvider authProvider
+
+<h1>注销中......</h1>
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        ((AuthProvider)authProvider).MarkUserAsLoggedOut();
+        navigationManager.NavigateTo("/login");
+    }
+
+}

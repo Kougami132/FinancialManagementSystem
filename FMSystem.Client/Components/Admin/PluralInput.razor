@@ -1,0 +1,109 @@
+﻿@inject MessageService messageService
+@inject HttpClient Http
+
+<div style="float: right; margin-bottom: 24px;">
+    <Spin Spinning="editLoading">
+        <Button Type="primary" Danger OnClick="@(() => { if (Selected != null && Selected.Count() != 0) modalVisible1 = true; })">重置密码</Button>
+        <Button Danger OnClick="@(() => { if (Selected != null && Selected.Count() != 0) modalVisible2 = true; })">清空数据</Button>
+        <Button Type="dashed" Danger OnClick="@(() => { if (Selected != null && Selected.Count() != 0) modalVisible3 = true; })">删除</Button>
+    </Spin>
+</div>
+
+<Modal Title="提示"
+       Width="300"
+       Visible="@modalVisible1"
+       OnOk="OnResetPwd"
+       OnCancel="@(() => { modalVisible1 = false; })">
+    <Text>重置选中用户密码为</Text>
+    <Input @bind-Value="editPwd" Placeholder="例: 123456" MaxLength="32" />
+</Modal>
+
+<Modal Title="提示"
+       Width="300"
+       Visible="@modalVisible2"
+       OnOk="OnClearData"
+       OnCancel="@(() => { modalVisible2 = false; })">
+    <Text>清除选中用户数据</Text>
+</Modal>
+
+<Modal Title="提示"
+       Width="300"
+       Visible="@modalVisible3"
+       OnOk="OnDelete"
+       OnCancel="@(() => { modalVisible3 = false; })">
+    <Text>删除选中用户</Text>
+</Modal>
+
+@code {
+
+    [Parameter]
+    public IEnumerable<User> Selected { get; set; }
+    [Parameter]
+    public EventCallback Refrash { get; set; }
+
+    private bool editLoading, modalVisible1, modalVisible2, modalVisible3;
+    private string editPwd;
+
+
+    private async Task OnResetPwd()
+    {
+        if (editPwd == "") return;
+        modalVisible1 = false;
+        editLoading = true;
+        int[] ids = Selected.Select(i => i.Id).ToArray();
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/ResetUserPwd?password=" + editPwd, ids);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await Refrash.InvokeAsync();   //刷新表格
+            editLoading = false;
+            messageService.Success("重置成功");
+        }
+        else
+        {
+            editLoading = false;
+            messageService.Error("重置失败");
+        }
+    }
+
+    private async Task OnClearData()
+    {
+        modalVisible2 = false;
+        editLoading = true;
+        int[] ids = Selected.Select(i => i.Id).ToArray();
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/ClearUserData", ids);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await Refrash.InvokeAsync();   //刷新表格
+            editLoading = false;
+            messageService.Success("清除成功");
+        }
+        else
+        {
+            editLoading = false;
+            messageService.Error("清除失败");
+        }
+    }
+
+    private async Task OnDelete()
+    {
+        modalVisible3 = false;
+        editLoading = true;
+        int[] ids = Selected.Select(i => i.Id).ToArray();
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/Deleteuser", ids);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await Refrash.InvokeAsync();   //刷新表格
+            editLoading = false;
+            messageService.Success("删除成功");
+        }
+        else
+        {
+            editLoading = false;
+            messageService.Error("删除失败");
+        }
+    }
+
+}

@@ -1,0 +1,41 @@
+﻿<Menu Mode="MenuMode.Inline"
+      DefaultSelectedKeys=@(new[] {"1"})
+      DefaultOpenKeys=@(new[] {"sub1"})
+      Style="height: 100%; border-right: 0;">
+    <MenuItem Key="1" RouterLink="/" RouterMatch="NavLinkMatch.All">
+        <Icon Type="home" Theme="outline"></Icon>
+        首页
+    </MenuItem>
+    @{
+        RenderFragment sub1Title =
+        @<span>
+            <Icon Type="table" Theme="outline"></Icon>
+            <span>数据管理</span>
+        </span>;
+    }
+    <SubMenu Key="sub1" TitleTemplate=@sub1Title>
+        <MenuItemGroup Key="group1" Title="记录管理">
+            <MenuDivider />
+            <MenuItem Key="2" RouterLink="/records">账单管理</MenuItem>
+        </MenuItemGroup>
+        <MenuItemGroup Key="group2" Title="选项管理">
+            <MenuDivider />
+            <MenuItem Key="3" RouterLink="/categories">分类管理</MenuItem>
+            <MenuItem Key="4" RouterLink="/accounts">账户管理</MenuItem>
+        </MenuItemGroup>
+    </SubMenu>
+    <MenuItem Key="5" RouterLink="/settings">
+        <Icon Type="user" Theme="outline"></Icon>
+        个人中心
+    </MenuItem>
+    <AuthorizeView Policy="Admin">
+        <MenuItem Key="6" RouterLink="/admin">
+            <Icon Type="team" Theme="outline"></Icon>
+            用户管理
+        </MenuItem>
+    </AuthorizeView>
+</Menu>
+
+@code {
+
+}

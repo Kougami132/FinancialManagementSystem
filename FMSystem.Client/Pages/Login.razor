@@ -1,0 +1,84 @@
+﻿@page "/login"
+@layout LoginLayout
+
+@inject HttpClient Http
+@inject MessageService messageService
+@inject NavigationManager navigationManager
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject AuthenticationStateProvider authProvider
+@using System.Security.Claims
+
+<Card Bordered="true" Title=@("用户登录") Style="width:400px; cursor: default;" Hoverable="true">
+    <Body>
+        <Form Loading="loginLoading"
+                Layout="@FormLayout.Vertical"
+                Model="@loginUser"
+                ValidateOnChange="true"
+                Style="padding: 12px;">
+            <Space Direction="@DirectionVHType.Vertical" Style="width:100%" Size="@("middle")">
+                <SpaceItem>
+                    <AntDesign.Input Placeholder="请输入用户名" Size="large" @bind-Value="@loginUser.UserName" OnPressEnter="OnLogin">
+                        <Prefix><Icon Type="user" /></Prefix>
+                    </AntDesign.Input>
+                </SpaceItem>
+                <SpaceItem>
+                    <AntDesign.Input Placeholder="请输入密码" Size="large" @bind-Value="@loginUser.Password" OnPressEnter="OnLogin" Type="password">
+                        <Prefix><Icon Type="lock" /></Prefix>
+                    </AntDesign.Input>
+                </SpaceItem>
+                <SpaceItem>
+                    <Button Type="primary" Size="large" Block OnClick="OnLogin">登&nbsp;录</Button>
+                </SpaceItem>
+            </Space>
+        </Form>
+        <Button Type="link" OnClick="@(() => { navigationManager.NavigateTo("/register"); })">注册账户</Button>
+        <Button Type="link" Style="float: right;">忘记密码</Button>
+    </Body>
+</Card>
+
+@code {
+    private bool loginLoading;
+    private LoginDto loginUser = new();
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuthenticationState authState = await authenticationStateTask;
+        ClaimsPrincipal user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            navigationManager.NavigateTo("/");
+        }
+    }
+
+
+    public async Task OnLogin()
+    {
+        if (loginUser.UserName == null || loginUser.Password == null || loginUser.UserName == "" || loginUser.Password == "")
+        {
+            messageService.Error("请输入用户名与密码");
+            loginLoading = false;
+            return;
+        }
+
+        loginLoading = true;
+        HttpResponseMessage httpResponse = await Http.PostAsJsonAsync<LoginDto>($"Api/Auth/Login", loginUser);
+        UserDto result = await httpResponse.Content.ReadFromJsonAsync<UserDto>();
+        if (string.IsNullOrWhiteSpace(result?.Token))
+        {
+            messageService.Error("用户名或密码错误");
+            loginUser.Password = "";
+        }
+        else
+        {
+            messageService.Success("登录成功！");
+            ((AuthProvider)authProvider).MarkUserAsAuthenticated(result);
+            navigationManager.NavigateTo("/");
+        }
+        loginLoading = false;
+        InvokeAsync(StateHasChanged);
+    }
+
+}

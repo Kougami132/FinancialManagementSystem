@@ -1,0 +1,18 @@
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData"
+                                DefaultLayout="@typeof(MainLayout)" />
+            @*<RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />*@
+        </Found>
+        <NotFound>
+            <LayoutView>
+                <Result Status="404"
+                        Title="404"
+                        SubTitle="404 Not Found" />
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
+
+<AntContainer />

@@ -1,0 +1,66 @@
+﻿@page "/admin"
+
+@using System.ComponentModel.DataAnnotations;
+@using Newtonsoft.Json;
+@using System.Net.Http
+@inject HttpClient Http
+@inject MessageService messageService
+
+<!-- #region 单个操作按钮(搜索、新建、修改) -->
+
+<FMSystem.Client.Components.Admin.SingleInput @bind-SearchValue="searchName"
+                  @bind-Permission="permission"
+                  @bind-Selected="selectedUsers"
+                  Refrash="RefrashTable">
+</FMSystem.Client.Components.Admin.SingleInput>
+
+<!-- #endregion -->
+<!-- #region 批量操作按钮(更改权限、重置密码、清空数据、删除) -->
+<FMSystem.Client.Components.Admin.PluralInput Selected="selectedUsers"
+                  Refrash="RefrashTable">
+</FMSystem.Client.Components.Admin.PluralInput>
+
+<!-- #endregion -->
+<!-- #region Table表格 -->
+
+<FMSystem.Client.Components.Admin.TableInput Obj="table"
+            Data="showingUsers"
+            @bind-Selected="selectedUsers">
+</FMSystem.Client.Components.Admin.TableInput>
+
+<!-- #endregion -->
+
+@code {
+
+    private User[] users, showingUsers = new List<User>().ToArray();
+    private IEnumerable<User> selectedUsers;
+    private string searchName, permission;
+
+    private AntDesign.Table<User> table;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefrashTable();
+    }
+
+    private async Task RefrashTable()
+    {
+        users = await Http.GetFromJsonAsync<User[]>("Api/User/GetUser");
+        showingUsers = users;
+
+        if (permission == "admin")
+        {
+            showingUsers = showingUsers.Where(i => i.Permission == Permissions.ADMIN).ToArray();
+        }
+        else if (permission == "normal")
+        {
+            showingUsers = showingUsers.Where(i => i.Permission == Permissions.NORMAL).ToArray();
+        }
+
+        if (searchName != null && searchName != "")
+        {
+            showingUsers = showingUsers.Where(i => i.UserName.ToLower().Contains(searchName.ToLower())).ToArray();
+        }
+    }
+
+}

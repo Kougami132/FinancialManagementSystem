@@ -1,0 +1,94 @@
+﻿@page "/register"
+@layout LoginLayout
+
+@inject HttpClient Http
+@inject NavigationManager navigationManager
+@inject MessageService messageService
+@using System.Security.Claims
+
+<Card Bordered="true" Title=@("注册新用户") Style="width:400px; cursor: default;" Hoverable="true">
+    <Body>
+        <Form Loading="registerLoading"
+              Layout="@FormLayout.Vertical"
+              Model="@registerUser"
+              ValidateOnChange="true"
+              OnFinish="OnRegister"
+              Style="padding: 12px;">
+            <FormItem Label="用户名">
+                <Input @bind-Value="@context.UserName" Placeholder="例: test132" MaxLength="16" />
+            </FormItem>
+            <FormItem Label="密码">
+                <InputPassword @bind-Value="@context.UserPwd" Placeholder="例: 123456" MaxLength="32" />
+            </FormItem>
+            <div style="margin: 10px 0;">
+                <label><span style="color: red;">*</span>&nbsp;再次输入密码</label>
+                <InputPassword @bind-Value="@password" Placeholder="例: 123456" MaxLength="32" />
+            </div>
+            <FormItem Label="QQ">
+                <Input @bind-Value="@context.QQ" Placeholder="例: 1234567890" />
+            </FormItem>
+            <FormItem Label="邮箱">
+                <Input @bind-Value="@context.Email" Placeholder="例: test132@gmail.com" />
+            </FormItem>
+            <FormItem WrapperColOffset="6" WrapperColSpan="24">
+                <Button Type="default" OnClick="@(()=> { navigationManager.NavigateTo("/login"); })">取&nbsp;消</Button>
+                <Button Type="primary" HtmlType="submit">注&nbsp;册</Button>
+            </FormItem>
+        </Form>
+    </Body>
+</Card>
+
+@code {
+
+    bool registerLoading = false;
+    User registerUser = new() { Permission = Permissions.NORMAL };
+    string password = "";
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuthenticationState authState = await authenticationStateTask;
+        ClaimsPrincipal user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            navigationManager.NavigateTo("/");
+            return;
+        }
+    }
+
+    public async Task OnRegister()
+    {
+        if (password != registerUser.UserPwd)
+        {
+            messageService.Error("两次输入密码不一致");
+            password = "";
+            return;
+        }
+
+        registerLoading = true;
+        Response res = await Http.GetFromJsonAsync<Response>($"Api/User/IsUserExist?username=" + registerUser.UserName);
+        if (res.Type == 1 && res.Msg == "Yes")
+        {
+            messageService.Error("用户名已存在");
+            registerLoading = false;
+            return;
+        }
+
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Auth/Register", registerUser);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            messageService.Success("注册成功");
+            navigationManager.NavigateTo("/login");
+        }
+        else
+        {
+            messageService.Error("注册失败");
+        }
+        registerLoading = false;
+    }
+
+
+}

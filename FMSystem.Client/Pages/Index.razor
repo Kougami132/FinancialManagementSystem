@@ -1,0 +1,33 @@
+﻿@page "/"
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Components.Authorization
+
+
+<AuthorizeView Policy="Admin">
+    only Admin can see this
+</AuthorizeView>
+<AuthorizeView>
+    @foreach (Claim i in claims)
+    {
+        <p>@i.Type : @i.Value</p>
+    }
+</AuthorizeView>
+
+
+@code{
+
+    IEnumerable<Claim> claims;
+    
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuthenticationState authState = await authenticationStateTask;
+        ClaimsPrincipal user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            claims = user.Claims;
+        }
+    }
+}
