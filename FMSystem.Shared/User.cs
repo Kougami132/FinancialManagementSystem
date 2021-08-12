@@ -17,7 +17,7 @@ namespace FMSystem.Shared
         [CheckUserName]
         public string UserName { get; set; }
         [Required(ErrorMessage = "必须输入密码")]
-        [CheckUserPwd]
+        [MinLength(6, ErrorMessage = "密码至少 6 位")]
         public string UserPwd { get; set; }
         [Required(ErrorMessage = "必须选择权限组")]
         public Permissions Permission { get; set; }
@@ -31,9 +31,9 @@ namespace FMSystem.Shared
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            if (value != null && value.ToString().Length < 3)
+            if (value != null && !IsUserName(value.ToString()))
             {
-                return new ValidationResult("用户名至少 3 位", new[] { validationContext.MemberName });
+                return new ValidationResult("请输入 3 - 16 位由字母、数字或_组成的用户名", new[] { validationContext.MemberName });
             }
             else
             {
@@ -46,21 +46,6 @@ namespace FMSystem.Shared
             const string pattern = "^[a-zA-Z0-9_]{3,16}$";
             Regex rx = new Regex(pattern);
             return rx.IsMatch(s);
-        }
-    }
-
-    public class CheckUserPwdAttribute : ValidationAttribute
-    {
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-        {
-            if (value != null && value.ToString().Length < 6)
-            {
-                return new ValidationResult("密码至少 6 位", new[] { validationContext.MemberName });
-            }
-            else
-            {
-                return ValidationResult.Success;
-            }
         }
     }
 

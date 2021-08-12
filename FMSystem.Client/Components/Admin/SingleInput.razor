@@ -17,6 +17,7 @@
             style="width: 100px; text-align: center;">
     </Select>
 </div>
+
 <div style="float: left; margin-bottom: 24px;">
     <Button Type="primary" Icon="plus" OnClick="@(()=> { dwVisible1 = true; })">新增用户</Button>
     <Button Icon="edit" OnClick=" OnEdit">修改信息</Button>
@@ -118,7 +119,7 @@
 
     private bool dwVisible1, dwVisible2, loading1, loading2;
     private AntDesign.Form<User> form1, form2;
-    private User newUser = new User() { Permission = Permissions.NORMAL };
+    private User newUser = new() { Permission = Permissions.NORMAL };
     private User editUser = new();
     private bool self = false;
 
@@ -136,9 +137,7 @@
         new Option {Value = "admin", Name = "管理员"},
         new Option {Value = "normal", Name = "普通用户"}
     };
-
-
-
+    
     public class realOption
     {
         public Permissions Value { get; set; }

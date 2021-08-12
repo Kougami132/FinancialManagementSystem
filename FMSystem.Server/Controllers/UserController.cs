@@ -22,6 +22,19 @@ namespace FMSystem.Server.Controllers
         }
 
         [HttpGet]
+        public ActionResult<User> GetSelf()
+        {
+            if (Tools.IsUserExist(_context, User.Identity.Name)) //如果Token用户存在
+            {
+                return _context.Users.FirstOrDefault(i => i.UserName == User.Identity.Name);
+            }
+            else
+            {
+                return null;
+            }
+        }
+        
+        [HttpGet]
         public IEnumerable<User> GetUser()
         {
             if (IsUserAdmin(User.Identity.Name)) //如果Token权限为Admin

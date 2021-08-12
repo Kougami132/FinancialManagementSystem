@@ -1,0 +1,274 @@
+﻿@inject MessageService messageService
+@inject HttpClient Http
+@using System.Security.Claims
+
+
+
+<div style="float: left; margin-bottom: 24px;">
+    <Search Placeholder="搜索分类" ValueChanged="SearchValueChanged" Style="width: 100px;" OnChange="Refrash" />
+</div>
+
+<div style="float: left; margin: 0 4px 24px; ">
+    <Select DataSource="@options"
+            ValueChanged="TypeChanged"
+            DefaultValue="@("all")"
+            ValueName="@nameof(Option.Value)"
+            LabelName="@nameof(Option.Name)"
+            DisabledName="@nameof(Option.IsDisabled)"
+            OnSelectedItemChanged="@(async(i) => { await Refrash.InvokeAsync(); })"
+            style="width: 100px; text-align: center;">
+    </Select>
+</div>
+<div style="float: left; margin-bottom: 24px; ">
+    <Button Type="primary" Icon="plus" OnClick="@(()=> { dwVisible1 = true; })">新增分类</Button>
+    <Button Icon="edit" OnClick=" OnEdit">修改信息</Button>
+    <Button Loading="deleteLoading" Type="dashed" Danger OnClick="@(() => { if (Selected != null && Selected.Count() != 0) modalVisible = true; })">删除</Button>
+</div>
+
+<Drawer Closable="true" Width="360" Visible="dwVisible1" Title=@("新增分类") OnClose="@(()=> { dwVisible1 = false; })">
+    <Form @ref="form1"
+          Loading="loading1"
+          Layout="@FormLayout.Vertical"
+          Model="@newCategory"
+          ValidateOnChange="true"
+          OnFinish="NewOnFinish"
+          OnFinishFailed="NewOnFinishFailed"
+          Style="padding: 12px;">
+        <FormItem Label="分类名称">
+            <Input @bind-Value="@context.Name" Placeholder="例: 工资收入" MaxLength="16" />
+        </FormItem>
+        <FormItem Label="分类类别">
+            <Select DataSource="@newOptions"
+                    @bind-Value="@context.Type"
+                    ValueName="@nameof(realOption.Value)"
+                    LabelName="@nameof(realOption.Name)"
+                    DisabledName="@nameof(realOption.IsDisabled)"
+                    Style="width: 100px; text-align: center;">
+            </Select>
+        </FormItem>
+        <FormItem Label="说明">
+            <Input @bind-Value="@context.Description" />
+        </FormItem>
+        <FormItem WrapperColOffset="6" WrapperColSpan="24">
+            <Button Type="default" OnClick="@(()=> { dwVisible1 = false; })">取消</Button>
+            <Button Type="primary" OnClick="NewOnSubmit">提交</Button>
+        </FormItem>
+    </Form>
+</Drawer>
+
+<Drawer Closable="true" Width="360" Visible="dwVisible2" Title=@("修改信息") OnClose="@(()=> { dwVisible2 = false; })">
+    <Form @ref="form2"
+          Loading="loading2"
+          Layout="@FormLayout.Vertical"
+          Model="@editCategory"
+          ValidateOnChange="true"
+          OnFinish="EditOnFinish"
+          OnFinishFailed="EditOnFinishFailed"
+          Style="padding: 12px;">
+        <FormItem Label="分类名称">
+            <Input @bind-Value="@context.Name" Placeholder="例: 工资收入" MaxLength="16" />
+        </FormItem>
+        <FormItem Label="分类类别">
+            <Select DataSource="@newOptions"
+                    @bind-Value="@context.Type"
+                    ValueName="@nameof(realOption.Value)"
+                    LabelName="@nameof(realOption.Name)"
+                    DisabledName="@nameof(realOption.IsDisabled)"
+                    Style="width: 100px; text-align: center;">
+            </Select>
+        </FormItem>
+        <FormItem Label="说明">
+            <Input @bind-Value="@context.Description" />
+        </FormItem>
+        <FormItem WrapperColOffset="6" WrapperColSpan="24">
+            <Button Type="default" OnClick="@(()=> { dwVisible2 = false; })">取消</Button>
+            <Button Type="primary" OnClick="EditOnSubmit">提交</Button>
+        </FormItem>
+    </Form>
+</Drawer>
+
+<Modal Title="提示"
+       Width="300"
+       Visible="@modalVisible"
+       OnOk="OnDelete"
+       OnCancel="@(() => { modalVisible = false; })">
+    <Text>删除选中账户</Text>
+</Modal>
+
+@code {
+
+    [Parameter]
+    public string Owner { get; set; }
+    [Parameter]
+    public EventCallback<string> OwnerChanged { get; set; }
+    [Parameter]
+    public string SearchValue { get; set; }
+    [Parameter]
+    public EventCallback<string> SearchValueChanged { get; set; }
+    [Parameter]
+    public string Type { get; set; }
+    [Parameter]
+    public EventCallback<string> TypeChanged { get; set; }
+    [Parameter]
+    public IEnumerable<Category> Selected { get; set; }
+    [Parameter]
+    public EventCallback<IEnumerable<Category>> SelectedChanged { get; set; }
+    [Parameter]
+    public EventCallback Refrash { get; set; }
+
+    private bool dwVisible1, dwVisible2, loading1, loading2, deleteLoading, modalVisible;
+    private AntDesign.Form<Category> form1, form2;
+    private Category newCategory = new() { Type = InputOrOutput.INPUT };
+    private Category editCategory = new();
+
+
+    public class Option
+    {
+        public string Value { get; set; }
+        public string Name { get; set; }
+        public bool IsDisabled { get; set; }
+    }
+
+    private List<Option> options = new List<Option>()
+{
+        new Option {Value = "all", Name = "全部"},
+        new Option {Value = "input", Name = "收入"},
+        new Option {Value = "output", Name = "支出"}
+    };
+
+    public class realOption
+    {
+        public InputOrOutput Value { get; set; }
+        public string Name { get; set; }
+        public bool IsDisabled { get; set; }
+    }
+
+    private List<realOption> newOptions = new List<realOption>()
+{
+        new realOption {Value = InputOrOutput.INPUT, Name = "收入"},
+        new realOption {Value = InputOrOutput.OUTPUT, Name = "支出"}
+    };
+
+    private async Task NewOnSubmit()
+    {
+        Response response = await Http.GetFromJsonAsync<Response>("Api/Category/IsCategoryExist?name=" + newCategory.Name);
+        if (response.Msg == "Yes")
+        {
+            messageService.Error("分类已存在");
+        }
+        else
+        {
+            loading1 = true;
+            newCategory.User = Owner;
+            form1.Submit();
+        }
+    }
+
+    private async Task NewOnFinish(EditContext newContext)
+    {
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Category/AddCategory", newContext.Model);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await Refrash.InvokeAsync();   //刷新表格
+            newCategory = new() { Type = InputOrOutput.INPUT };  //清空表单
+            loading1 = false;
+            dwVisible1 = false;
+            messageService.Success("提交成功");
+        }
+        else
+        {
+            loading1 = false;
+            messageService.Error("提交失败");
+        }
+    }
+
+    private async Task NewOnFinishFailed(EditContext editContext)
+    {
+        loading1 = false;
+        messageService.Error("提交失败");
+    }
+
+    private void OnEdit()
+    {
+        if (Selected == null || Selected.Count() == 0)
+        {
+            messageService.Error("请先选中一行数据");
+        }
+        else if (Selected.Count() != 1)
+        {
+            messageService.Error("只能对单项进行编辑");
+        }
+        else
+        {
+            editCategory = new()
+            {
+                Id = Selected.First().Id,
+                Name = Selected.First().Name,
+                Type = Selected.First().Type,
+                Description = Selected.First().Description
+            };
+            dwVisible2 = true;
+        }
+    }
+
+    private async Task EditOnSubmit()
+    {
+        Response response = await Http.GetFromJsonAsync<Response>("Api/Category/IsCategoryExist?name=" + editCategory.Name);
+        if (response.Msg == "Yes" && editCategory.Name != Selected.First().Name)
+        {
+            messageService.Error("分类名已存在");
+        }
+        else
+        {
+            loading2 = true;
+            editCategory.User = Owner;
+            form2.Submit();
+        }
+    }
+
+    private async Task EditOnFinish(EditContext editContext)
+    {
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Category/EditCategory", editContext.Model);
+        Response response = await (responseMsg).Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await Refrash.InvokeAsync();   //刷新表格
+            loading2 = false;
+            dwVisible2 = false;
+            messageService.Success("提交成功");
+        }
+        else
+        {
+            loading2 = false;
+            messageService.Error("提交失败");
+        }
+
+    }
+
+    private async Task EditOnFinishFailed(EditContext editContext)
+    {
+        loading2 = false;
+        messageService.Error("提交失败");
+    }
+
+    private async Task OnDelete()
+    {
+        modalVisible = false;
+        deleteLoading = true;
+        int[] ids = Selected.Select(i => i.Id).ToArray();
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Category/DeleteCategory", ids);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await Refrash.InvokeAsync();   //刷新表格
+            deleteLoading = false;
+            messageService.Success("删除成功");
+        }
+        else
+        {
+            deleteLoading = false;
+            messageService.Error("删除失败");
+        }
+    }
+}

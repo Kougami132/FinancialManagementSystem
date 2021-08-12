@@ -126,7 +126,7 @@ using System.Net.Http;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Admin.razor"
+#line 34 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Admin.razor"
        
 
     private User[] users, showingUsers = new List<User>().ToArray();
@@ -145,6 +145,7 @@ using System.Net.Http;
         users = await Http.GetFromJsonAsync<User[]>("Api/User/GetUser");
         showingUsers = users;
 
+        //过滤种类
         if (permission == "admin")
         {
             showingUsers = showingUsers.Where(i => i.Permission == Permissions.ADMIN).ToArray();
@@ -154,6 +155,7 @@ using System.Net.Http;
             showingUsers = showingUsers.Where(i => i.Permission == Permissions.NORMAL).ToArray();
         }
 
+        //过滤名称
         if (searchName != null && searchName != "")
         {
             showingUsers = showingUsers.Where(i => i.UserName.ToLower().Contains(searchName.ToLower())).ToArray();

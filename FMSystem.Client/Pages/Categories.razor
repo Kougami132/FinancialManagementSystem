@@ -1,9 +1,65 @@
 ﻿@page "/categories"
 
+@inject HttpClient Http
+@inject MessageService messageService
+@using System.Security.Claims
 
 
-<h3>Categories</h3>
+
+<FMSystem.Client.Components.Category.EditInput @bind-Owner="owner"
+                                               @bind-SearchValue="searchName"
+                                               @bind-Type="type"
+                                               @bind-Selected="selectedCategories"
+                                               Refrash="RefrashTable">
+</FMSystem.Client.Components.Category.EditInput>
+
+<FMSystem.Client.Components.Category.TableInput Obj="table"
+                                                Data="showingCategories"
+                                                @bind-Selected="selectedCategories">
+</FMSystem.Client.Components.Category.TableInput>
+
+
 
 @code {
+
+    private Category[] categories, showingCategories = new List<Category>().ToArray();
+    private IEnumerable<Category> selectedCategories;
+    private string searchName, type;
+    string owner;
+
+    private AntDesign.Table<Category> table;
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuthenticationState authState = await authenticationStateTask;
+        ClaimsPrincipal user = authState.User;
+        owner = user.Identity.Name;
+        await RefrashTable();
+    }
+
+    private async Task RefrashTable()
+    {
+        categories = await Http.GetFromJsonAsync<Category[]>("Api/Category/GetCategory");
+        showingCategories = categories;
+
+        //过滤种类
+        if (type == "input")
+        {
+            showingCategories = showingCategories.Where(i => i.Type == InputOrOutput.INPUT).ToArray();
+        }
+        else if (type == "output")
+        {
+            showingCategories = showingCategories.Where(i => i.Type == InputOrOutput.OUTPUT).ToArray();
+        }
+
+        //过滤名称
+        if (searchName != null && searchName != "")
+        {
+            showingCategories = showingCategories.Where(i => i.Name.ToLower().Contains(searchName.ToLower())).ToArray();
+        }
+    }
 
 }

@@ -675,3 +675,11 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDe
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Admin\PluralInput.razor.g.cs
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Admin\SingleInput.razor.g.cs
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Admin\TableInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Components\Account\TableInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Account\TableInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Components\Account\EditInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Account\EditInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Components\Category\EditInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Components\Category\TableInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Category\EditInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Category\TableInput.razor.g.cs

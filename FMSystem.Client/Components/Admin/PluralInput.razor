@@ -1,5 +1,6 @@
 ﻿@inject MessageService messageService
 @inject HttpClient Http
+@using System.Security.Claims
 
 <div style="float: right; margin-bottom: 24px;">
     <Spin Spinning="editLoading">
@@ -40,6 +41,9 @@
     public IEnumerable<User> Selected { get; set; }
     [Parameter]
     public EventCallback Refrash { get; set; }
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
 
     private bool editLoading, modalVisible1, modalVisible2, modalVisible3;
     private string editPwd;
@@ -88,10 +92,17 @@
 
     private async Task OnDelete()
     {
+        AuthenticationState authState = await authenticationStateTask;
+        ClaimsPrincipal user = authState.User;
+        if (Selected.Any(i => i.UserName == user.Identity.Name))
+        {
+            messageService.Error("不得删除自己");
+            return;
+        }
         modalVisible3 = false;
         editLoading = true;
         int[] ids = Selected.Select(i => i.Id).ToArray();
-        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/Deleteuser", ids);
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/DeleteUser", ids);
         Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
         if (response.Type == 1)
         {

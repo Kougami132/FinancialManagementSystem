@@ -6,29 +6,30 @@
 @inject HttpClient Http
 @inject MessageService messageService
 
+
+
 <!-- #region 单个操作按钮(搜索、新建、修改) -->
-
 <FMSystem.Client.Components.Admin.SingleInput @bind-SearchValue="searchName"
-                  @bind-Permission="permission"
-                  @bind-Selected="selectedUsers"
-                  Refrash="RefrashTable">
+                                              @bind-Permission="permission"
+                                              @bind-Selected="selectedUsers"
+                                              Refrash="RefrashTable">
 </FMSystem.Client.Components.Admin.SingleInput>
-
 <!-- #endregion -->
+
 <!-- #region 批量操作按钮(更改权限、重置密码、清空数据、删除) -->
 <FMSystem.Client.Components.Admin.PluralInput Selected="selectedUsers"
-                  Refrash="RefrashTable">
+                                              Refrash="RefrashTable">
 </FMSystem.Client.Components.Admin.PluralInput>
-
 <!-- #endregion -->
+
 <!-- #region Table表格 -->
-
 <FMSystem.Client.Components.Admin.TableInput Obj="table"
-            Data="showingUsers"
-            @bind-Selected="selectedUsers">
+                                             Data="showingUsers"
+                                             @bind-Selected="selectedUsers">
 </FMSystem.Client.Components.Admin.TableInput>
-
 <!-- #endregion -->
+
+
 
 @code {
 
@@ -48,6 +49,7 @@
         users = await Http.GetFromJsonAsync<User[]>("Api/User/GetUser");
         showingUsers = users;
 
+        //过滤种类
         if (permission == "admin")
         {
             showingUsers = showingUsers.Where(i => i.Permission == Permissions.ADMIN).ToArray();
@@ -57,6 +59,7 @@
             showingUsers = showingUsers.Where(i => i.Permission == Permissions.NORMAL).ToArray();
         }
 
+        //过滤名称
         if (searchName != null && searchName != "")
         {
             showingUsers = showingUsers.Where(i => i.UserName.ToLower().Contains(searchName.ToLower())).ToArray();

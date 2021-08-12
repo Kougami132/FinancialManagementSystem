@@ -103,6 +103,13 @@ using Microsoft.AspNetCore.Components.Authorization;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Categories.razor"
+using System.Security.Claims;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/categories")]
     public partial class Categories : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -111,6 +118,56 @@ using Microsoft.AspNetCore.Components.Authorization;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 23 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Categories.razor"
+       
+
+    private Category[] categories, showingCategories = new List<Category>().ToArray();
+    private IEnumerable<Category> selectedCategories;
+    private string searchName, type;
+    string owner;
+
+    private AntDesign.Table<Category> table;
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuthenticationState authState = await authenticationStateTask;
+        ClaimsPrincipal user = authState.User;
+        owner = user.Identity.Name;
+        await RefrashTable();
+    }
+
+    private async Task RefrashTable()
+    {
+        categories = await Http.GetFromJsonAsync<Category[]>("Api/Category/GetCategory");
+        showingCategories = categories;
+
+        //过滤种类
+        if (type == "input")
+        {
+            showingCategories = showingCategories.Where(i => i.Type == InputOrOutput.INPUT).ToArray();
+        }
+        else if (type == "output")
+        {
+            showingCategories = showingCategories.Where(i => i.Type == InputOrOutput.OUTPUT).ToArray();
+        }
+
+        //过滤名称
+        if (searchName != null && searchName != "")
+        {
+            showingCategories = showingCategories.Where(i => i.Name.ToLower().Contains(searchName.ToLower())).ToArray();
+        }
+    }
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MessageService messageService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
 #pragma warning restore 1591

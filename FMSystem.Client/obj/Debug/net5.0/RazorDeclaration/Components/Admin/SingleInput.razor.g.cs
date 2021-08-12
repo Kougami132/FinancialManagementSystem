@@ -118,7 +118,7 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 99 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Admin\SingleInput.razor"
+#line 100 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Admin\SingleInput.razor"
        
 
     [Parameter]
@@ -141,7 +141,7 @@ using System.Security.Claims;
 
     private bool dwVisible1, dwVisible2, loading1, loading2;
     private AntDesign.Form<User> form1, form2;
-    private User newUser = new User() { Permission = Permissions.NORMAL };
+    private User newUser = new() { Permission = Permissions.NORMAL };
     private User editUser = new();
     private bool self = false;
 
@@ -159,9 +159,7 @@ using System.Security.Claims;
         new Option {Value = "admin", Name = "管理员"},
         new Option {Value = "normal", Name = "普通用户"}
     };
-
-
-
+    
     public class realOption
     {
         public Permissions Value { get; set; }

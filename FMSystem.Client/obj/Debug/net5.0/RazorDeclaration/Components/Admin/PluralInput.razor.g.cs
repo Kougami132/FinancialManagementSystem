@@ -103,6 +103,13 @@ using Microsoft.AspNetCore.Components.Authorization;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Admin\PluralInput.razor"
+using System.Security.Claims;
+
+#line default
+#line hidden
+#nullable disable
     public partial class PluralInput : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -111,13 +118,16 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 37 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Admin\PluralInput.razor"
+#line 38 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Admin\PluralInput.razor"
        
 
     [Parameter]
     public IEnumerable<User> Selected { get; set; }
     [Parameter]
     public EventCallback Refrash { get; set; }
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
 
     private bool editLoading, modalVisible1, modalVisible2, modalVisible3;
     private string editPwd;
@@ -166,10 +176,17 @@ using Microsoft.AspNetCore.Components.Authorization;
 
     private async Task OnDelete()
     {
+        AuthenticationState authState = await authenticationStateTask;
+        ClaimsPrincipal user = authState.User;
+        if (Selected.Any(i => i.UserName == user.Identity.Name))
+        {
+            messageService.Error("不得删除自己");
+            return;
+        }
         modalVisible3 = false;
         editLoading = true;
         int[] ids = Selected.Select(i => i.Id).ToArray();
-        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/Deleteuser", ids);
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/DeleteUser", ids);
         Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
         if (response.Type == 1)
         {
