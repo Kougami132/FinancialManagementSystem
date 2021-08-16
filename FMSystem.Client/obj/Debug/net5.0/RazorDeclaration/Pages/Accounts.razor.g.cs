@@ -119,7 +119,7 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 22 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
+#line 23 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
        
 
     private Account[] accounts, showingAccounts = new List<Account>().ToArray();
@@ -137,12 +137,17 @@ using System.Security.Claims;
         AuthenticationState authState = await authenticationStateTask;
         ClaimsPrincipal user = authState.User;
         owner = user.Identity.Name;
+        await RefrashData();
+    }
+
+    private async Task RefrashData()
+    {
+        accounts = await Http.GetFromJsonAsync<Account[]>("Api/Account/GetAccount");
         await RefrashTable();
     }
 
     private async Task RefrashTable()
     {
-        accounts = await Http.GetFromJsonAsync<Account[]>("Api/Account/GetAccount");
         showingAccounts = accounts;
 
         //过滤种类

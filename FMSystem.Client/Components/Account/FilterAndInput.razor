@@ -1,11 +1,10 @@
 ﻿@inject MessageService messageService
 @inject HttpClient Http
-@using System.Security.Claims
 
 
 
 <div style="float: left; margin-bottom: 24px;">
-    <Search Placeholder="搜索账户" ValueChanged="SearchValueChanged" Style="width: 100px;" OnChange="Refrash" />
+    <Search Placeholder="搜索账户" ValueChanged="SearchValueChanged" Style="width: 100px;" OnChange="RefrashTable" />
 </div>
 
 <div style="float: left; margin: 0 4px 24px; ">
@@ -15,11 +14,11 @@
             ValueName="@nameof(Option.Value)"
             LabelName="@nameof(Option.Name)"
             DisabledName="@nameof(Option.IsDisabled)"
-            OnSelectedItemChanged="@(async(i) => { await Refrash.InvokeAsync(); })"
+            OnSelectedItemChanged="@(async(i) => { await RefrashTable.InvokeAsync(); })"
             style="width: 100px; text-align: center;">
     </Select>
 </div>
-<div style="float: left; margin-bottom: 24px; ">
+<div style="float: right; margin-bottom: 24px; ">
     <Button Type="primary" Icon="plus" OnClick="@(()=> { dwVisible1 = true; })">新增账户</Button>
     <Button Icon="edit" OnClick=" OnEdit">修改信息</Button>
     <Button Loading="deleteLoading" Type="dashed" Danger OnClick="@(() => { if (Selected != null && Selected.Count() != 0) modalVisible = true; })">删除</Button>
@@ -114,7 +113,9 @@
     [Parameter]
     public EventCallback<IEnumerable<Account>> SelectedChanged { get; set; }
     [Parameter]
-    public EventCallback Refrash { get; set; }
+    public EventCallback RefrashData { get; set; }
+    [Parameter]
+    public EventCallback RefrashTable { get; set; }
 
     private bool dwVisible1, dwVisible2, loading1, loading2, deleteLoading, modalVisible;
     private AntDesign.Form<Account> form1, form2;
@@ -174,7 +175,7 @@
         Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
         if (response.Type == 1)
         {
-            await Refrash.InvokeAsync();   //刷新表格
+            await RefrashData.InvokeAsync();   //刷新表格
             newAccount = new() { Type = PaymentType.OTHER };  //清空表单
             loading1 = false;
             dwVisible1 = false;
@@ -237,7 +238,7 @@
         Response response = await (responseMsg).Content.ReadFromJsonAsync<Response>();
         if (response.Type == 1)
         {
-            await Refrash.InvokeAsync();   //刷新表格
+            await RefrashData.InvokeAsync();   //刷新表格
             loading2 = false;
             dwVisible2 = false;
             messageService.Success("提交成功");
@@ -265,7 +266,7 @@
         Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
         if (response.Type == 1)
         {
-            await Refrash.InvokeAsync();   //刷新表格
+            await RefrashData.InvokeAsync();   //刷新表格
             deleteLoading = false;
             messageService.Success("删除成功");
         }

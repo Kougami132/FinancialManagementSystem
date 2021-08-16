@@ -12,13 +12,14 @@
 <FMSystem.Client.Components.Admin.SingleInput @bind-SearchValue="searchName"
                                               @bind-Permission="permission"
                                               @bind-Selected="selectedUsers"
-                                              Refrash="RefrashTable">
+                                              RefrashData="RefrashData"
+                                              RefrashTable="RefrashTable">
 </FMSystem.Client.Components.Admin.SingleInput>
 <!-- #endregion -->
 
 <!-- #region 批量操作按钮(更改权限、重置密码、清空数据、删除) -->
 <FMSystem.Client.Components.Admin.PluralInput Selected="selectedUsers"
-                                              Refrash="RefrashTable">
+                                              Refrash="RefrashData">
 </FMSystem.Client.Components.Admin.PluralInput>
 <!-- #endregion -->
 
@@ -41,12 +42,17 @@
 
     protected override async Task OnInitializedAsync()
     {
+        await RefrashData();
+    }
+
+    private async Task RefrashData()
+    {
+        users = await Http.GetFromJsonAsync<User[]>("Api/User/GetUser");
         await RefrashTable();
     }
 
     private async Task RefrashTable()
     {
-        users = await Http.GetFromJsonAsync<User[]>("Api/User/GetUser");
         showingUsers = users;
 
         //过滤种类

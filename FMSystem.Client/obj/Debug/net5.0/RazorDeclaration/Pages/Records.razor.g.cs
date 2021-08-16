@@ -103,6 +103,13 @@ using Microsoft.AspNetCore.Components.Authorization;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
+using System.Security.Claims;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/records")]
     public partial class Records : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -111,6 +118,100 @@ using Microsoft.AspNetCore.Components.Authorization;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 27 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
+       
+
+    private Record[] records, showingRecords = new List<Record>().ToArray();
+    private IEnumerable<Category> categories;
+    private IEnumerable<Account> accounts;
+    private IEnumerable<Record> selectedRecords;
+    private string type = "all";
+    private int category = -1, account = -1;
+    private DateTime?[] dateFilter;
+
+    private AntDesign.Table<Record> table;
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await Http.GetFromJsonAsync<Category[]>("Api/Category/GetCategory");
+        accounts = await Http.GetFromJsonAsync<Account[]>("Api/Account/GetAccount");
+        await RefrashData();
+    }
+
+    private async Task RefrashData()
+    {
+        records = await Http.GetFromJsonAsync<Record[]>("Api/Record/GetRecord");
+        await RefrashTable();
+    }
+
+    private async Task RefrashTable()
+    {
+        showingRecords = records;
+
+        //过滤收/支
+        if (type == "input")
+        {
+            showingRecords = showingRecords.Where(i => i.Type == InputOrOutput.INPUT).ToArray();
+        }
+        else if (type == "output")
+        {
+            showingRecords = showingRecords.Where(i => i.Type == InputOrOutput.OUTPUT).ToArray();
+        }
+
+        //过滤分类
+
+        if (category == -1)
+        {
+            //全部
+        }
+        else if (category == -2)
+        {
+            showingRecords = showingRecords.Where(i => i.Category == "").ToArray();
+        }
+        else
+        {
+            showingRecords = showingRecords.Where(i => i.Category == categories.ElementAt(category).Name).ToArray();
+        }
+
+        //过滤账户
+        if (account == -1)
+        {
+            //全部
+        }
+        else if (account == -2)
+        {
+            showingRecords = showingRecords.Where(i => i.Account == "").ToArray();
+        }
+        else
+        {
+            showingRecords = showingRecords.Where(i => i.Account == accounts.ElementAt(account).Name).ToArray();
+        }
+
+        //过滤日期
+        if (dateFilter[0] != null)
+        {
+            DateTime date = Convert.ToDateTime(dateFilter[0]);
+            date = Convert.ToDateTime(date.ToShortDateString());
+            showingRecords = showingRecords.Where(i => DateTime.Compare(i.CreateTime, date) >= 0).ToArray();
+        }
+        if (dateFilter[1] != null)
+        {
+            DateTime date = Convert.ToDateTime(dateFilter[1]);
+            date = Convert.ToDateTime(date.ToShortDateString());
+            showingRecords = showingRecords.Where(i => DateTime.Compare(i.CreateTime, date) <= 0).ToArray();
+        }
+    }
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MessageService messageService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
 #pragma warning restore 1591

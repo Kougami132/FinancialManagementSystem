@@ -3,7 +3,7 @@
 @using System.Security.Claims
 
 <div style="float: left; margin-bottom: 24px;">
-    <Search Placeholder="搜索用户" ValueChanged="SearchValueChanged" Style="width: 100px;" OnChange="Refrash" />
+    <Search Placeholder="搜索用户" ValueChanged="SearchValueChanged" Style="width: 100px;" OnChange="RefrashTable" />
 </div>
 
 <div style="float: left; margin:0 4px 24px;">
@@ -13,7 +13,7 @@
             ValueName="@nameof(Option.Value)"
             LabelName="@nameof(Option.Name)"
             DisabledName="@nameof(Option.IsDisabled)"
-            OnSelectedItemChanged="@(async(i) => { await Refrash.InvokeAsync(); })"
+            OnSelectedItemChanged="@(async(i) => { await RefrashTable.InvokeAsync(); })"
             style="width: 100px; text-align: center;">
     </Select>
 </div>
@@ -112,7 +112,9 @@
     [Parameter]
     public EventCallback<IEnumerable<User>> SelectedChanged { get; set; }
     [Parameter]
-    public EventCallback Refrash { get; set; }
+    public EventCallback RefrashData { get; set; }
+    [Parameter]
+    public EventCallback RefrashTable { get; set; }
 
     [CascadingParameter]
     private Task<AuthenticationState> authenticationStateTask { get; set; }
@@ -137,7 +139,7 @@
         new Option {Value = "admin", Name = "管理员"},
         new Option {Value = "normal", Name = "普通用户"}
     };
-    
+
     public class realOption
     {
         public Permissions Value { get; set; }
@@ -173,7 +175,7 @@
         Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
         if (response.Type == 1)
         {
-            await Refrash.InvokeAsync();   //刷新表格
+            await RefrashData.InvokeAsync();   //刷新表格
             newUser = new User() { Permission = Permissions.NORMAL };  //清空表单
             loading1 = false;
             dwVisible1 = false;
@@ -249,7 +251,7 @@
         Response response = await (responseMsg).Content.ReadFromJsonAsync<Response>();
         if (response.Type == 1)
         {
-            await Refrash.InvokeAsync();   //刷新表格
+            await RefrashData.InvokeAsync();   //刷新表格
             loading2 = false;
             dwVisible2 = false;
             messageService.Success("提交成功");

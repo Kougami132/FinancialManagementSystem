@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace FMSystem.Client.Components.Account
+namespace FMSystem.Client.Components.Record
 {
     #line hidden
     using System;
@@ -104,13 +104,13 @@ using Microsoft.AspNetCore.Components.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Account\EditInput.razor"
+#line 3 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Record\FilterAndInput.razor"
 using System.Security.Claims;
 
 #line default
 #line hidden
 #nullable disable
-    public partial class EditInput : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class FilterAndInput : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -118,88 +118,135 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 98 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Account\EditInput.razor"
+#line 150 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Record\FilterAndInput.razor"
        
-
     [Parameter]
-    public string Owner { get; set; }
+    public IEnumerable<Category> categories { get; set; }
     [Parameter]
-    public EventCallback<string> OwnerChanged { get; set; }
+    public EventCallback<IEnumerable<Category>> categoriesChanged { get; set; }
     [Parameter]
-    public string SearchValue { get; set; }
+    public IEnumerable<Account> accounts { get; set; }
     [Parameter]
-    public EventCallback<string> SearchValueChanged { get; set; }
+    public EventCallback<IEnumerable<Account>> accountsChanged { get; set; }
     [Parameter]
     public string Type { get; set; }
     [Parameter]
     public EventCallback<string> TypeChanged { get; set; }
     [Parameter]
-    public IEnumerable<Account> Selected { get; set; }
+    public int Category { get; set; }
     [Parameter]
-    public EventCallback<IEnumerable<Account>> SelectedChanged { get; set; }
+    public EventCallback<int> CategoryChanged { get; set; }
     [Parameter]
-    public EventCallback Refrash { get; set; }
+    public int Account { get; set; }
+    [Parameter]
+    public EventCallback<int> AccountChanged { get; set; }
+    [Parameter]
+    public IEnumerable<Record> Selected { get; set; }
+    [Parameter]
+    public EventCallback<IEnumerable<Record>> SelectedChanged { get; set; }
+    [Parameter]
+    public EventCallback RefrashData { get; set; }
+    [Parameter]
+    public EventCallback RefrashTable { get; set; }
+    [Parameter]
+    public DateTime?[] DateFilter { get; set; }
+    [Parameter]
+    public EventCallback<DateTime?[]> DateFilterChanged { get; set; }
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
 
     private bool dwVisible1, dwVisible2, loading1, loading2, deleteLoading, modalVisible;
-    private AntDesign.Form<Account> form1, form2;
-    private Account newAccount = new() { Type = PaymentType.OTHER };
-    private Account editAccount = new();
+    private AntDesign.Form<Record> form1, form2;
+    private Record newRecord = new();
+    private Record editRecord = new();
+    private string owner { get; set; }
+    private Select<int, Option<int>> fixSelect1, fixSelect2;
 
-
-    public class Option
+    public class Option<T>
     {
-        public string Value { get; set; }
+        public T Value { get; set; }
         public string Name { get; set; }
         public bool IsDisabled { get; set; }
     }
 
-    private List<Option> options = new List<Option>()
-{
-        new Option {Value = "all", Name = "全部"},
-        new Option {Value = "bank", Name = "银行"},
-        new Option {Value = "cash", Name = "现金"},
-        new Option {Value = "online", Name = "线上"},
-        new Option {Value = "pther", Name = "其它"}
-    };
+    private List<Option<int>> categoryOptions = new List<Option<int>>();
+    private List<Option<int>> accountOptions = new();
 
-    public class realOption
+    private List<Option<string>> newCategoryOptions = new List<Option<string>>();
+    private List<Option<string>> newAccountOptions = new List<Option<string>>();
+
+    protected async override Task OnInitializedAsync()
     {
-        public PaymentType Value { get; set; }
-        public string Name { get; set; }
-        public bool IsDisabled { get; set; }
+        AuthenticationState authState = await authenticationStateTask;
+        ClaimsPrincipal user = authState.User;
+        owner = user.Identity.Name;
+        categories = await Http.GetFromJsonAsync<Category[]>("Api/Category/GetCategory");
+        accounts = await Http.GetFromJsonAsync<Account[]>("Api/Account/GetAccount");
+
+        await RefrashSelect(Type);
+        RefrashNewSelect();
+
+        accountOptions.Add(new Option<int> { Value = -1, Name = "全部" });
+        newAccountOptions.Add(new Option<string> { Value = "", Name = "" });
+        for (int i = 0; i < accounts.Count(); i++)
+        {
+            accountOptions.Add(new Option<int> { Value = i, Name = accounts.ElementAt(i).Name });
+            newAccountOptions.Add(new Option<string> { Value = accounts.ElementAt(i).Name, Name = accounts.ElementAt(i).Name });
+        }
+        accountOptions.Add(new Option<int> { Value = -2, Name = "未分类" });
+        fixSelect2.Value = -1;
     }
 
-    private List<realOption> newOptions = new List<realOption>()
-{
-        new realOption {Value = PaymentType.BANK, Name = "银行"},
-        new realOption {Value = PaymentType.CASH, Name = "现金"},
-        new realOption {Value = PaymentType.ONLINE, Name = "线上"},
-        new realOption {Value = PaymentType.OTHER, Name = "其它"}
-    };
+    private async Task RefrashSelect(string type)
+    {
+        categoryOptions = new()
+        {
+            new Option<int> { Value = -1, Name = "全部" }
+        };
+        for (int i = 0; i < categories.Count(); i++)
+        {
+            if (type == "all" || type == "input" && categories.ElementAt(i).Type == InputOrOutput.INPUT || type == "output" && categories.ElementAt(i).Type == InputOrOutput.OUTPUT)
+            {
+                categoryOptions.Add(new Option<int> { Value = i, Name = categories.ElementAt(i).Name });
+            }
+        }
+        categoryOptions.Add(new Option<int> { Value = -2, Name = "未分类" });
+        fixSelect1.Value = -1;
+        await CategoryChanged.InvokeAsync(-1);
+    }
+
+    private void RefrashNewSelect()
+    {
+        newCategoryOptions = new()
+        {
+            new Option<string> { Value = "", Name = "" }
+        };
+        for (int i = 0; i < categories.Count(); i++)
+        {
+            if (newRecord.Type == categories.ElementAt(i).Type)
+            {
+                newCategoryOptions.Add(new Option<string> { Value = categories.ElementAt(i).Name, Name = categories.ElementAt(i).Name });
+            }
+        }
+        newRecord.Category = "";
+    }
 
     private async Task NewOnSubmit()
     {
-        Response response = await Http.GetFromJsonAsync<Response>("Api/Account/IsAccountExist?name=" + newAccount.Name);
-        if (response.Msg == "Yes")
-        {
-            messageService.Error("账户已存在");
-        }
-        else
-        {
-            loading1 = true;
-            newAccount.User = Owner;
-            form1.Submit();
-        }
+        loading1 = true;
+        newRecord.User = owner;
+        form1.Submit();
     }
 
     private async Task NewOnFinish(EditContext newContext)
     {
-        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Account/AddAccount", newContext.Model);
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Record/AddRecord", newContext.Model);
         Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
         if (response.Type == 1)
         {
-            await Refrash.InvokeAsync();   //刷新表格
-            newAccount = new() { Type = PaymentType.OTHER };  //清空表单
+            await RefrashData.InvokeAsync();   //刷新表格
+            newRecord = new();  //清空表单
             loading1 = false;
             dwVisible1 = false;
             messageService.Success("提交成功");
@@ -229,11 +276,14 @@ using System.Security.Claims;
         }
         else
         {
-            editAccount = new()
+            editRecord = new()
             {
                 Id = Selected.First().Id,
-                Name = Selected.First().Name,
                 Type = Selected.First().Type,
+                Category = Selected.First().Category,
+                Value = Selected.First().Value,
+                Account = Selected.First().Account,
+                CreateTime = Selected.First().CreateTime,
                 Description = Selected.First().Description
             };
             dwVisible2 = true;
@@ -242,26 +292,18 @@ using System.Security.Claims;
 
     private async Task EditOnSubmit()
     {
-        Response response = await Http.GetFromJsonAsync<Response>("Api/Account/IsAccountExist?name=" + editAccount.Name);
-        if (response.Msg == "Yes" && editAccount.Name != Selected.First().Name)
-        {
-            messageService.Error("用户名已存在");
-        }
-        else
-        {
-            loading2 = true;
-            editAccount.User = Owner;
-            form2.Submit();
-        }
+        loading2 = true;
+        editRecord.User = owner;
+        form2.Submit();
     }
 
     private async Task EditOnFinish(EditContext editContext)
     {
-        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Account/EditAccount", editContext.Model);
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Record/EditRecord", editContext.Model);
         Response response = await (responseMsg).Content.ReadFromJsonAsync<Response>();
         if (response.Type == 1)
         {
-            await Refrash.InvokeAsync();   //刷新表格
+            await RefrashData.InvokeAsync();   //刷新表格
             loading2 = false;
             dwVisible2 = false;
             messageService.Success("提交成功");
@@ -285,11 +327,11 @@ using System.Security.Claims;
         modalVisible = false;
         deleteLoading = true;
         int[] ids = Selected.Select(i => i.Id).ToArray();
-        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Account/DeleteAccount", ids);
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Record/DeleteRecord", ids);
         Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
         if (response.Type == 1)
         {
-            await Refrash.InvokeAsync();   //刷新表格
+            await RefrashData.InvokeAsync();   //刷新表格
             deleteLoading = false;
             messageService.Success("删除成功");
         }
@@ -299,6 +341,7 @@ using System.Security.Claims;
             messageService.Error("删除失败");
         }
     }
+
 
 #line default
 #line hidden

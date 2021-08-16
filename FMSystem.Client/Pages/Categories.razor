@@ -6,12 +6,13 @@
 
 
 
-<FMSystem.Client.Components.Category.EditInput @bind-Owner="owner"
-                                               @bind-SearchValue="searchName"
-                                               @bind-Type="type"
-                                               @bind-Selected="selectedCategories"
-                                               Refrash="RefrashTable">
-</FMSystem.Client.Components.Category.EditInput>
+<FMSystem.Client.Components.Category.FilterAndInput @bind-Owner="owner"
+                                                    @bind-SearchValue="searchName"
+                                                    @bind-Type="type"
+                                                    @bind-Selected="selectedCategories"
+                                                    RefrashData="RefrashData"
+                                                    RefrashTable="RefrashTable">
+</FMSystem.Client.Components.Category.FilterAndInput>
 
 <FMSystem.Client.Components.Category.TableInput Obj="table"
                                                 Data="showingCategories"
@@ -37,12 +38,17 @@
         AuthenticationState authState = await authenticationStateTask;
         ClaimsPrincipal user = authState.User;
         owner = user.Identity.Name;
+        await RefrashData();
+    }
+
+    private async Task RefrashData()
+    {
+        categories = await Http.GetFromJsonAsync<Category[]>("Api/Category/GetCategory");
         await RefrashTable();
     }
 
     private async Task RefrashTable()
     {
-        categories = await Http.GetFromJsonAsync<Category[]>("Api/Category/GetCategory");
         showingCategories = categories;
 
         //过滤种类

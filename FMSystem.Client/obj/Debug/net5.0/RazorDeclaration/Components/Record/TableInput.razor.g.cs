@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace FMSystem.Client.Pages
+namespace FMSystem.Client.Components.Record
 {
     #line hidden
     using System;
@@ -12,6 +12,13 @@ namespace FMSystem.Client.Pages
     using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
+#nullable restore
+#line 1 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\_Imports.razor"
+using System.Net.Http;
+
+#line default
+#line hidden
+#nullable disable
 #nullable restore
 #line 2 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\_Imports.razor"
 using System.Net.Http.Json;
@@ -96,29 +103,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 3 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Admin.razor"
-using System.ComponentModel.DataAnnotations;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 4 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Admin.razor"
-using Newtonsoft.Json;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 5 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Admin.razor"
-using System.Net.Http;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/admin")]
-    public partial class Admin : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class TableInput : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -126,53 +111,23 @@ using System.Net.Http;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 35 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Admin.razor"
+#line 13 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Record\TableInput.razor"
        
 
-    private User[] users, showingUsers = new List<User>().ToArray();
-    private IEnumerable<User> selectedUsers;
-    private string searchName, permission;
+    [Parameter]
+    public AntDesign.Table<Record> Obj { get; set; }
+    [Parameter]
+    public Record[] Data { get; set; }
+    [Parameter]
+    public IEnumerable<Record> Selected { get; set; }
+    [Parameter]
+    public EventCallback<IEnumerable<Record>> SelectedChanged { get; set; }
 
-    private AntDesign.Table<User> table;
-
-    protected override async Task OnInitializedAsync()
-    {
-        await RefrashData();
-    }
-
-    private async Task RefrashData()
-    {
-        users = await Http.GetFromJsonAsync<User[]>("Api/User/GetUser");
-        await RefrashTable();
-    }
-
-    private async Task RefrashTable()
-    {
-        showingUsers = users;
-
-        //过滤种类
-        if (permission == "admin")
-        {
-            showingUsers = showingUsers.Where(i => i.Permission == Permissions.ADMIN).ToArray();
-        }
-        else if (permission == "normal")
-        {
-            showingUsers = showingUsers.Where(i => i.Permission == Permissions.NORMAL).ToArray();
-        }
-
-        //过滤名称
-        if (searchName != null && searchName != "")
-        {
-            showingUsers = showingUsers.Where(i => i.UserName.ToLower().Contains(searchName.ToLower())).ToArray();
-        }
-    }
-
+    private int tablePageIndex;
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MessageService messageService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
 #pragma warning restore 1591

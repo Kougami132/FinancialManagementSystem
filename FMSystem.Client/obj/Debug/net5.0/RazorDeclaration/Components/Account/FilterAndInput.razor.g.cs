@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace FMSystem.Client.Components.Admin
+namespace FMSystem.Client.Components.Account
 {
     #line hidden
     using System;
@@ -103,14 +103,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 3 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Admin\SingleInput.razor"
-using System.Security.Claims;
-
-#line default
-#line hidden
-#nullable disable
-    public partial class SingleInput : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class FilterAndInput : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -118,34 +111,34 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 100 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Admin\SingleInput.razor"
+#line 97 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Account\FilterAndInput.razor"
        
 
+    [Parameter]
+    public string Owner { get; set; }
+    [Parameter]
+    public EventCallback<string> OwnerChanged { get; set; }
     [Parameter]
     public string SearchValue { get; set; }
     [Parameter]
     public EventCallback<string> SearchValueChanged { get; set; }
     [Parameter]
-    public string Permission { get; set; }
+    public string Type { get; set; }
     [Parameter]
-    public EventCallback<string> PermissionChanged { get; set; }
+    public EventCallback<string> TypeChanged { get; set; }
     [Parameter]
-    public IEnumerable<User> Selected { get; set; }
+    public IEnumerable<Account> Selected { get; set; }
     [Parameter]
-    public EventCallback<IEnumerable<User>> SelectedChanged { get; set; }
+    public EventCallback<IEnumerable<Account>> SelectedChanged { get; set; }
     [Parameter]
     public EventCallback RefrashData { get; set; }
     [Parameter]
     public EventCallback RefrashTable { get; set; }
 
-    [CascadingParameter]
-    private Task<AuthenticationState> authenticationStateTask { get; set; }
-
-    private bool dwVisible1, dwVisible2, loading1, loading2;
-    private AntDesign.Form<User> form1, form2;
-    private User newUser = new() { Permission = Permissions.NORMAL };
-    private User editUser = new();
-    private bool self = false;
+    private bool dwVisible1, dwVisible2, loading1, loading2, deleteLoading, modalVisible;
+    private AntDesign.Form<Account> form1, form2;
+    private Account newAccount = new() { Type = PaymentType.OTHER };
+    private Account editAccount = new();
 
 
     public class Option
@@ -158,47 +151,50 @@ using System.Security.Claims;
     private List<Option> options = new List<Option>()
 {
         new Option {Value = "all", Name = "全部"},
-        new Option {Value = "admin", Name = "管理员"},
-        new Option {Value = "normal", Name = "普通用户"}
+        new Option {Value = "bank", Name = "银行"},
+        new Option {Value = "cash", Name = "现金"},
+        new Option {Value = "online", Name = "线上"},
+        new Option {Value = "pther", Name = "其它"}
     };
 
     public class realOption
     {
-        public Permissions Value { get; set; }
+        public PaymentType Value { get; set; }
         public string Name { get; set; }
         public bool IsDisabled { get; set; }
     }
 
     private List<realOption> newOptions = new List<realOption>()
 {
-        new realOption {Value = Permissions.ADMIN, Name = "管理员"},
-        new realOption {Value = Permissions.NORMAL, Name = "普通用户"}
+        new realOption {Value = PaymentType.BANK, Name = "银行"},
+        new realOption {Value = PaymentType.CASH, Name = "现金"},
+        new realOption {Value = PaymentType.ONLINE, Name = "线上"},
+        new realOption {Value = PaymentType.OTHER, Name = "其它"}
     };
-
-
 
     private async Task NewOnSubmit()
     {
-        Response response = await Http.GetFromJsonAsync<Response>("Api/User/IsUserExist?username=" + newUser.UserName);
+        Response response = await Http.GetFromJsonAsync<Response>("Api/Account/IsAccountExist?name=" + newAccount.Name);
         if (response.Msg == "Yes")
         {
-            messageService.Error("用户名已存在");
+            messageService.Error("账户已存在");
         }
         else
         {
             loading1 = true;
+            newAccount.User = Owner;
             form1.Submit();
         }
     }
 
     private async Task NewOnFinish(EditContext newContext)
     {
-        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/AddUser", newContext.Model);
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Account/AddAccount", newContext.Model);
         Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
         if (response.Type == 1)
         {
             await RefrashData.InvokeAsync();   //刷新表格
-            newUser = new User() { Permission = Permissions.NORMAL };  //清空表单
+            newAccount = new() { Type = PaymentType.OTHER };  //清空表单
             loading1 = false;
             dwVisible1 = false;
             messageService.Success("提交成功");
@@ -228,48 +224,35 @@ using System.Security.Claims;
         }
         else
         {
-            editUser = new()
+            editAccount = new()
             {
                 Id = Selected.First().Id,
-                UserName = Selected.First().UserName,
-                UserPwd = Selected.First().UserPwd,
-                Permission = Selected.First().Permission,
-                QQ = Selected.First().QQ,
-                Email = Selected.First().Email
+                Name = Selected.First().Name,
+                Type = Selected.First().Type,
+                Description = Selected.First().Description
             };
             dwVisible2 = true;
-
-            //不得修改自己的权限组
-            AuthenticationState authState = authenticationStateTask.Result;
-            ClaimsPrincipal user = authState.User;
-            if (editUser.UserName == user.Identity.Name)
-            {
-                self = true;
-            }
-            else
-            {
-                self = false;
-            }
         }
     }
 
     private async Task EditOnSubmit()
     {
-        Response response = await Http.GetFromJsonAsync<Response>("Api/User/IsUserExist?username=" + editUser.UserName);
-        if (response.Msg == "Yes" && editUser.UserName.ToLower() != Selected.First().UserName.ToLower())
+        Response response = await Http.GetFromJsonAsync<Response>("Api/Account/IsAccountExist?name=" + editAccount.Name);
+        if (response.Msg == "Yes" && editAccount.Name != Selected.First().Name)
         {
             messageService.Error("用户名已存在");
         }
         else
         {
             loading2 = true;
+            editAccount.User = Owner;
             form2.Submit();
         }
     }
 
     private async Task EditOnFinish(EditContext editContext)
     {
-        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/EditUser", editContext.Model);
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Account/EditAccount", editContext.Model);
         Response response = await (responseMsg).Content.ReadFromJsonAsync<Response>();
         if (response.Type == 1)
         {
@@ -292,7 +275,25 @@ using System.Security.Claims;
         messageService.Error("提交失败");
     }
 
-
+    private async Task OnDelete()
+    {
+        modalVisible = false;
+        deleteLoading = true;
+        int[] ids = Selected.Select(i => i.Id).ToArray();
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Account/DeleteAccount", ids);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData.InvokeAsync();   //刷新表格
+            deleteLoading = false;
+            messageService.Success("删除成功");
+        }
+        else
+        {
+            deleteLoading = false;
+            messageService.Error("删除失败");
+        }
+    }
 
 #line default
 #line hidden

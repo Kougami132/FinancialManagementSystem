@@ -677,9 +677,13 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\C
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Admin\TableInput.razor.g.cs
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Components\Account\TableInput.razor.g.cs
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Account\TableInput.razor.g.cs
-E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Components\Account\EditInput.razor.g.cs
-E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Account\EditInput.razor.g.cs
-E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Components\Category\EditInput.razor.g.cs
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Components\Category\TableInput.razor.g.cs
-E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Category\EditInput.razor.g.cs
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Category\TableInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Components\Record\TableInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Record\TableInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Components\Account\FilterAndInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Components\Category\FilterAndInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Components\Record\FilterAndInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Account\FilterAndInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Category\FilterAndInput.razor.g.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Components\Record\FilterAndInput.razor.g.cs

@@ -183,7 +183,10 @@ namespace FMSystem.Server.Controllers
                 {
                     foreach (int i in users)
                     {
-                    
+                        string name = _context.Users.FindAsync(i).Result.UserName;
+                        _context.Accounts.RemoveRange(_context.Accounts.Where(i => i.User == name));
+                        _context.Categories.RemoveRange(_context.Categories.Where(i => i.User == name));
+                        _context.Records.RemoveRange(_context.Records.Where(i => i.User == name));
                     }
                     await _context.SaveChangesAsync();
                     return new Response(1);

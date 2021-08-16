@@ -5,12 +5,13 @@
 @using System.Security.Claims
 
 
-<FMSystem.Client.Components.Account.EditInput @bind-Owner="owner"
-                                              @bind-SearchValue="searchName"
-                                              @bind-Type="type"
-                                              @bind-Selected="selectedAccounts"
-                                              Refrash="RefrashTable">
-</FMSystem.Client.Components.Account.EditInput>
+<FMSystem.Client.Components.Account.FilterAndInput @bind-Owner="owner"
+                                                   @bind-SearchValue="searchName"
+                                                   @bind-Type="type"
+                                                   @bind-Selected="selectedAccounts"
+                                                   RefrashData="RefrashData"
+                                                   RefrashTable="RefrashTable">
+</FMSystem.Client.Components.Account.FilterAndInput>
 
 
 <FMSystem.Client.Components.Account.TableInput Obj="table"
@@ -36,12 +37,17 @@
         AuthenticationState authState = await authenticationStateTask;
         ClaimsPrincipal user = authState.User;
         owner = user.Identity.Name;
+        await RefrashData();
+    }
+
+    private async Task RefrashData()
+    {
+        accounts = await Http.GetFromJsonAsync<Account[]>("Api/Account/GetAccount");
         await RefrashTable();
     }
 
     private async Task RefrashTable()
     {
-        accounts = await Http.GetFromJsonAsync<Account[]>("Api/Account/GetAccount");
         showingAccounts = accounts;
 
         //过滤种类

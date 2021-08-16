@@ -1,0 +1,373 @@
+﻿@inject MessageService messageService
+@inject HttpClient Http
+@using System.Security.Claims
+
+
+
+<div style="float: left; margin: 0 4px 24px; ">
+    <RadioGroup ValueChanged="TypeChanged" ButtonStyle="solid" DefaultValue="@("all")" OnChange="@(async(string i) => { await RefrashSelect(i); await RefrashTable.InvokeAsync(); })">
+        <Radio RadioButton Value="@("all")">全部</Radio>
+        <Radio RadioButton Value="@("input")">收入</Radio>
+        <Radio RadioButton Value="@("output")">支出</Radio>
+    </RadioGroup>
+    <Select @ref="fixSelect1"
+            DataSource="@categoryOptions"
+            ValueChanged="CategoryChanged"
+            ValueName="@nameof(Option<int>.Value)"
+            LabelName="@nameof(Option<int>.Name)"
+            DisabledName="@nameof(Option<int>.IsDisabled)"
+            OnSelectedItemChanged="@(async(i) => { await RefrashTable.InvokeAsync(); })"
+            style="width: 100px; text-align: center;">
+    </Select>
+    <Select @ref="fixSelect2"
+            DataSource="@accountOptions"
+            ValueChanged="AccountChanged"
+            ValueName="@nameof(Option<int>.Value)"
+            LabelName="@nameof(Option<int>.Name)"
+            DisabledName="@nameof(Option<int>.IsDisabled)"
+            OnSelectedItemChanged="@(async(i) => { await RefrashTable.InvokeAsync(); })"
+            style="width: 100px; text-align: center;">
+    </Select>
+    <RangePicker ValueChanged="DateFilterChanged" TValue="DateTime?[]" AllowClear OnChange="@(async(i) => { await RefrashTable.InvokeAsync(); })" />
+</div>
+
+<div style="float: right; margin-bottom: 24px; ">
+    <Button Type="primary" Icon="plus" OnClick="@(()=> { newRecord.CreateTime = DateTime.Today; dwVisible1 = true; })">新增记录</Button>
+    <Button Icon="edit" OnClick=" OnEdit">修改信息</Button>
+    <Button Loading="deleteLoading" Type="dashed" Danger OnClick="@(() => { if (Selected != null && Selected.Count() != 0) modalVisible = true; })">删除</Button>
+</div>
+
+<Drawer Closable="true" Width="360" Visible="dwVisible1" Title=@("新增账户") OnClose="@(()=> { dwVisible1 = false; })">
+    <Form @ref="form1"
+          Loading="loading1"
+          Layout="@FormLayout.Vertical"
+          Model="@newRecord"
+          ValidateOnChange="true"
+          OnFinish="NewOnFinish"
+          OnFinishFailed="NewOnFinishFailed"
+          Style="padding: 12px;">
+        <FormItem Label="收/支、分类">
+            <RadioGroup @bind-Value="@context.Type" ButtonStyle="solid" DefaultValue="@InputOrOutput.INPUT" OnChange="@((InputOrOutput i) => { RefrashNewSelect(); })">
+                <Radio RadioButton Value="@InputOrOutput.INPUT">收入</Radio>
+                <Radio RadioButton Value="@InputOrOutput.OUTPUT">支出</Radio>
+            </RadioGroup>
+            <Select DataSource="@newCategoryOptions"
+                    @bind-Value="@context.Category"
+                    ValueName="@nameof(Option<int>.Value)"
+                    LabelName="@nameof(Option<int>.Name)"
+                    DisabledName="@nameof(Option<int>.IsDisabled)"
+                    Style="width: 100px; text-align: center;">
+            </Select>
+        </FormItem>
+        <FormItem Label="账户">
+            <Select DataSource="@newAccountOptions"
+                    @bind-Value="@context.Account"
+                    ValueName="@nameof(Option<int>.Value)"
+                    LabelName="@nameof(Option<int>.Name)"
+                    DisabledName="@nameof(Option<int>.IsDisabled)"
+                    Style="width: 100px; text-align: center;">
+            </Select>
+        </FormItem>
+        <FormItem Label="价格"> 
+            <Input @bind-Value="@context.Value" type="number">
+                <Prefix> ￥ </Prefix>
+                <Suffix>RMB </Suffix>
+            </Input>
+        </FormItem>
+        <FormItem Label="时间">
+            <DatePicker @bind-Value="@context.CreateTime" Format="yyyy年MM月dd日" />
+        </FormItem>
+        <FormItem Label="说明">
+            <Input @bind-Value="@context.Description" />
+        </FormItem>
+        <FormItem WrapperColOffset="6" WrapperColSpan="24">
+            <Button Type="default" OnClick="@(()=> { dwVisible1 = false; })">取消</Button>
+            <Button Type="primary" OnClick="NewOnSubmit">提交</Button>
+        </FormItem>
+    </Form>
+</Drawer>
+
+<Drawer Closable="true" Width="360" Visible="dwVisible2" Title=@("修改信息") OnClose="@(()=> { dwVisible2 = false; })">
+    <Form @ref="form2"
+          Loading="loading2"
+          Layout="@FormLayout.Vertical"
+          Model="@editRecord"
+          ValidateOnChange="true"
+          OnFinish="EditOnFinish"
+          OnFinishFailed="EditOnFinishFailed"
+          Style="padding: 12px;">
+        <FormItem Label="收/支、分类">
+            <RadioGroup @bind-Value="@context.Type" ButtonStyle="solid" DefaultValue="@InputOrOutput.INPUT" OnChange="@((InputOrOutput i) => { RefrashNewSelect(); })">
+                <Radio RadioButton Value="@InputOrOutput.INPUT">收入</Radio>
+                <Radio RadioButton Value="@InputOrOutput.OUTPUT">支出</Radio>
+            </RadioGroup>
+            <Select DataSource="@newCategoryOptions"
+                    @bind-Value="@context.Category"
+                    ValueName="@nameof(Option<int>.Value)"
+                    LabelName="@nameof(Option<int>.Name)"
+                    DisabledName="@nameof(Option<int>.IsDisabled)"
+                    Style="width: 100px; text-align: center;">
+            </Select>
+        </FormItem>
+        <FormItem Label="账户">
+            <Select DataSource="@newAccountOptions"
+                    @bind-Value="@context.Account"
+                    ValueName="@nameof(Option<int>.Value)"
+                    LabelName="@nameof(Option<int>.Name)"
+                    DisabledName="@nameof(Option<int>.IsDisabled)"
+                    Style="width: 100px; text-align: center;">
+            </Select>
+        </FormItem>
+        <FormItem Label="价格">
+            <Input @bind-Value="@context.Value" type="number">
+            <Prefix> ￥ </Prefix>
+            <Suffix>RMB </Suffix>
+            </Input>
+        </FormItem>
+        <FormItem Label="时间">
+            <DatePicker @bind-Value="@context.CreateTime" Format="yyyy年MM月dd日" />
+        </FormItem>
+        <FormItem Label="说明">
+            <Input @bind-Value="@context.Description" />
+        </FormItem>
+        <FormItem WrapperColOffset="6" WrapperColSpan="24">
+            <Button Type="default" OnClick="@(()=> { dwVisible2 = false; })">取消</Button>
+            <Button Type="primary" OnClick="EditOnSubmit">提交</Button>
+        </FormItem>
+    </Form>
+</Drawer>
+
+<Modal Title="提示"
+       Width="300"
+       Visible="@modalVisible"
+       OnOk="OnDelete"
+       OnCancel="@(() => { modalVisible = false; })">
+    <Text>删除选中账户</Text>
+</Modal>
+
+
+
+@code {
+    [Parameter]
+    public IEnumerable<Category> categories { get; set; }
+    [Parameter]
+    public EventCallback<IEnumerable<Category>> categoriesChanged { get; set; }
+    [Parameter]
+    public IEnumerable<Account> accounts { get; set; }
+    [Parameter]
+    public EventCallback<IEnumerable<Account>> accountsChanged { get; set; }
+    [Parameter]
+    public string Type { get; set; }
+    [Parameter]
+    public EventCallback<string> TypeChanged { get; set; }
+    [Parameter]
+    public int Category { get; set; }
+    [Parameter]
+    public EventCallback<int> CategoryChanged { get; set; }
+    [Parameter]
+    public int Account { get; set; }
+    [Parameter]
+    public EventCallback<int> AccountChanged { get; set; }
+    [Parameter]
+    public IEnumerable<Record> Selected { get; set; }
+    [Parameter]
+    public EventCallback<IEnumerable<Record>> SelectedChanged { get; set; }
+    [Parameter]
+    public EventCallback RefrashData { get; set; }
+    [Parameter]
+    public EventCallback RefrashTable { get; set; }
+    [Parameter]
+    public DateTime?[] DateFilter { get; set; }
+    [Parameter]
+    public EventCallback<DateTime?[]> DateFilterChanged { get; set; }
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    private bool dwVisible1, dwVisible2, loading1, loading2, deleteLoading, modalVisible;
+    private AntDesign.Form<Record> form1, form2;
+    private Record newRecord = new();
+    private Record editRecord = new();
+    private string owner { get; set; }
+    private Select<int, Option<int>> fixSelect1, fixSelect2;
+
+    public class Option<T>
+    {
+        public T Value { get; set; }
+        public string Name { get; set; }
+        public bool IsDisabled { get; set; }
+    }
+
+    private List<Option<int>> categoryOptions = new List<Option<int>>();
+    private List<Option<int>> accountOptions = new();
+
+    private List<Option<string>> newCategoryOptions = new List<Option<string>>();
+    private List<Option<string>> newAccountOptions = new List<Option<string>>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        AuthenticationState authState = await authenticationStateTask;
+        ClaimsPrincipal user = authState.User;
+        owner = user.Identity.Name;
+        categories = await Http.GetFromJsonAsync<Category[]>("Api/Category/GetCategory");
+        accounts = await Http.GetFromJsonAsync<Account[]>("Api/Account/GetAccount");
+
+        await RefrashSelect(Type);
+        RefrashNewSelect();
+
+        accountOptions.Add(new Option<int> { Value = -1, Name = "全部" });
+        newAccountOptions.Add(new Option<string> { Value = "", Name = "" });
+        for (int i = 0; i < accounts.Count(); i++)
+        {
+            accountOptions.Add(new Option<int> { Value = i, Name = accounts.ElementAt(i).Name });
+            newAccountOptions.Add(new Option<string> { Value = accounts.ElementAt(i).Name, Name = accounts.ElementAt(i).Name });
+        }
+        accountOptions.Add(new Option<int> { Value = -2, Name = "未分类" });
+        fixSelect2.Value = -1;
+    }
+
+    private async Task RefrashSelect(string type)
+    {
+        categoryOptions = new()
+        {
+            new Option<int> { Value = -1, Name = "全部" }
+        };
+        for (int i = 0; i < categories.Count(); i++)
+        {
+            if (type == "all" || type == "input" && categories.ElementAt(i).Type == InputOrOutput.INPUT || type == "output" && categories.ElementAt(i).Type == InputOrOutput.OUTPUT)
+            {
+                categoryOptions.Add(new Option<int> { Value = i, Name = categories.ElementAt(i).Name });
+            }
+        }
+        categoryOptions.Add(new Option<int> { Value = -2, Name = "未分类" });
+        fixSelect1.Value = -1;
+        await CategoryChanged.InvokeAsync(-1);
+    }
+
+    private void RefrashNewSelect()
+    {
+        newCategoryOptions = new()
+        {
+            new Option<string> { Value = "", Name = "" }
+        };
+        for (int i = 0; i < categories.Count(); i++)
+        {
+            if (newRecord.Type == categories.ElementAt(i).Type)
+            {
+                newCategoryOptions.Add(new Option<string> { Value = categories.ElementAt(i).Name, Name = categories.ElementAt(i).Name });
+            }
+        }
+        newRecord.Category = "";
+    }
+
+    private async Task NewOnSubmit()
+    {
+        loading1 = true;
+        newRecord.User = owner;
+        form1.Submit();
+    }
+
+    private async Task NewOnFinish(EditContext newContext)
+    {
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Record/AddRecord", newContext.Model);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData.InvokeAsync();   //刷新表格
+            newRecord = new();  //清空表单
+            loading1 = false;
+            dwVisible1 = false;
+            messageService.Success("提交成功");
+        }
+        else
+        {
+            loading1 = false;
+            messageService.Error("提交失败");
+        }
+    }
+
+    private async Task NewOnFinishFailed(EditContext editContext)
+    {
+        loading1 = false;
+        messageService.Error("提交失败");
+    }
+
+    private void OnEdit()
+    {
+        if (Selected == null || Selected.Count() == 0)
+        {
+            messageService.Error("请先选中一行数据");
+        }
+        else if (Selected.Count() != 1)
+        {
+            messageService.Error("只能对单项进行编辑");
+        }
+        else
+        {
+            editRecord = new()
+            {
+                Id = Selected.First().Id,
+                Type = Selected.First().Type,
+                Category = Selected.First().Category,
+                Value = Selected.First().Value,
+                Account = Selected.First().Account,
+                CreateTime = Selected.First().CreateTime,
+                Description = Selected.First().Description
+            };
+            dwVisible2 = true;
+        }
+    }
+
+    private async Task EditOnSubmit()
+    {
+        loading2 = true;
+        editRecord.User = owner;
+        form2.Submit();
+    }
+
+    private async Task EditOnFinish(EditContext editContext)
+    {
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Record/EditRecord", editContext.Model);
+        Response response = await (responseMsg).Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData.InvokeAsync();   //刷新表格
+            loading2 = false;
+            dwVisible2 = false;
+            messageService.Success("提交成功");
+        }
+        else
+        {
+            loading2 = false;
+            messageService.Error("提交失败");
+        }
+
+    }
+
+    private async Task EditOnFinishFailed(EditContext editContext)
+    {
+        loading2 = false;
+        messageService.Error("提交失败");
+    }
+
+    private async Task OnDelete()
+    {
+        modalVisible = false;
+        deleteLoading = true;
+        int[] ids = Selected.Select(i => i.Id).ToArray();
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Record/DeleteRecord", ids);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData.InvokeAsync();   //刷新表格
+            deleteLoading = false;
+            messageService.Success("删除成功");
+        }
+        else
+        {
+            deleteLoading = false;
+            messageService.Error("删除失败");
+        }
+    }
+
+}

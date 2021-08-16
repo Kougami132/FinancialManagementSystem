@@ -1,0 +1,25 @@
+﻿<Table @ref="Obj" DataSource="@Data" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" SelectedRowsChanged="SelectedChanged">
+    <Selection Key="@(context.Id.ToString())" />
+    @{string p = @context.Type == InputOrOutput.INPUT ? "收入" : "支出";}
+    <Column Title="收/支" Field="@p" />
+    <Column Title="分类" Field="@context.Category" />
+    <Column Title="金额" Field="@context.Value" />
+    <Column Title="账户" Field="@context.Account" />
+    <Column Title="创建时间" Field="@context.CreateTime.ToString("yyyy年MM月dd日")" />
+    <Column Title="说明" Field="@context.Description" />
+</Table>
+<Pagination DefaultCurrent="1" Total="@Data.Length" OnChange="@((args)=> { tablePageIndex = args.Page; })" Style="position: absolute; right: 24px; bottom: 24px;" />
+
+@code {
+
+    [Parameter]
+    public AntDesign.Table<Record> Obj { get; set; }
+    [Parameter]
+    public Record[] Data { get; set; }
+    [Parameter]
+    public IEnumerable<Record> Selected { get; set; }
+    [Parameter]
+    public EventCallback<IEnumerable<Record>> SelectedChanged { get; set; }
+
+    private int tablePageIndex;
+}
