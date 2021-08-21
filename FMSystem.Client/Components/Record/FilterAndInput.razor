@@ -75,7 +75,7 @@
             </Input>
         </FormItem>
         <FormItem Label="时间">
-            <DatePicker @bind-Value="@context.CreateTime" Format="yyyy年MM月dd日" />
+            <DatePicker @bind-Value="@context.CreateTime" DefaultPickerValue="@DateTime.Now" Format="yyyy年MM月dd日" />
         </FormItem>
         <FormItem Label="说明">
             <Input @bind-Value="@context.Description" />
@@ -125,7 +125,7 @@
             </Input>
         </FormItem>
         <FormItem Label="时间">
-            <DatePicker @bind-Value="@context.CreateTime" Format="yyyy年MM月dd日" />
+            <DatePicker @bind-Value="@context.CreateTime" DefaultPickerValue="@context.CreateTime" Format="yyyy年MM月dd日" />
         </FormItem>
         <FormItem Label="说明">
             <Input @bind-Value="@context.Description" />
@@ -264,6 +264,7 @@
     {
         loading1 = true;
         newRecord.User = owner;
+        if (newRecord.Category == null) newRecord.Category = "";
         form1.Submit();
     }
 
@@ -322,6 +323,7 @@
     {
         loading2 = true;
         editRecord.User = owner;
+        if (editRecord.Category == null) editRecord.Category = "";
         form2.Submit();
     }
 

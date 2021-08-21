@@ -97,15 +97,22 @@ using AntDesign;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Index.razor"
-using System.Security.Claims;
+#line 13 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\_Imports.razor"
+using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 3 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Index.razor"
-using Microsoft.AspNetCore.Components.Authorization;
+using AntDesign.Charts;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Index.razor"
+using Newtonsoft.Json;
 
 #line default
 #line hidden
@@ -119,27 +126,321 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 17 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Index.razor"
-      
+#line 91 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Index.razor"
+       
 
-    IEnumerable<Claim> claims;
-    
+    private IEnumerable<Record> records;
+    private IEnumerable<Record> showingRecords;
+    private string period = "all";
+    private double input = 0;
+    private double output = 0;
+    private IChartComponent groupedColumnLine;
+    private IChartComponent groupedColumn;
+    private IChartComponent donut;
+    private IChartComponent radar;
+    private IChartComponent rose;
+    private InputOrOutput type = InputOrOutput.INPUT;
+    private string cORa = "category";
+    private bool loading = false;
+
     [CascadingParameter]
     private Task<AuthenticationState> authenticationStateTask { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        AuthenticationState authState = await authenticationStateTask;
-        ClaimsPrincipal user = authState.User;
-        if (user.Identity.IsAuthenticated)
-        {
-            claims = user.Claims;
-        }
+        records = await Http.GetFromJsonAsync<Record[]>("Api/Record/GetRecord");
+        await Filter();
     }
+
+    private async Task Filter()
+    {
+        DateTime now = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+        int days = 0;
+        if (period == "month") days = 30;
+        else if (period == "week") days = 7;
+        else if (period == "day") days = 1;
+        if (period == "all")
+        {
+            showingRecords = records;
+        }
+        else
+        {
+            showingRecords = records.Where(i => (now - i.CreateTime).Days < days);
+        }
+        await UpdateSum();
+    }
+
+    private async Task UpdateSum()
+    {
+        input = 0;
+        output = 0;
+
+        foreach (Record i in showingRecords)
+        {
+            if (i.Type == InputOrOutput.INPUT)
+            {
+                input += i.Value;
+            }
+            else if (i.Type == InputOrOutput.OUTPUT)
+            {
+                output += i.Value;
+            }
+        }
+        //await UpdateColumnLineChartData();
+        await UpdateChartData();
+        await UpdateColumnData();
+    }
+
+    private async Task UpdateColumnLineChartData()
+    {
+        List<ColumnDto> column = new();
+        List<LineDto> line = new();
+        column.AddRange(new List<ColumnDto>(Enumerable.Range(1, 10).Select(i => new ColumnDto()
+        {
+            value = 0,
+            type = i <= 5 ? "收入" : "支出"
+        })));
+        line.AddRange(new List<LineDto>(Enumerable.Range(1, 5).Select(i => new LineDto()
+        {
+            rate = 0,
+            name = "收支比"
+        })));
+        DateTime now = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+        for (int i = 0; i < showingRecords.Count(); i++)
+        {
+            Record currentRecord = showingRecords.ElementAt(i);
+            int day = (now - currentRecord.CreateTime).Days;
+            if (day < 5)
+            {
+                if (currentRecord.Type == InputOrOutput.INPUT)
+                {
+                    column[day].value += currentRecord.Value;
+                }
+                else if (currentRecord.Type == InputOrOutput.OUTPUT)
+                {
+                    column[day + 5].value += currentRecord.Value;
+                }
+            }
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            column[i].time = now.AddDays(-i).ToShortDateString();
+            column[i + 5].time = now.AddDays(-i).ToShortDateString();
+            //data.Value[i].Type = "收入";
+            //data.Value[i + 5].Type = "支出";
+            line[i].time = now.AddDays(-i).ToShortDateString();
+            line[i].rate = column[i + 5].value == 0 ? 0 : column[i].value / column[i + 5].value;
+            //data.Rate[i].Name = "收支比";
+        }
+        List<object> columnObj = column.ConvertAll(i => (object)i);
+        List<object> lineObj = line.ConvertAll(i => (object)i);
+        List<object> data = new List<object> { columnObj, null };
+        List<object> test = new List<object> { new List<object>
+        {
+            new {time = "2019-03", value = 350.4545445, type = "uv"},
+            new {time = "2019-04", value = 922.54400, type = "uv"},
+            new {time = "2019-05", value = 3045.450, type = "uv"},
+            new {time = "2019-06", value = 4554.5440, type = "uv"},
+            new {time = "2019-07", value = 47564.0, type = "uv"},
+            new {time = "2019-03", value = 2434.4520, type = "bill"},
+            new {time = "2019-04", value = 30453.450, type = "bill"},
+            new {time = "2019-05", value = 25453.0, type = "bill"},
+            new {time = "2019-06", value = 2245.540, type = "bill"},
+            new {time = "2019-07", value = 36543.045452, type = "bill"}
+        }, new List<object>
+        {
+            new {time = "2019-03", rate = 465.13568, name = "test"},
+            new {time = "2019-04", rate = 46593.356549, name = "test"},
+            new {time = "2019-05", rate = 4978.16594564, name = "test"},
+            new {time = "2019-06", rate = 3874.458540, name = "test"},
+            new {time = "2019-07", rate = 79746.6568, name = "test"}
+        } };
+        messageService.Info(JsonConvert.SerializeObject(data));
+        await groupedColumnLine.ChangeData(data);
+    }
+
+    private async Task UpdateColumnData()
+    {
+        List<ColumnDto> data = new();
+
+        data.AddRange(new List<ColumnDto>(Enumerable.Range(1, 14).Select(i => new ColumnDto()
+        {
+            value = 0,
+            type = i <= 7 ? "收入" : "支出"
+        })));
+        int count = period == "month" ? 30 : period == "week" ? 7 : 1;
+        DateTime now = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+        for (int i = 0; i < records.Count(); i++)
+        {
+            Record currentRecord = records.ElementAt(i);
+            int day = (now - currentRecord.CreateTime).Days;
+            if (day < 7 * count)
+            {
+                if (currentRecord.Type == InputOrOutput.INPUT)
+                {
+                    data[day / count].value += currentRecord.Value;
+                }
+                else if (currentRecord.Type == InputOrOutput.OUTPUT)
+                {
+                    data[day / count + 7].value += currentRecord.Value;
+                }
+            }
+        }
+        for (int i = 0; i < 7; i++)
+        {
+            if (count == 1)
+            {
+                data[i].time = now.AddDays(-i).ToShortDateString();
+                data[i + 7].time = now.AddDays(-i).ToShortDateString();
+            }
+            else
+            {
+                data[i].time = now.AddDays(-(i + 1) * count).ToShortDateString() + " - " + now.AddDays(-i * count).ToShortDateString();
+                data[i + 7].time = now.AddDays(-(i + 1) * count).ToShortDateString() + " - " + now.AddDays(-i * count).ToShortDateString();
+            }
+        }
+        data.Reverse();
+        await groupedColumn.ChangeData(data);
+    }
+
+    private async Task UpdateChartData()
+    {
+        if (type == InputOrOutput.INPUT && input == 0 || type == InputOrOutput.OUTPUT && output == 0)
+        {
+            loading = true;
+            return;
+        }
+        else
+        {
+            loading = false;
+        }
+        List<CircleDto> data = new();
+        foreach (Record i in showingRecords)
+        {
+            if (i.Type == type)
+            {
+                if (cORa == "category")
+                {
+                    if (data.Any(j => j.Type == i.Category))
+                    {
+                        data[data.FindIndex(j => j.Type == i.Category)].Value += i.Value;
+                    }
+                    else
+                    {
+                        data.Add(new CircleDto(i.Category, i.Value));
+                    }
+                }
+                else if (cORa == "account")
+                {
+                    if (data.Any(j => j.Type == i.Account))
+                    {
+                        data[data.FindIndex(j => j.Type == i.Account)].Value += i.Value;
+                    }
+                    else
+                    {
+                        data.Add(new CircleDto(i.Account, i.Value));
+                    }
+                }
+
+            }
+        }
+        if (data.Any(i => i.Type == "" || i.Type == null))
+        {
+            data[data.FindIndex(i => i.Type == "" || i.Type == null)].Type = "其它";
+        }
+        await donut.ChangeData(data);
+        await donut.ChangeData(data);               //fix chart bug
+        await donut.UpdateConfig(donutConfig);      //fix chart bug
+        await rose.ChangeData(data);
+        await radar.ChangeData(data);
+    }
+
+    private readonly DonutConfig donutConfig = new DonutConfig
+    {
+        ForceFit = true,
+        Radius = 0.8,
+        Padding = "auto",
+        AngleField = "value",
+        ColorField = "type"
+    };
+
+    private readonly RadarConfig radarConfig = new RadarConfig
+    {
+        AngleField = "type",
+        RadiusField = "value",
+        RadiusAxis = new ValueAxis
+        {
+            Grid = new BaseAxisGrid
+            {
+                AlternateColor = new[] { "rgba(0, 0, 0, 0.04)", null }
+            }
+        },
+        Area = new RadarViewConfigArea
+        {
+            Visible = false
+        },
+        Point = new RadarViewConfigPoint
+        {
+            Visible = true
+        }
+    };
+
+    private readonly RoseConfig roseConfig = new RoseConfig
+    {
+        ForceFit = true,
+        Radius = 0.8,
+        RadiusField = "value",
+        CategoryField = "type",
+        ColorField = "type",
+        Label = new RoseLabel
+        {
+            Visible = true,
+            Type = "outer"
+        }
+    };
+
+    private readonly GroupedColumnLineConfig groupedColumnLineConfig = new GroupedColumnLineConfig()
+    {
+        XField = "time",
+        YField = new[] { "value", "rate" },
+        ColumnGroupField = "type",
+        LineSeriesField = "name"
+    };
+
+    private readonly GroupedColumnConfig groupedColumnConfig = new GroupedColumnConfig
+    {
+        Width = 1000,
+        Height = 222,
+        XField = "time",
+        YField = "value",
+        XAxis = new CatAxis
+        {
+            Visible = true,
+            Title = new BaseAxisTitle
+            {
+                Visible = false
+            }
+        },
+        YAxis = new ValueAxis
+        {
+            Min = 0
+        },
+        Label = new ColumnViewConfigLabel
+        {
+            Visible = true
+        },
+        GroupField = "type",
+        Color = new[] { "#1ca9e6", "#f88c24" }
+    };
+
+
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MessageService messageService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
 #pragma warning restore 1591

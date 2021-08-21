@@ -22,9 +22,9 @@ namespace FMSystem.Shared
         [Required(ErrorMessage = "必须选择权限组")]
         public Permissions Permission { get; set; }
         [CheckQQ]
-        public string? QQ { get; set; }
+        public string QQ { get; set; }
         [CheckEmail]
-        public string? Email { get; set; }
+        public string Email { get; set; }
     }
 
     public class CheckUserNameAttribute : ValidationAttribute

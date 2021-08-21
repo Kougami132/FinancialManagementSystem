@@ -97,7 +97,14 @@ using AntDesign;
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\_Imports.razor"
+#line 2 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
+using System.Security.Claims;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
@@ -111,6 +118,28 @@ using Microsoft.AspNetCore.Components.Authorization;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 17 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
+      
+
+    IEnumerable<Claim> claims;
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuthenticationState authState = await authenticationStateTask;
+        ClaimsPrincipal user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            claims = user.Claims;
+        }
+    }
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

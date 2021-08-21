@@ -8,16 +8,17 @@
   "resources": {
     "assembly": {
       "AntDesign.dll": "sha256-d3Z7mZgURg+cBIJVf2rYe9\/zBtXZyst16vG9sSn0vq4=",
+      "AntDesign.Charts.dll": "sha256-O0EG\/JqY\/s0BbVsVb\/Texn+BPjtz3PPBF33c2JEc3EQ=",
       "Blazored.LocalStorage.dll": "sha256-uY2ERHMILJtHL7xbvGDKMMPCgWikvrFjzBjfQHD95B4=",
       "Bunit.Core.dll": "sha256-zovgNsbcjw0E1mKARotcbS2KOf6eBmcW1ZoYMMtVIQo=",
-      "Microsoft.AspNetCore.Authorization.dll": "sha256-WlH0wmI5\/sRPenM4xwpdAaf+z3p\/Hi8pXr+nNJbq6hk=",
-      "Microsoft.AspNetCore.Components.dll": "sha256-hBswojmhv0\/UiVhajMSnBSR5rk3AGi1AJk8t810UxrM=",
-      "Microsoft.AspNetCore.Components.Authorization.dll": "sha256-ZF8gT6\/u9zM8OqpJ59TrsJ9yvM8VAGPOcyn4rA\/E+RI=",
+      "Microsoft.AspNetCore.Authorization.dll": "sha256-K6YmoZTchDdcMLTUQuvOLzigs5YvS4pdIZ1EMnSPnyg=",
+      "Microsoft.AspNetCore.Components.dll": "sha256-\/Xgh7C+kOz7PYylH+p+R7aqOBEOyYmXmOXOCgsvtcs4=",
+      "Microsoft.AspNetCore.Components.Authorization.dll": "sha256-AaAxGbN2udiHq4IGOx+ZuOq6DaLRruTmSsXrlizG7CM=",
       "Microsoft.AspNetCore.Components.DataAnnotations.Validation.dll": "sha256-VGaB03HIjFg4jeK7BomIFzlhhY3vW5N+jWuRqZkbJsY=",
-      "Microsoft.AspNetCore.Components.Forms.dll": "sha256-Af2ENvvmCbPgN12Bwzq8vtlRtVT2Aove7PIZELJwT3w=",
-      "Microsoft.AspNetCore.Components.Web.dll": "sha256-OcQ71I6yYhurPDL0LBxl8U5ny5flAnJZ92kR\/jajM5g=",
-      "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-YPkzwucaQhYCKEPNFCN2A4aOSq9jNa1GWgpS54ThbKE=",
-      "Microsoft.AspNetCore.Metadata.dll": "sha256-N916K5tRmgm9i7g2SCsaiW2VXHOr3+rPvRl4AaV8bJA=",
+      "Microsoft.AspNetCore.Components.Forms.dll": "sha256-\/BAyu\/mUbmaw+l8ZTxpnapsydH6MfD3Y+wXAzeSB5sI=",
+      "Microsoft.AspNetCore.Components.Web.dll": "sha256-HN\/qgxy+80Lwk7edaBarcEbGgcRJIAheLkumSGmYuiA=",
+      "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-3uY2BNwCfhxJNmfd0C\/8oEYjfkydIesbvKD9rZtQFQI=",
+      "Microsoft.AspNetCore.Metadata.dll": "sha256-9lonQTA2MsbtBWOtxc\/xee7RS6kSaNOuQp73Sbb1mxY=",
       "Microsoft.Extensions.Configuration.dll": "sha256-x9zYR1t1is\/fStNpBiQnXyPdMpLLcQcra3w4RXGSg4o=",
       "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-NYecKM0ZpUvzj4spvgi6xUu80rkx8PX7fiRok\/BNaHw=",
       "Microsoft.Extensions.Configuration.Binder.dll": "sha256-JFLIykah3r5WjvztBuVIaMM9wfVswDM+On6k\/QVgeeg=",
@@ -32,8 +33,8 @@
       "Microsoft.Extensions.Logging.Abstractions.dll": "sha256-9UNtwDMFW86VtnTtJFk9xcc1hCnXFGXccFv3SkbgYy0=",
       "Microsoft.Extensions.Options.dll": "sha256-YfK6Zl0RmlJUqBJD7Khy7u4HEW2DRne0VSiqA6Yqs0U=",
       "Microsoft.Extensions.Primitives.dll": "sha256-f2PgoftqEkKRuuiAk6S1MHygOuqZBHzB0HOB3vR93TU=",
-      "Microsoft.JSInterop.dll": "sha256-mRffHozNFUjXcRwKwhI6uwe6e9V5dMFtp46knThTofY=",
-      "Microsoft.JSInterop.WebAssembly.dll": "sha256-CUVDXn7tZbnOjcP3RCv7qo06kRLU82YzLqw07Ijzexc=",
+      "Microsoft.JSInterop.dll": "sha256-E3wWpdYhb0k2rxsSxtLYNRv652Vqa4jD10tJ7YcHMfU=",
+      "Microsoft.JSInterop.WebAssembly.dll": "sha256-qCntZAfBCtfByp1bUyV5HBcJpgteCGZZ1pMzH5kVDnE=",
       "Newtonsoft.Json.dll": "sha256-cs8pHUurDt0IqbB8YXPh560au3q3J\/1wRL9jBddRVmE=",
       "OneOf.dll": "sha256-K99lDyL6VrtTDYGRk5o+Q3caW25Uogee\/1e7aIvpgLY=",
       "System.IO.Pipelines.dll": "sha256-3ET+mpR7F058YRj9YaLHOVXBqOW6iUxtIpeiKPYw4PA=",
@@ -202,13 +203,13 @@
       "mscorlib.dll": "sha256-jU85t8bOVm2PPQRkPJ1kS0nCJIyBjjlet2IR1d9m+RI=",
       "netstandard.dll": "sha256-B6gmXEMfYgOuaOR1g1cGHLn2kDlZYAah4K2XNUZbTs4=",
       "System.Private.CoreLib.dll": "sha256-XY0bl1U8F\/iSbQzkmIHM8UtE\/R9VntZoy\/kMbvuMjTA=",
-      "FMSystem.Shared.dll": "sha256-u0d+xys3QZm7gFCCZ2smKnIGGo46a7FCvNFNoeAM3U0=",
-      "FMSystem.Client.dll": "sha256-btwXItQD6gfg6fUeXR\/K23oGVoJd6fX3NxGqZCc1IKo="
+      "FMSystem.Shared.dll": "sha256-nFjXPI6JPAEvRHm6jdIDKcp7f\/zQ36NdMCbpObS\/ZuQ=",
+      "FMSystem.Client.dll": "sha256-UcLSDdetZkm19urZcUCRSUokSNjju\/eRqhHJHurHbnc="
     },
     "lazyAssembly": null,
     "pdb": {
-      "FMSystem.Shared.pdb": "sha256-G9L6vNHq0HkUfxetQz5DYNyaT61GW7hMFrNMB1l\/XSg=",
-      "FMSystem.Client.pdb": "sha256-KLBh\/02EM8CJ+\/1nXZNUwwn2aVjPFM7dx2dOCsFvKX8="
+      "FMSystem.Shared.pdb": "sha256-JqVyyH126NGKB9CF\/qcdWTq9wuS63rKhpmpHAygzeb8=",
+      "FMSystem.Client.pdb": "sha256-G9jrztyAuwzSYty3JFKwdt8M5sDQegIo6RVlpWUmzL4="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-OEDZp6noMH3AdT8qd0zd7ZXzy2CsPQ+CZeQnYmRoVWo=",

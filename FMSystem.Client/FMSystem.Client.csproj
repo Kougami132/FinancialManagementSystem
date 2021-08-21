@@ -6,10 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="AntDesign" Version="0.9.0" />
+    <PackageReference Include="AntDesign.Charts" Version="0.2.1" />
     <PackageReference Include="Blazored.LocalStorage" Version="4.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.8" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.8" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.8" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.9" PrivateAssets="all" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>

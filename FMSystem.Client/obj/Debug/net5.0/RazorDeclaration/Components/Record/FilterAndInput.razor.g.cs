@@ -236,6 +236,7 @@ using System.Security.Claims;
     {
         loading1 = true;
         newRecord.User = owner;
+        if (newRecord.Category == null) newRecord.Category = "";
         form1.Submit();
     }
 
@@ -294,6 +295,7 @@ using System.Security.Claims;
     {
         loading2 = true;
         editRecord.User = owner;
+        if (editRecord.Category == null) editRecord.Category = "";
         form2.Submit();
     }
 
