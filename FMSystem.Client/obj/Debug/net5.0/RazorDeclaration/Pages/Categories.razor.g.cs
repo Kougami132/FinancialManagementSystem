@@ -125,7 +125,7 @@ using System.Security.Claims;
     private Category[] categories, showingCategories = new List<Category>().ToArray();
     private IEnumerable<Category> selectedCategories;
     private string searchName, type;
-    string owner;
+    int owner;
 
     private AntDesign.Table<Category> table;
 
@@ -136,7 +136,8 @@ using System.Security.Claims;
     {
         AuthenticationState authState = await authenticationStateTask;
         ClaimsPrincipal user = authState.User;
-        owner = user.Identity.Name;
+
+        owner = (await Http.GetFromJsonAsync<User>("Api/User/GetSelf")).Id;
         await RefrashData();
     }
 

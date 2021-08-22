@@ -122,9 +122,9 @@ using System.Security.Claims;
        
 
     [Parameter]
-    public string Owner { get; set; }
+    public int Owner { get; set; }
     [Parameter]
-    public EventCallback<string> OwnerChanged { get; set; }
+    public EventCallback<int> OwnerChanged { get; set; }
     [Parameter]
     public string SearchValue { get; set; }
     [Parameter]

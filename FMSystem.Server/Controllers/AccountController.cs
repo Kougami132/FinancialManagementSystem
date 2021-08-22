@@ -23,7 +23,8 @@ namespace FMSystem.Server.Controllers
         {
             if (Tools.IsUserExist(_context, User.Identity.Name)) //如果Token用户存在
             {
-                return _context.Accounts.Where(i => i.User == User.Identity.Name);
+                IEnumerable<Account> result = _context.Accounts.Where(i => _context.Users.First(j => j.Id == i.User).UserName == User.Identity.Name);
+                return result;
             }
             else
             {
@@ -38,7 +39,7 @@ namespace FMSystem.Server.Controllers
             {
                 try
                 {
-                    if (_context.Accounts.Any(i => i.Name.ToLower() == name.ToLower() && i.User == User.Identity.Name))
+                    if (_context.Accounts.Any(i => i.Name.ToLower() == name.ToLower() && _context.Users.First(j => j.Id == i.User).UserName == User.Identity.Name))
                     {
                         return new Response(1, "Yes");
                     }
@@ -63,13 +64,13 @@ namespace FMSystem.Server.Controllers
         {
             if (Tools.IsUserExist(_context, User.Identity.Name)) //如果Token用户存在
             {
-                try
+                if (_context.Users.Find(newAccount.User).UserName == User.Identity.Name)
                 {
                     await _context.Accounts.AddAsync(newAccount);
                     await _context.SaveChangesAsync();
                     return new Response(1);
                 }
-                catch
+                else
                 {
                     return new Response(0);
                 }
@@ -85,13 +86,13 @@ namespace FMSystem.Server.Controllers
         {
             if (Tools.IsUserExist(_context, User.Identity.Name)) //如果Token用户存在
             {
-                try
+                if (_context.Users.Find(editAccount.User).UserName == User.Identity.Name)
                 {
                     _context.Accounts.Update(editAccount);
                     await _context.SaveChangesAsync();
                     return new Response(1);
                 }
-                catch
+                else
                 {
                     return new Response(0);
                 }
@@ -111,7 +112,10 @@ namespace FMSystem.Server.Controllers
                 {
                     foreach (int i in accounts)
                     {
-                        _context.Accounts.Remove(await _context.Accounts.FindAsync(i));
+                        if (_context.Users.Find(_context.Accounts.Find(i).User).UserName == User.Identity.Name)
+                        {
+                            _context.Accounts.Remove(await _context.Accounts.FindAsync(i));
+                        }
                     }
                     await _context.SaveChangesAsync();
                     return new Response(1);

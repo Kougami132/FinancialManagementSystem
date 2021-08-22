@@ -34,8 +34,8 @@ namespace FMSystem.Server.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("User")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("User")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -60,8 +60,8 @@ namespace FMSystem.Server.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("User")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("User")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -74,11 +74,11 @@ namespace FMSystem.Server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Account")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Account")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Category")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("TEXT");
@@ -89,8 +89,8 @@ namespace FMSystem.Server.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("User")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("User")
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Value")
                         .HasColumnType("REAL");

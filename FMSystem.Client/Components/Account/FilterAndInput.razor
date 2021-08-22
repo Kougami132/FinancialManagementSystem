@@ -97,9 +97,9 @@
 @code {
 
     [Parameter]
-    public string Owner { get; set; }
+    public int Owner { get; set; }
     [Parameter]
-    public EventCallback<string> OwnerChanged { get; set; }
+    public EventCallback<int> OwnerChanged { get; set; }
     [Parameter]
     public string SearchValue { get; set; }
     [Parameter]
@@ -131,12 +131,12 @@
     }
 
     private List<Option> options = new List<Option>()
-{
+    {
         new Option {Value = "all", Name = "全部"},
         new Option {Value = "bank", Name = "银行"},
         new Option {Value = "cash", Name = "现金"},
         new Option {Value = "online", Name = "线上"},
-        new Option {Value = "pther", Name = "其它"}
+        new Option {Value = "other", Name = "其它"}
     };
 
     public class realOption

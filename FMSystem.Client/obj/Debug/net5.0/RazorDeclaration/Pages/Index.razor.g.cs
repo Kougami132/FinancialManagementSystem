@@ -130,6 +130,8 @@ using Newtonsoft.Json;
        
 
     private IEnumerable<Record> records;
+    private IEnumerable<Category> categories;
+    private IEnumerable<Account> accounts;
     private IEnumerable<Record> showingRecords;
     private string period = "all";
     private double input = 0;
@@ -149,6 +151,8 @@ using Newtonsoft.Json;
     protected override async Task OnInitializedAsync()
     {
         records = await Http.GetFromJsonAsync<Record[]>("Api/Record/GetRecord");
+        categories = await Http.GetFromJsonAsync<Category[]>("Api/Category/GetCategory");
+        accounts = await Http.GetFromJsonAsync<Account[]>("Api/Account/GetAccount");
         await Filter();
     }
 
@@ -321,24 +325,52 @@ using Newtonsoft.Json;
             {
                 if (cORa == "category")
                 {
-                    if (data.Any(j => j.Type == i.Category))
+                    if (!categories.Any(j => j.Id == i.Category))
                     {
-                        data[data.FindIndex(j => j.Type == i.Category)].Value += i.Value;
+                        if (data.Any(j => j.Type == ""))
+                        {
+                            data[data.FindIndex(j => j.Type == "")].Value += i.Value;
+                        }
+                        else
+                        {
+                            data.Add(new CircleDto("", i.Value));
+                        }
                     }
                     else
                     {
-                        data.Add(new CircleDto(i.Category, i.Value));
+                        if (data.Any(j => j.Type == categories.First(k => k.Id == i.Category).Name))
+                        {
+                            data[data.FindIndex(j => j.Type == categories.First(k => k.Id == i.Category).Name)].Value += i.Value;
+                        }
+                        else
+                        {
+                            data.Add(new CircleDto(categories.First(k => k.Id == i.Category).Name, i.Value));
+                        }
                     }
                 }
                 else if (cORa == "account")
                 {
-                    if (data.Any(j => j.Type == i.Account))
+                    if (!accounts.Any(j => j.Id == i.Account))
                     {
-                        data[data.FindIndex(j => j.Type == i.Account)].Value += i.Value;
+                        if (data.Any(j => j.Type == ""))
+                        {
+                            data[data.FindIndex(j => j.Type == "")].Value += i.Value;
+                        }
+                        else
+                        {
+                            data.Add(new CircleDto("", i.Value));
+                        }
                     }
                     else
                     {
-                        data.Add(new CircleDto(i.Account, i.Value));
+                        if (data.Any(j => j.Type == accounts.First(k => k.Id == i.Account).Name))
+                        {
+                            data[data.FindIndex(j => j.Type == accounts.First(k => k.Id == i.Account).Name)].Value += i.Value;
+                        }
+                        else
+                        {
+                            data.Add(new CircleDto(accounts.First(k => k.Id == i.Account).Name, i.Value));
+                        }
                     }
                 }
 

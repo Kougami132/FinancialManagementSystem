@@ -105,7 +105,7 @@ namespace FMSystem.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<Response>> EditUser(User editUser)
         {
-            if (IsUserAdmin(User.Identity.Name)) //如果Token权限为Admin
+            if (IsUserAdmin(User.Identity.Name) || _context.Users.Find(editUser.Id).UserName == User.Identity.Name) //如果Token权限为Admin或修改自己信息
             {
                 try
                 {
@@ -131,9 +131,10 @@ namespace FMSystem.Server.Controllers
             {
                 try
                 {
+                    await ClearUserData(users);
                     foreach (int i in users)
                     {
-                        _context.Users.Remove(await _context.Users.FindAsync(i));
+                        _context.Users.Remove(_context.Users.Find(i));
                     }
                     await _context.SaveChangesAsync();
                     return new Response(1);
@@ -183,10 +184,9 @@ namespace FMSystem.Server.Controllers
                 {
                     foreach (int i in users)
                     {
-                        string name = _context.Users.FindAsync(i).Result.UserName;
-                        _context.Accounts.RemoveRange(_context.Accounts.Where(i => i.User == name));
-                        _context.Categories.RemoveRange(_context.Categories.Where(i => i.User == name));
-                        _context.Records.RemoveRange(_context.Records.Where(i => i.User == name));
+                        _context.Accounts.RemoveRange(_context.Accounts.Where(j => j.Id == i));
+                        _context.Categories.RemoveRange(_context.Categories.Where(j => j.Id == i));
+                        _context.Records.RemoveRange(_context.Records.Where(j => j.Id == i));
                     }
                     await _context.SaveChangesAsync();
                     return new Response(1);

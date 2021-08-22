@@ -24,7 +24,7 @@ namespace FMSystem.Server.Controllers
         {
             if (Tools.IsUserExist(_context, User.Identity.Name)) //如果Token用户存在
             {
-                return _context.Records.Where(i => i.User == User.Identity.Name);
+                return _context.Records.Where(i => _context.Users.First(j => j.Id == i.User).UserName == User.Identity.Name);
             }
             else
             {
@@ -37,13 +37,13 @@ namespace FMSystem.Server.Controllers
         {
             if (Tools.IsUserExist(_context, User.Identity.Name)) //如果Token用户存在
             {
-                try
+                if (_context.Users.Find(newRecord.User).UserName == User.Identity.Name)
                 {
                     await _context.Records.AddAsync(newRecord);
                     await _context.SaveChangesAsync();
                     return new Response(1);
                 }
-                catch
+                else
                 {
                     return new Response(0);
                 }
@@ -59,13 +59,13 @@ namespace FMSystem.Server.Controllers
         {
             if (Tools.IsUserExist(_context, User.Identity.Name)) //如果Token用户存在
             {
-                try
+                if (_context.Users.Find(editRecord.User).UserName == User.Identity.Name)
                 {
                     _context.Records.Update(editRecord);
                     await _context.SaveChangesAsync();
                     return new Response(1);
                 }
-                catch
+                else
                 {
                     return new Response(0);
                 }
@@ -85,7 +85,10 @@ namespace FMSystem.Server.Controllers
                 {
                     foreach (int i in records)
                     {
-                        _context.Records.Remove(await _context.Records.FindAsync(i));
+                        if (_context.Users.Find(_context.Records.Find(i).User).UserName == User.Identity.Name)
+                        {
+                            _context.Records.Remove(await _context.Records.FindAsync(i));
+                        }
                     }
                     await _context.SaveChangesAsync();
                     return new Response(1);

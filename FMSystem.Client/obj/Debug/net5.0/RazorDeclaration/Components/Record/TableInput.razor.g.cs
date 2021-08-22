@@ -111,7 +111,7 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 13 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Record\TableInput.razor"
+#line 19 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Record\TableInput.razor"
        
 
     [Parameter]
@@ -123,11 +123,20 @@ using Microsoft.AspNetCore.Components.Authorization;
     [Parameter]
     public EventCallback<IEnumerable<Record>> SelectedChanged { get; set; }
 
+    private Category[] categories = new Category[0];
+    private Account[] accounts = new Account[0];
     private int tablePageIndex;
+
+    protected async override Task OnInitializedAsync()
+    {
+        categories = await Http.GetFromJsonAsync<Category[]>("Api/Category/GetCategory");
+        accounts = await Http.GetFromJsonAsync<Account[]>("Api/Account/GetAccount");
+    }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -12,9 +12,9 @@ namespace FMSystem.Shared
         [Required(ErrorMessage = "必须选择收支")]
         public InputOrOutput Type { get; set; }
 
-        public string Category { get; set; }
+        public int Category { get; set; }
 
-        public string Account { get; set; }
+        public int Account { get; set; }
 
         [Required(ErrorMessage = "必须输入金额")]
         [CheckValue]
@@ -24,7 +24,7 @@ namespace FMSystem.Shared
 
         public string Description { get; set; }
         
-        public string User { get; set; }
+        public int User { get; set; }
     }
 
     public class CheckValueAttribute : ValidationAttribute

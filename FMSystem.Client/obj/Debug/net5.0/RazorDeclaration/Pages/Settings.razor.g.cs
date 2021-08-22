@@ -119,10 +119,11 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 17 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
+#line 63 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
       
 
-    IEnumerable<Claim> claims;
+    private bool editing;
+    private User self = new();
 
     [CascadingParameter]
     private Task<AuthenticationState> authenticationStateTask { get; set; }
@@ -131,15 +132,13 @@ using Microsoft.AspNetCore.Components.Authorization;
     {
         AuthenticationState authState = await authenticationStateTask;
         ClaimsPrincipal user = authState.User;
-        if (user.Identity.IsAuthenticated)
-        {
-            claims = user.Claims;
-        }
+        self = await Http.GetFromJsonAsync<User>("Api/User/GetSelf");
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
 #pragma warning restore 1591

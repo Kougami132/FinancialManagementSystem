@@ -125,7 +125,7 @@ using System.Security.Claims;
     private Account[] accounts, showingAccounts = new List<Account>().ToArray();
     private IEnumerable<Account> selectedAccounts;
     private string searchName, type;
-    string owner;
+    int owner;
 
     private AntDesign.Table<Account> table;
 
@@ -136,7 +136,7 @@ using System.Security.Claims;
     {
         AuthenticationState authState = await authenticationStateTask;
         ClaimsPrincipal user = authState.User;
-        owner = user.Identity.Name;
+        owner = (await Http.GetFromJsonAsync<User>("Api/User/GetSelf")).Id;
         await RefrashData();
     }
 

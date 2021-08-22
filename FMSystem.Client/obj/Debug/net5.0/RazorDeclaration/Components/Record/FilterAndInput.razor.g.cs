@@ -160,7 +160,7 @@ using System.Security.Claims;
     private AntDesign.Form<Record> form1, form2;
     private Record newRecord = new();
     private Record editRecord = new();
-    private string owner { get; set; }
+    private int owner { get; set; }
     private Select<int, Option<int>> fixSelect1, fixSelect2;
 
     public class Option<T>
@@ -173,14 +173,14 @@ using System.Security.Claims;
     private List<Option<int>> categoryOptions = new List<Option<int>>();
     private List<Option<int>> accountOptions = new();
 
-    private List<Option<string>> newCategoryOptions = new List<Option<string>>();
-    private List<Option<string>> newAccountOptions = new List<Option<string>>();
+    private List<Option<int>> newCategoryOptions = new List<Option<int>>();
+    private List<Option<int>> newAccountOptions = new List<Option<int>>();
 
     protected async override Task OnInitializedAsync()
     {
         AuthenticationState authState = await authenticationStateTask;
         ClaimsPrincipal user = authState.User;
-        owner = user.Identity.Name;
+        owner = (await Http.GetFromJsonAsync<User>("Api/User/GetSelf")).Id;
         categories = await Http.GetFromJsonAsync<Category[]>("Api/Category/GetCategory");
         accounts = await Http.GetFromJsonAsync<Account[]>("Api/Account/GetAccount");
 
@@ -188,11 +188,11 @@ using System.Security.Claims;
         RefrashNewSelect();
 
         accountOptions.Add(new Option<int> { Value = -1, Name = "全部" });
-        newAccountOptions.Add(new Option<string> { Value = "", Name = "" });
+        newAccountOptions.Add(new Option<int> { Value = -2, Name = "" });
         for (int i = 0; i < accounts.Count(); i++)
         {
             accountOptions.Add(new Option<int> { Value = i, Name = accounts.ElementAt(i).Name });
-            newAccountOptions.Add(new Option<string> { Value = accounts.ElementAt(i).Name, Name = accounts.ElementAt(i).Name });
+            newAccountOptions.Add(new Option<int> { Value = accounts.ElementAt(i).Id, Name = accounts.ElementAt(i).Name });
         }
         accountOptions.Add(new Option<int> { Value = -2, Name = "未分类" });
         fixSelect2.Value = -1;
@@ -220,23 +220,37 @@ using System.Security.Claims;
     {
         newCategoryOptions = new()
         {
-            new Option<string> { Value = "", Name = "" }
+            new Option<int> { Value = -2, Name = "" }
         };
-        for (int i = 0; i < categories.Count(); i++)
+        if (dwVisible1)
         {
-            if (newRecord.Type == categories.ElementAt(i).Type)
+            for (int i = 0; i < categories.Count(); i++)
             {
-                newCategoryOptions.Add(new Option<string> { Value = categories.ElementAt(i).Name, Name = categories.ElementAt(i).Name });
+                if (newRecord.Type == categories.ElementAt(i).Type)
+                {
+                    newCategoryOptions.Add(new Option<int> { Value = categories.ElementAt(i).Id, Name = categories.ElementAt(i).Name });
+                }
+            }
+            newRecord.Category = -2;
+        }
+        else if (dwVisible2)
+        {
+            for (int i = 0; i < categories.Count(); i++)
+            {
+                if (editRecord.Type == categories.ElementAt(i).Type)
+                {
+                    newCategoryOptions.Add(new Option<int> { Value = categories.ElementAt(i).Id, Name = categories.ElementAt(i).Name });
+                }
             }
         }
-        newRecord.Category = "";
     }
 
     private async Task NewOnSubmit()
     {
         loading1 = true;
         newRecord.User = owner;
-        if (newRecord.Category == null) newRecord.Category = "";
+        newRecord.CreateTime = Convert.ToDateTime(newRecord.CreateTime.ToShortDateString());
+        if (newRecord.Category == null) newRecord.Category = -2;
         form1.Submit();
     }
 
@@ -288,6 +302,7 @@ using System.Security.Claims;
                 Description = Selected.First().Description
             };
             dwVisible2 = true;
+            RefrashNewSelect();
         }
     }
 
@@ -295,7 +310,8 @@ using System.Security.Claims;
     {
         loading2 = true;
         editRecord.User = owner;
-        if (editRecord.Category == null) editRecord.Category = "";
+        editRecord.CreateTime = Convert.ToDateTime(editRecord.CreateTime.ToShortDateString());
+        if (editRecord.Category == null) editRecord.Category = -2;
         form2.Submit();
     }
 

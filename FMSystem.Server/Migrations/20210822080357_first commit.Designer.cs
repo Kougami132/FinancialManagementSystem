@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FMSystem.Server.Migrations
 {
     [DbContext(typeof(FMContext))]
-    [Migration("20210815081831_editRecordObj2")]
-    partial class editRecordObj2
+    [Migration("20210822080357_first commit")]
+    partial class firstcommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.8");
+                .HasAnnotation("ProductVersion", "5.0.9");
 
             modelBuilder.Entity("FMSystem.Shared.Account", b =>
                 {
@@ -36,8 +36,8 @@ namespace FMSystem.Server.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("User")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("User")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -62,8 +62,8 @@ namespace FMSystem.Server.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("User")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("User")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -76,11 +76,11 @@ namespace FMSystem.Server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Account")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Account")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Category")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("TEXT");
@@ -91,8 +91,8 @@ namespace FMSystem.Server.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("User")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("User")
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Value")
                         .HasColumnType("REAL");

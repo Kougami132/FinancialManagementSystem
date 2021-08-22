@@ -170,11 +170,11 @@ using System.Security.Claims;
         }
         else if (category == -2)
         {
-            showingRecords = showingRecords.Where(i => i.Category == "").ToArray();
+            showingRecords = showingRecords.Where(i => !categories.Any(j => j.Id == i.Category)).ToArray();
         }
         else
         {
-            showingRecords = showingRecords.Where(i => i.Category == categories.ElementAt(category).Name).ToArray();
+            showingRecords = showingRecords.Where(i => i.Category == category).ToArray();
         }
 
         //过滤账户
@@ -184,11 +184,11 @@ using System.Security.Claims;
         }
         else if (account == -2)
         {
-            showingRecords = showingRecords.Where(i => i.Account == "").ToArray();
+            showingRecords = showingRecords.Where(i => !accounts.Any(j => j.Id == i.Account)).ToArray();
         }
         else
         {
-            showingRecords = showingRecords.Where(i => i.Account == accounts.ElementAt(account).Name).ToArray();
+            showingRecords = showingRecords.Where(i => i.Account == account).ToArray();
         }
 
         //过滤日期

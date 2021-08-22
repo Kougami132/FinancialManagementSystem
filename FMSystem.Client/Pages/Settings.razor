@@ -1,22 +1,66 @@
 ﻿@page "/settings"
 @using System.Security.Claims
 @using Microsoft.AspNetCore.Components.Authorization
+@inject HttpClient Http
 
 
-<AuthorizeView Policy="Admin">
-    only Admin can see this
-</AuthorizeView>
-<AuthorizeView>
-    @foreach (Claim i in claims)
-    {
-        <p>@i.Type : @i.Value</p>
+<Collapse DefaultActiveKey="@(new[]{"1"})" Accordion Bordered="false" Style="width: auto; height: auto;">
+    <Panel Header="个人信息" Key="1" ShowArrow="false">
+        <Row>
+            <AntDesign.Col Span="2" Style="text-align: right;">
+                <h1>用户名:</h1>
+            </AntDesign.Col>
+            <AntDesign.Col>
+                <h1>@self.UserName</h1>
+            </AntDesign.Col>
+        </Row>
+        <Row>
+            <AntDesign.Col Span="2" Style="text-align: right;">
+                <h1>权限:</h1>
+            </AntDesign.Col>
+            <AntDesign.Col>
+                @{string p = self.Permission == Permissions.ADMIN ? "管理员" : self.Permission == Permissions.NORMAL ? "普通用户" : "其他";}
+                <h1>@p</h1>
+            </AntDesign.Col>
+        </Row>
+        <Row>
+            <AntDesign.Col Span="2" Style="text-align: right;">
+                <h1>QQ:</h1>
+            </AntDesign.Col>
+            <AntDesign.Col>
+                <h1>@self.QQ</h1>
+            </AntDesign.Col>
+        </Row>
+        <Row>
+            <AntDesign.Col Span="2" Style="text-align: right;">
+                <h1>邮箱:</h1>
+            </AntDesign.Col>
+            <AntDesign.Col>
+                <h1>@self.Email</h1>
+            </AntDesign.Col>
+        </Row>
+    </Panel>
+    <Panel Header="修改信息" Key="2" ShowArrow="false">
+
+    </Panel>
+    <Panel Header="修改密码" Key="3" ShowArrow="false">
+
+    </Panel>
+</Collapse>
+
+<style>
+    h1 {
+        font-size: 24px;
+        margin: 16px;
     }
-</AuthorizeView>
+</style>
+
 
 
 @code{
 
-    IEnumerable<Claim> claims;
+    private bool editing;
+    private User self = new();
 
     [CascadingParameter]
     private Task<AuthenticationState> authenticationStateTask { get; set; }
@@ -25,9 +69,6 @@
     {
         AuthenticationState authState = await authenticationStateTask;
         ClaimsPrincipal user = authState.User;
-        if (user.Identity.IsAuthenticated)
-        {
-            claims = user.Claims;
-        }
+        self = await Http.GetFromJsonAsync<User>("Api/User/GetSelf");
     }
 }

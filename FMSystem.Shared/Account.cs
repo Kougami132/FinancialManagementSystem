@@ -23,6 +23,6 @@ namespace FMSystem.Shared
         [MaxLength(16, ErrorMessage = "说明不得超过 16 位")]
         public string Description { get; set; }
 
-        public string User { get; set; }
+        public int User { get; set; }
     }
 }

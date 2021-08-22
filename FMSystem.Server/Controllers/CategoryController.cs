@@ -23,7 +23,7 @@ namespace FMSystem.Server.Controllers
         {
             if (Tools.IsUserExist(_context, User.Identity.Name)) //如果Token用户存在
             {
-                return _context.Categories.Where(i => i.User == User.Identity.Name);
+                return _context.Categories.Where(i => _context.Users.First(j => j.Id == i.User).UserName == User.Identity.Name);
             }
             else
             {
@@ -38,7 +38,7 @@ namespace FMSystem.Server.Controllers
             {
                 try
                 {
-                    if (_context.Categories.Any(i => i.Name.ToLower() == name.ToLower() && i.User == User.Identity.Name))
+                    if (_context.Categories.Any(i => i.Name.ToLower() == name.ToLower() && _context.Users.First(j => j.Id == i.User).UserName == User.Identity.Name))
                     {
                         return new Response(1, "Yes");
                     }
@@ -63,13 +63,13 @@ namespace FMSystem.Server.Controllers
         {
             if (Tools.IsUserExist(_context, User.Identity.Name)) //如果Token用户存在
             {
-                try
+                if (_context.Users.Find(newCategory.User).UserName == User.Identity.Name)
                 {
                     await _context.Categories.AddAsync(newCategory);
                     await _context.SaveChangesAsync();
                     return new Response(1);
                 }
-                catch
+                else
                 {
                     return new Response(0);
                 }
@@ -85,13 +85,13 @@ namespace FMSystem.Server.Controllers
         {
             if (Tools.IsUserExist(_context, User.Identity.Name)) //如果Token用户存在
             {
-                try
+                if (_context.Users.Find(editCategory.User).UserName == User.Identity.Name)
                 {
                     _context.Categories.Update(editCategory);
                     await _context.SaveChangesAsync();
                     return new Response(1);
                 }
-                catch
+                else
                 {
                     return new Response(0);
                 }
@@ -111,7 +111,10 @@ namespace FMSystem.Server.Controllers
                 {
                     foreach (int i in Categorys)
                     {
-                        _context.Categories.Remove(await _context.Categories.FindAsync(i));
+                        if (_context.Users.Find(_context.Categories.Find(i).User).UserName == User.Identity.Name)
+                        {
+                            _context.Categories.Remove(await _context.Categories.FindAsync(i));
+                        }
                     }
                     await _context.SaveChangesAsync();
                     return new Response(1);
