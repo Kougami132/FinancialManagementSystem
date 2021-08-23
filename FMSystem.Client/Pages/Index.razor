@@ -108,13 +108,15 @@
 
     [CascadingParameter]
     private Task<AuthenticationState> authenticationStateTask { get; set; }
-
     protected override async Task OnInitializedAsync()
     {
         records = await Http.GetFromJsonAsync<Record[]>("Api/Record/GetRecord");
         categories = await Http.GetFromJsonAsync<Category[]>("Api/Category/GetCategory");
         accounts = await Http.GetFromJsonAsync<Account[]>("Api/Account/GetAccount");
-        await Filter();
+        if (records.Count() != 0)
+        {
+            await Filter();
+        }
     }
 
     private async Task Filter()

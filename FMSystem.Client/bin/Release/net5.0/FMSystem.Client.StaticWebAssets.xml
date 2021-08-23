@@ -1,0 +1,6 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="E:\Project C#\FinancialManagementSystem\FMSystem.Client\bin\Release\net5.0\wwwroot\" />
+  <ContentRoot BasePath="/" Path="E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/AntDesign" Path="C:\Users\Wither\.nuget\packages\antdesign\0.9.0\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/AntDesign.Charts" Path="C:\Users\Wither\.nuget\packages\antdesign.charts\0.2.1\build\..\staticwebassets\" />
+</StaticWebAssets>

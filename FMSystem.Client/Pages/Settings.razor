@@ -2,9 +2,10 @@
 @using System.Security.Claims
 @using Microsoft.AspNetCore.Components.Authorization
 @inject HttpClient Http
+@inject MessageService messageService
 
 
-<Collapse DefaultActiveKey="@(new[]{"1"})" Accordion Bordered="false" Style="width: auto; height: auto;">
+<Collapse DefaultActiveKey="@(new[]{"1"})" Accordion Bordered="false" Style="width: auto;">
     <Panel Header="个人信息" Key="1" ShowArrow="false">
         <Row>
             <AntDesign.Col Span="2" Style="text-align: right;">
@@ -41,10 +42,42 @@
         </Row>
     </Panel>
     <Panel Header="修改信息" Key="2" ShowArrow="false">
-
+        <Form Model="editUser"
+              Loading="loading1"
+              Layout="@FormLayout.Vertical">
+            <FormItem Label="用户名">
+                <Input @bind-Value="@context.UserName" />
+            </FormItem>
+            <FormItem Label="QQ">
+                <Input @bind-Value="@context.QQ" />
+            </FormItem>
+            <FormItem Label="邮箱">
+                <Input @bind-Value="@context.Email" />
+            </FormItem>
+            <Button Type="primary" OnClick="OnEditInfo">
+                保存
+            </Button>
+        </Form>
     </Panel>
     <Panel Header="修改密码" Key="3" ShowArrow="false">
-
+        <Form Model="editPwd"
+              Loading="loading2"
+              Layout="@FormLayout.Vertical">
+            <div style="margin: 10px 0;">
+                <label><span style="color: red;">*</span>&nbsp;旧密码</label>
+                <InputPassword @bind-Value="@oldPwd" Placeholder="例: 123456" MaxLength="32" />
+            </div>
+            <FormItem Label="新密码">
+                <InputPassword @bind-Value="@context.UserPwd" Placeholder="例: 123456" MaxLength="32" />
+            </FormItem>
+            <div style="margin: 10px 0;">
+                <label><span style="color: red;">*</span>&nbsp;再次输入新密码</label>
+                <InputPassword @bind-Value="@newPwd" Placeholder="例: 123456" MaxLength="32" />
+            </div>
+            <Button Type="primary" OnClick="OnResetPwd">
+                确定
+            </Button>
+        </Form>
     </Panel>
 </Collapse>
 
@@ -59,8 +92,11 @@
 
 @code{
 
-    private bool editing;
+    private bool loading1, loading2;
     private User self = new();
+    private User editUser = new();
+    private User editPwd = new();
+    private string oldPwd, newPwd;
 
     [CascadingParameter]
     private Task<AuthenticationState> authenticationStateTask { get; set; }
@@ -70,5 +106,82 @@
         AuthenticationState authState = await authenticationStateTask;
         ClaimsPrincipal user = authState.User;
         self = await Http.GetFromJsonAsync<User>("Api/User/GetSelf");
+        editUser = new()
+        {
+            Id = self.Id,
+            Permission = self.Permission,
+            UserName = self.UserName,
+            UserPwd = self.UserPwd,
+            QQ = self.QQ,
+            Email = self.Email
+        };
+        editPwd = new()
+        {
+            Id = self.Id,
+            Permission = self.Permission,
+            UserName = self.UserName,
+            UserPwd = "",
+            QQ = self.QQ,
+            Email = self.Email
+        };
+    }
+
+    private async Task OnEditInfo()
+    {
+        loading1 = true;
+        Response res = await Http.GetFromJsonAsync<Response>("Api/User/IsUserExist?username=" + editUser.UserName);
+        if (res.Msg == "Yes" && editUser.UserName.ToLower() != editUser.UserName.ToLower())
+        {
+            messageService.Error("用户名已存在");
+            return;
+        }
+
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/EditUser", editUser);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            self = editUser;
+            loading1 = false;
+            messageService.Success("提交成功,如已修改用户名请重新登录");
+        }
+        else
+        {
+            loading1 = false;
+            messageService.Error("提交失败");
+        }
+    }
+
+    private async Task OnResetPwd()
+    {
+        if (oldPwd != self.UserPwd)
+        {
+            messageService.Error("旧密码错误");
+            oldPwd = "";
+            return;
+        }
+        else if (newPwd != editPwd.UserPwd)
+        {
+            messageService.Error("两次密码输入不一致");
+            newPwd = "";
+            return;
+        }
+
+        loading2 = true;
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/EditUser", editPwd);
+        Response response = await (responseMsg).Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            self = editPwd;
+            loading2 = false;
+            messageService.Success("修改成功");
+            oldPwd = "";
+            newPwd = "";
+            editPwd.UserPwd = "";
+        }
+        else
+        {
+            loading2 = false;
+            messageService.Error("修改失败");
+        }
     }
 }

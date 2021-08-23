@@ -1,0 +1,9 @@
+E:\Project C#\FinancialManagementSystem\FMSystem.Shared\bin\Release\netstandard2.1\FMSystem.Shared.deps.json
+E:\Project C#\FinancialManagementSystem\FMSystem.Shared\bin\Release\netstandard2.1\FMSystem.Shared.dll
+E:\Project C#\FinancialManagementSystem\FMSystem.Shared\bin\Release\netstandard2.1\FMSystem.Shared.pdb
+E:\Project C#\FinancialManagementSystem\FMSystem.Shared\obj\Release\netstandard2.1\FMSystem.Shared.csproj.AssemblyReference.cache
+E:\Project C#\FinancialManagementSystem\FMSystem.Shared\obj\Release\netstandard2.1\FMSystem.Shared.AssemblyInfoInputs.cache
+E:\Project C#\FinancialManagementSystem\FMSystem.Shared\obj\Release\netstandard2.1\FMSystem.Shared.AssemblyInfo.cs
+E:\Project C#\FinancialManagementSystem\FMSystem.Shared\obj\Release\netstandard2.1\FMSystem.Shared.csproj.CoreCompileInputs.cache
+E:\Project C#\FinancialManagementSystem\FMSystem.Shared\obj\Release\netstandard2.1\FMSystem.Shared.dll
+E:\Project C#\FinancialManagementSystem\FMSystem.Shared\obj\Release\netstandard2.1\FMSystem.Shared.pdb

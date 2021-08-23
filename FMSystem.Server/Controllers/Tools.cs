@@ -37,7 +37,7 @@ namespace FMSystem.Server.Controllers
 
         public static bool IsUserExist(FMContext _context, string userName)
         {
-            if (_context.Users.Any(i => i.UserName.ToLower() == userName.ToLower()))
+            if (userName!= null && _context.Users.Any(i => i.UserName.ToLower() == userName.ToLower()))
             {
                 return true;
             }
