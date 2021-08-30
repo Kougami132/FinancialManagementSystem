@@ -24,12 +24,6 @@
                 <label><span style="color: red;">*</span>&nbsp;再次输入密码</label>
                 <InputPassword @bind-Value="@password" Placeholder="例: 123456" MaxLength="32" />
             </div>
-            <FormItem Label="QQ">
-                <Input @bind-Value="@context.QQ" Placeholder="例: 1234567890" />
-            </FormItem>
-            <FormItem Label="邮箱">
-                <Input @bind-Value="@context.Email" Placeholder="例: test132@gmail.com" />
-            </FormItem>
             <FormItem WrapperColOffset="6" WrapperColSpan="24">
                 <Button Type="default" OnClick="@(()=> { navigationManager.NavigateTo("/login"); })">取&nbsp;消</Button>
                 <Button Type="primary" HtmlType="submit">注&nbsp;册</Button>

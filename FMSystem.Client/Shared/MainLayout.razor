@@ -5,8 +5,39 @@
 
 <Layout Style="height: 100vh;">
     <Header Class="header">
-        <div class="logo">
-            <p>个人财务管理系统</p>
+        <div class="menu_horizontal">
+            <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedKeys=@(new []{"1"})>
+                <MenuItem Key="1" RouterLink="/" RouterMatch="NavLinkMatch.All">
+                    <Icon Type="home" Theme="outline"></Icon>
+                    首页
+                </MenuItem>
+                @{
+                    RenderFragment sub1Title =
+                    @<span>
+                        <Icon Type="table" Theme="outline"></Icon>
+                        <span>数据管理</span>
+                    </span>;
+                }
+                <SubMenu Key="sub1" TitleTemplate=@sub1Title>
+                    <MenuItem Key="2" RouterLink="/records">账单管理</MenuItem>
+                    <MenuItem Key="3" RouterLink="/categories">分类管理</MenuItem>
+                    <MenuItem Key="4" RouterLink="/accounts">账户管理</MenuItem>
+                </SubMenu>
+                <MenuItem Key="5" RouterLink="/settings">
+                    <Icon Type="user" Theme="outline"></Icon>
+                    个人中心
+                </MenuItem>
+                <AuthorizeView Policy="Admin">
+                    <MenuItem Key="6" RouterLink="/admin">
+                        <Icon Type="team" Theme="outline"></Icon>
+                        用户管理
+                    </MenuItem>
+                </AuthorizeView>
+                <MenuItem Key="7" RouterLink="/logout">
+                    <Icon Type="logout" Theme="outline"></Icon>
+                    注销
+                </MenuItem>
+            </Menu>
         </div>
         <div class="site-button-ghost-wrapper auth">
             <AuthorizeView>
@@ -22,38 +53,82 @@
         </div>
     </Header>
     <Layout>
-        <Sider Width="256" Class="site-layout-background">
-            <NavMenu />
+        <Sider Width="256" Class="site-layout-background menu_inline">
+            <Menu Mode="MenuMode.Inline"
+                  DefaultSelectedKeys=@(new[] {"1"})
+                  DefaultOpenKeys=@(new[] {"sub1"})
+                  Style="height: 100%; border-right: 0;">
+                <MenuItem Key="1" RouterLink="/" RouterMatch="NavLinkMatch.All">
+                    <Icon Type="home" Theme="outline"></Icon>
+                    首页
+                </MenuItem>
+                @{
+                    RenderFragment sub1Title =
+                    @<span>
+                        <Icon Type="table" Theme="outline"></Icon>
+                        <span>数据管理</span>
+                    </span>;
+                }
+                <SubMenu Key="sub1" TitleTemplate=@sub1Title>
+                    <MenuItemGroup Key="group1" Title="记录管理">
+                        <MenuDivider />
+                        <MenuItem Key="2" RouterLink="/records">账单管理</MenuItem>
+                    </MenuItemGroup>
+                    <MenuItemGroup Key="group2" Title="选项管理">
+                        <MenuDivider />
+                        <MenuItem Key="3" RouterLink="/categories">分类管理</MenuItem>
+                        <MenuItem Key="4" RouterLink="/accounts">账户管理</MenuItem>
+                    </MenuItemGroup>
+                </SubMenu>
+                <MenuItem Key="5" RouterLink="/settings">
+                    <Icon Type="user" Theme="outline"></Icon>
+                    个人中心
+                </MenuItem>
+                <AuthorizeView Policy="Admin">
+                    <MenuItem Key="6" RouterLink="/admin">
+                        <Icon Type="team" Theme="outline"></Icon>
+                        用户管理
+                    </MenuItem>
+                </AuthorizeView>
+            </Menu>
         </Sider>
-        <Layout Style=" padding: 0 24px 24px;">
-            <Content Class="site-layout-background" Style="padding: 24px; margin: 24px 16px 0; min-height: 280px; position: relative;">
-                @Body
-            </Content>
-            <Footer Style="text-align: center;">Copyright © 2021 Kougami<br />Powered by .NET 5.0 on Blazor WebAssembly</Footer>
+        <Layout Class="long_content">
+            <div style="min-height: 100%;">
+                <Content Style="padding: 12px 12px 0; position: relative;">
+                    @Body
+                </Content>
+                <Footer Style="text-align: center;">Copyright © 2021 Kougami<br />Powered by .NET 5.0 on Blazor WebAssembly</Footer>
+            </div>
         </Layout>
     </Layout>
 </Layout>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
 
-    .logo {
-        width: auto;
-        height: 32px;
-        background: rgba(255, 255, 255, 0.2);
-        margin: 16px 0;
-        float: left;
-    }
-
-        .logo p {
-            line-height: 20px;
-            font-size: 20px;
-            color: white;
-            margin: 6px 10px 6px 10px;
+    @@media (min-width: 1400px) {
+        .menu_horizontal {
+            display: none;
         }
+        .menu_inline {
+            display: block;
+        }
+    }
+
+    @@media (max-width: 1400px) {
+        .menu_horizontal {
+            display: block;
+        }
+        .menu_inline {
+            display: none;
+        }
+        .ant-menu-horizontal  {
+            display: flex;
+            justify-content: center;
+        }
+        .auth {
+            display: none;
+        }
+    }
 
     .auth {
         color: white;
@@ -63,10 +138,27 @@
     .site-layout-background {
         background: #fff;
     }
+
+    .long_content {
+        overflow: scroll;
+        min-height: 100%;
+    }
+    .long_content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .back_card {
+        padding: 24px;
+        margin: 12px;
+        position: relative;
+        background: #fff;
+        border-radius: 10px;
+    }
+
 </style>
 
 @code{
-    
+
     [CascadingParameter]
     private Task<AuthenticationState> authenticationStateTask { get; set; }
 
@@ -79,4 +171,5 @@
             navigationManager.NavigateTo("/login");
         }
     }
+
 }

@@ -1,20 +1,22 @@
 ﻿@inject HttpClient Http
 
 
+<div class="back_card" style="padding-bottom: 80px;">
+    <Table @ref="Obj" DataSource="@Data" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" SelectedRowsChanged="SelectedChanged">
+        <Selection Key="@(context.Id.ToString())" />
+        @{string p = @context.Type == InputOrOutput.INPUT ? "收入" : "支出";}
+        <Column Title="收/支" Field="@p" />
+        @{string c = categories.Any(i => i.Id == context.Category) ? categories.First(i => i.Id == context.Category).Name : "";}
+        <Column Title="分类" Field="@c" />
+        <Column Title="金额" Field="@context.Value" />
+        @{string a = accounts.Any(i => i.Id == context.Account) ? accounts.First(i => i.Id == context.Account).Name : "";}
+        <Column Title="账户" Field="@a" />
+        <Column Title="创建时间" Field="@context.CreateTime.ToString("yyyy年MM月dd日")" />
+        <Column Title="说明" Field="@context.Description" />
+    </Table>
+    <Pagination DefaultCurrent="1" Total="@Data.Length" OnChange="@((args)=> { tablePageIndex = args.Page; })" Style="position: absolute; right: 24px; bottom: 24px;" />
+</div>
 
-<Table @ref="Obj" DataSource="@Data" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" SelectedRowsChanged="SelectedChanged">
-    <Selection Key="@(context.Id.ToString())" />
-    @{string p = @context.Type == InputOrOutput.INPUT ? "收入" : "支出";}
-    <Column Title="收/支" Field="@p" />
-    @{string c = categories.Any(i => i.Id == context.Category) ? categories.First(i => i.Id == context.Category).Name : "";}
-    <Column Title="分类" Field="@c" />
-    <Column Title="金额" Field="@context.Value" />
-    @{string a = accounts.Any(i => i.Id == context.Account) ? accounts.First(i => i.Id == context.Account).Name : "";}
-    <Column Title="账户" Field="@a" />
-    <Column Title="创建时间" Field="@context.CreateTime.ToString("yyyy年MM月dd日")" />
-    <Column Title="说明" Field="@context.Description" />
-</Table>
-<Pagination DefaultCurrent="1" Total="@Data.Length" OnChange="@((args)=> { tablePageIndex = args.Page; })" Style="position: absolute; right: 24px; bottom: 24px;" />
 
 @code {
 

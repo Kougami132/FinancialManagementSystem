@@ -3,26 +3,27 @@
 @using System.Security.Claims
 
 
+<div style="display: flex; justify-content: space-between;">
+    <div class="back_card" style="margin-bottom: 0;">
+        <div style="float: left; margin-right: 4px;">
+            <Search Placeholder="搜索分类" ValueChanged="SearchValueChanged" Style="width: 100px;" OnChange="RefrashTable" ClassicSearchIcon />
+        </div>
+        <Select DataSource="@options"
+                ValueChanged="TypeChanged"
+                DefaultValue="@("all")"
+                ValueName="@nameof(Option.Value)"
+                LabelName="@nameof(Option.Name)"
+                DisabledName="@nameof(Option.IsDisabled)"
+                OnSelectedItemChanged="@(async(i) => { await RefrashTable.InvokeAsync(); })"
+                style="width: 100px; text-align: center;">
+        </Select>
+    </div>
 
-<div style="float: left; margin-bottom: 24px;">
-    <Search Placeholder="搜索分类" ValueChanged="SearchValueChanged" Style="width: 100px;" OnChange="RefrashTable" />
-</div>
-
-<div style="float: left; margin: 0 4px 24px; ">
-    <Select DataSource="@options"
-            ValueChanged="TypeChanged"
-            DefaultValue="@("all")"
-            ValueName="@nameof(Option.Value)"
-            LabelName="@nameof(Option.Name)"
-            DisabledName="@nameof(Option.IsDisabled)"
-            OnSelectedItemChanged="@(async(i) => { await RefrashTable.InvokeAsync(); })"
-            style="width: 100px; text-align: center;">
-    </Select>
-</div>
-<div style="float: right; margin-bottom: 24px; ">
-    <Button Type="primary" Icon="plus" OnClick="@(()=> { dwVisible1 = true; })">新增分类</Button>
-    <Button Icon="edit" OnClick=" OnEdit">修改信息</Button>
-    <Button Loading="deleteLoading" Type="dashed" Danger OnClick="@(() => { if (Selected != null && Selected.Count() != 0) modalVisible = true; })">删除</Button>
+    <div class="back_card" style="margin-bottom: 0;">
+        <Button Type="primary" Icon="plus" OnClick="@(()=> { dwVisible1 = true; })">新增分类</Button>
+        <Button Icon="edit" OnClick=" OnEdit">修改信息</Button>
+        <Button Loading="deleteLoading" Type="dashed" Danger OnClick="@(() => { if (Selected != null && Selected.Count() != 0) modalVisible = true; })">删除</Button>
+    </div>
 </div>
 
 <Drawer Closable="true" Width="360" Visible="dwVisible1" Title=@("新增分类") OnClose="@(()=> { dwVisible1 = false; })">

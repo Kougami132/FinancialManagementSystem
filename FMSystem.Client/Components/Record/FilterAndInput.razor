@@ -4,37 +4,39 @@
 
 
 
-<div style="float: left; margin: 0 4px 24px; ">
-    <RadioGroup ValueChanged="TypeChanged" ButtonStyle="solid" DefaultValue="@("all")" OnChange="@(async(string i) => { await RefrashSelect(i); await RefrashTable.InvokeAsync(); })">
-        <Radio RadioButton Value="@("all")">全部</Radio>
-        <Radio RadioButton Value="@("input")">收入</Radio>
-        <Radio RadioButton Value="@("output")">支出</Radio>
-    </RadioGroup>
-    <Select @ref="fixSelect1"
-            DataSource="@categoryOptions"
-            ValueChanged="CategoryChanged"
-            ValueName="@nameof(Option<int>.Value)"
-            LabelName="@nameof(Option<int>.Name)"
-            DisabledName="@nameof(Option<int>.IsDisabled)"
-            OnSelectedItemChanged="@(async(i) => { await RefrashTable.InvokeAsync(); })"
-            style="width: 100px; text-align: center;">
-    </Select>
-    <Select @ref="fixSelect2"
-            DataSource="@accountOptions"
-            ValueChanged="AccountChanged"
-            ValueName="@nameof(Option<int>.Value)"
-            LabelName="@nameof(Option<int>.Name)"
-            DisabledName="@nameof(Option<int>.IsDisabled)"
-            OnSelectedItemChanged="@(async(i) => { await RefrashTable.InvokeAsync(); })"
-            style="width: 100px; text-align: center;">
-    </Select>
-    <RangePicker ValueChanged="DateFilterChanged" TValue="DateTime?[]" AllowClear OnChange="@(async(i) => { await RefrashTable.InvokeAsync(); })" />
-</div>
+<div style="display: flex; justify-content: space-between;">
+    <div class="back_card" style="margin-bottom: 0;">
+        <RadioGroup ValueChanged="TypeChanged" ButtonStyle="solid" DefaultValue="@("all")" OnChange="@(async(string i) => { await RefrashSelect(i); await RefrashTable.InvokeAsync(); })">
+            <Radio RadioButton Value="@("all")">全部</Radio>
+            <Radio RadioButton Value="@("input")">收入</Radio>
+            <Radio RadioButton Value="@("output")">支出</Radio>
+        </RadioGroup>
+        <Select @ref="fixSelect1"
+                DataSource="@categoryOptions"
+                ValueChanged="CategoryChanged"
+                ValueName="@nameof(Option<int>.Value)"
+                LabelName="@nameof(Option<int>.Name)"
+                DisabledName="@nameof(Option<int>.IsDisabled)"
+                OnSelectedItemChanged="@(async(i) => { await RefrashTable.InvokeAsync(); })"
+                style="width: 100px; text-align: center;">
+        </Select>
+        <Select @ref="fixSelect2"
+                DataSource="@accountOptions"
+                ValueChanged="AccountChanged"
+                ValueName="@nameof(Option<int>.Value)"
+                LabelName="@nameof(Option<int>.Name)"
+                DisabledName="@nameof(Option<int>.IsDisabled)"
+                OnSelectedItemChanged="@(async(i) => { await RefrashTable.InvokeAsync(); })"
+                style="width: 100px; text-align: center;">
+        </Select>
+        <RangePicker ValueChanged="DateFilterChanged" TValue="DateTime?[]" AllowClear OnChange="@(async(i) => { await RefrashTable.InvokeAsync(); })" />
+    </div>
 
-<div style="float: right; margin-bottom: 24px; ">
-    <Button Type="primary" Icon="plus" OnClick="@(()=> { newRecord.CreateTime = DateTime.Today; dwVisible1 = true; RefrashNewSelect(); })">新增记录</Button>
-    <Button Icon="edit" OnClick=" OnEdit">修改信息</Button>
-    <Button Loading="deleteLoading" Type="dashed" Danger OnClick="@(() => { if (Selected != null && Selected.Count() != 0) modalVisible = true; })">删除</Button>
+    <div class="back_card" style="margin-bottom: 0;">
+        <Button Type="primary" Icon="plus" OnClick="@(()=> { newRecord.CreateTime = DateTime.Today; dwVisible1 = true; RefrashNewSelect(); })">新增记录</Button>
+        <Button Icon="edit" OnClick=" OnEdit">修改信息</Button>
+        <Button Loading="deleteLoading" Type="dashed" Danger OnClick="@(() => { if (Selected != null && Selected.Count() != 0) modalVisible = true; })">删除</Button>
+    </div>
 </div>
 
 <Drawer Closable="true" Width="360" Visible="dwVisible1" Title=@("新增账户") OnClose="@(()=> { dwVisible1 = false; })">

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\Wither\Desktop\publish\client</_PublishTargetUrl>
+    <History>True|2021-08-24T03:51:04.7223370Z;True|2021-08-23T20:49:46.2588383+08:00;True|2021-08-23T19:46:09.5813350+08:00;False|2021-08-23T19:45:09.2514333+08:00;True|2021-08-23T17:20:49.2518067+08:00;False|2021-08-23T17:19:49.1456100+08:00;True|2021-08-23T16:36:06.7842198+08:00;</History>
+  </PropertyGroup>
+</Project>

@@ -204,12 +204,12 @@
       "netstandard.dll": "sha256-B6gmXEMfYgOuaOR1g1cGHLn2kDlZYAah4K2XNUZbTs4=",
       "System.Private.CoreLib.dll": "sha256-XY0bl1U8F\/iSbQzkmIHM8UtE\/R9VntZoy\/kMbvuMjTA=",
       "FMSystem.Shared.dll": "sha256-t+Z6Tpg4YZbn6ImUc2kUnxPXt9NZj+xSAB\/rh+MSzWM=",
-      "FMSystem.Client.dll": "sha256-dpq6bVPDbmffcqeEp8jaLS2c3vN\/qnFcCSDO14VLPao="
+      "FMSystem.Client.dll": "sha256-CGsGIR2eH5gKvjQ5owZh7lE4o0qyU8j8NKUqzeoNj6A="
     },
     "lazyAssembly": null,
     "pdb": {
       "FMSystem.Shared.pdb": "sha256-3NqBGl0EHi6Ab1IUIU7Kh1IhKV1UeG\/fhv7ZaXWI6Fo=",
-      "FMSystem.Client.pdb": "sha256-txpiDRBcaJKWj3gYyNni3vN9016K8kqfWbx1tkfDk6c="
+      "FMSystem.Client.pdb": "sha256-z8aINwXyNHBc7xc8DBt7mjGBKSgHv9z5qEhuVqexuFQ="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-OEDZp6noMH3AdT8qd0zd7ZXzy2CsPQ+CZeQnYmRoVWo=",

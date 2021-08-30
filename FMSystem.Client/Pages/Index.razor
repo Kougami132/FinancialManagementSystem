@@ -44,7 +44,7 @@
                     </Row>
                 </AntDesign.Col>
             </Row>
-            <Card>
+            <div class="back_card" style="margin-bottom: 0;">
                 <RadioGroup @bind-Value="type" ButtonStyle="solid" OnChange="@(async(InputOrOutput i) => { await UpdateSum(); })">
                     <Radio RadioButton Value="@InputOrOutput.INPUT">收入</Radio>
                     <Radio RadioButton Value="@InputOrOutput.OUTPUT">支出</Radio>
@@ -54,20 +54,20 @@
                     <Radio RadioButton Value="@("category")">按分类</Radio>
                     <Radio RadioButton Value="@("account")">按账户</Radio>
                 </RadioGroup>
-            </Card>
+            </div>
         </AntDesign.Col>
         <AntDesign.Col Flex="@("auto")">
-            <Card>
+            <div class="back_card">
                 <Row Justify="space-around" Align="middle">
                     <AntDesign.Col>
                         @*<GroupedColumnLine @ref="groupedColumnLine" Config="groupedColumnLineConfig" TItem="object" />*@
                         <GroupedColumn @ref="groupedColumn" Config="groupedColumnConfig" TItem="object" />
                     </AntDesign.Col>
                 </Row>
-            </Card>
+            </div>
         </AntDesign.Col>
     </Row>
-    <Row Justify="space-around" Align="middle">
+    <Row Class="back_card" Justify="space-around" Align="middle">
         <AntDesign.Col Span="8">
             <Card Loading="loading">
                 <Donut @ref="@donut" Config="donutConfig" TItem="CircleDto" />

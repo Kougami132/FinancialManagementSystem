@@ -8,20 +8,22 @@
 
 
 
-<!-- #region 单个操作按钮(搜索、新建、修改) -->
-<FMSystem.Client.Components.Admin.SingleInput @bind-SearchValue="searchName"
-                                              @bind-Permission="permission"
-                                              @bind-Selected="selectedUsers"
-                                              RefrashData="RefrashData"
-                                              RefrashTable="RefrashTable">
-</FMSystem.Client.Components.Admin.SingleInput>
-<!-- #endregion -->
+<div style="display: flex; justify-content: space-between;">
+    <!-- #region 单个操作按钮(搜索、新建、修改) -->
+    <FMSystem.Client.Components.Admin.SingleInput @bind-SearchValue="searchName"
+                                                  @bind-Permission="permission"
+                                                  @bind-Selected="selectedUsers"
+                                                  RefrashData="RefrashData"
+                                                  RefrashTable="RefrashTable">
+    </FMSystem.Client.Components.Admin.SingleInput>
+    <!-- #endregion -->
 
-<!-- #region 批量操作按钮(更改权限、重置密码、清空数据、删除) -->
-<FMSystem.Client.Components.Admin.PluralInput Selected="selectedUsers"
-                                              Refrash="RefrashData">
-</FMSystem.Client.Components.Admin.PluralInput>
-<!-- #endregion -->
+    <!-- #region 批量操作按钮(更改权限、重置密码、清空数据、删除) -->
+    <FMSystem.Client.Components.Admin.PluralInput Selected="selectedUsers"
+                                                  Refrash="RefrashData">
+    </FMSystem.Client.Components.Admin.PluralInput>
+    <!-- #endregion -->
+</div>
 
 <!-- #region Table表格 -->
 <FMSystem.Client.Components.Admin.TableInput Obj="table"

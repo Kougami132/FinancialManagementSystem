@@ -2,11 +2,12 @@
 @inject HttpClient Http
 @using System.Security.Claims
 
-<div style="float: left; margin-bottom: 24px;">
-    <Search Placeholder="搜索用户" ValueChanged="SearchValueChanged" Style="width: 100px;" OnChange="RefrashTable" />
-</div>
 
-<div style="float: left; margin:0 4px 24px;">
+
+<div class="back_card" style="margin-bottom: 0;">
+    <div style="float: left; margin-right: 4px;">
+        <Search Placeholder="搜索用户" ValueChanged="SearchValueChanged" Style="width: 100px;" OnChange="RefrashTable" ClassicSearchIcon />
+    </div>
     <Select DataSource="@options"
             ValueChanged="PermissionChanged"
             DefaultValue="@("all")"
@@ -16,9 +17,6 @@
             OnSelectedItemChanged="@(async(i) => { await RefrashTable.InvokeAsync(); })"
             style="width: 100px; text-align: center;">
     </Select>
-</div>
-
-<div style="float: left; margin-bottom: 24px;">
     <Button Type="primary" Icon="plus" OnClick="@(()=> { dwVisible1 = true; })">新增用户</Button>
     <Button Icon="edit" OnClick=" OnEdit">修改信息</Button>
 </div>
@@ -52,6 +50,12 @@
         </FormItem>
         <FormItem Label="邮箱">
             <Input @bind-Value="@context.Email" Placeholder="例: test132@gmail.com" />
+        </FormItem>
+        <FormItem Label="手机号">
+            <Input @bind-Value="@context.PhoneNumber" Placeholder="例: 18324221977" />
+        </FormItem>
+        <FormItem Label="地址">
+            <Input @bind-Value="@context.Address" Placeholder="例: 瓯海区 新桥街道 六虹桥路1000号" />
         </FormItem>
         <FormItem WrapperColOffset="6" WrapperColSpan="24">
             <Button Type="default" OnClick="@(()=> { dwVisible1 = false; })">取消</Button>
@@ -90,6 +94,12 @@
         </FormItem>
         <FormItem Label="邮箱">
             <Input @bind-Value="@context.Email" Placeholder="例: test132@gmail.com" />
+        </FormItem>
+        <FormItem Label="手机号">
+            <Input @bind-Value="@context.PhoneNumber" Placeholder="例: 18324221977" />
+        </FormItem>
+        <FormItem Label="地址">
+            <Input @bind-Value="@context.Address" Placeholder="例: 瓯海区 新桥街道 六虹桥路1000号" />
         </FormItem>
         <FormItem WrapperColOffset="6" WrapperColSpan="24">
             <Button Type="default" OnClick="@(()=> { dwVisible2 = false; })">取消</Button>
@@ -213,7 +223,9 @@
                 UserPwd = Selected.First().UserPwd,
                 Permission = Selected.First().Permission,
                 QQ = Selected.First().QQ,
-                Email = Selected.First().Email
+                Email = Selected.First().Email,
+                PhoneNumber = Selected.First().PhoneNumber,
+                Address = Selected.First().Address
             };
             dwVisible2 = true;
 

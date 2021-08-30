@@ -111,7 +111,7 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 19 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Record\TableInput.razor"
+#line 21 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Record\TableInput.razor"
        
 
     [Parameter]

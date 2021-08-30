@@ -414,7 +414,6 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDe
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
-E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\FMSystem.Client.RazorComponent.output.cache
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\RazorDeclaration\FMSystem.Client.dll
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\FMSystem.Client.TagHelpers.input.cache
@@ -425,7 +424,6 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\P
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
-E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\build-gz\bHQ+fJnB.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\build-gz\gEmxYQwJ.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\build-gz\SKxq8rfj.gz
@@ -617,7 +615,6 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\build-g
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\staticwebassets\FMSystem.Client.StaticWebAssets.Manifest.cache
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\staticwebassets\FMSystem.Client.StaticWebAssets.xml
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
-E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\scopedcss\bundle\FMSystem.Client.styles.css
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\scopedcss\projectbundle\FMSystem.Client.bundle.scp.css
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\FMSystem.Client.RazorTargetAssemblyInfo.cache

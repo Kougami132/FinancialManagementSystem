@@ -2,7 +2,7 @@
 @inject HttpClient Http
 @using System.Security.Claims
 
-<div style="float: right; margin-bottom: 24px;">
+<div class="back_card" style="margin-bottom: 0;">
     <Spin Spinning="editLoading">
         <Button Type="primary" Danger OnClick="@(() => { if (Selected != null && Selected.Count() != 0) modalVisible1 = true; })">重置密码</Button>
         <Button Danger OnClick="@(() => { if (Selected != null && Selected.Count() != 0) modalVisible2 = true; })">清空数据</Button>

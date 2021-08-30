@@ -119,7 +119,7 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 93 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
+#line 126 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
       
 
     private bool loading1, loading2;
@@ -143,7 +143,9 @@ using Microsoft.AspNetCore.Components.Authorization;
             UserName = self.UserName,
             UserPwd = self.UserPwd,
             QQ = self.QQ,
-            Email = self.Email
+            Email = self.Email,
+            PhoneNumber = self.PhoneNumber,
+            Address = self.Address
         };
         editPwd = new()
         {
@@ -152,7 +154,9 @@ using Microsoft.AspNetCore.Components.Authorization;
             UserName = self.UserName,
             UserPwd = "",
             QQ = self.QQ,
-            Email = self.Email
+            Email = self.Email,
+            PhoneNumber = self.PhoneNumber,
+            Address = self.Address
         };
     }
 

@@ -106,11 +106,17 @@ namespace FMSystem.Server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Permission")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("QQ")
                         .HasColumnType("TEXT");

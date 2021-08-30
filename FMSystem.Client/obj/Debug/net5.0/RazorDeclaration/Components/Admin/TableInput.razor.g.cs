@@ -111,7 +111,7 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 12 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Admin\TableInput.razor"
+#line 16 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Admin\TableInput.razor"
        
     [Parameter]
     public AntDesign.Table<User> Obj { get; set; }

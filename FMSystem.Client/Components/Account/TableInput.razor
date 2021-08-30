@@ -1,11 +1,13 @@
-﻿<Table @ref="Obj" DataSource="@Data" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" SelectedRowsChanged="SelectedChanged">
-    <Selection Key="@(context.Id.ToString())" />
-    <Column Title="名称" @bind-Field="@context.Name" />
-    @{string p = @context.Type == PaymentType.BANK ? "银行" : @context.Type == PaymentType.CASH ? "现金" : @context.Type == PaymentType.ONLINE ? "线上" : "其他";}
-    <Column Title="种类" Field="@p" />
-    <Column Title="说明" Field="@context.Description" />
-</Table>
-<Pagination DefaultCurrent="1" Total="@Data.Length" OnChange="@((args)=> { tablePageIndex = args.Page; })" Style="position: absolute; right: 24px; bottom: 24px;" />
+﻿<div class="back_card" style="padding-bottom: 80px;">
+    <Table @ref="Obj" DataSource="@Data" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" SelectedRowsChanged="SelectedChanged">
+        <Selection Key="@(context.Id.ToString())" />
+        <Column Title="名称" @bind-Field="@context.Name" />
+        @{string p = @context.Type == PaymentType.BANK ? "银行" : @context.Type == PaymentType.CASH ? "现金" : @context.Type == PaymentType.ONLINE ? "线上" : "其他";}
+        <Column Title="种类" Field="@p" />
+        <Column Title="说明" Field="@context.Description" />
+    </Table>
+    <Pagination DefaultCurrent="1" Total="@Data.Length" OnChange="@((args)=> { tablePageIndex = args.Page; })" Style="position: absolute; right: 24px; bottom: 24px;" />
+</div>
 
 @code {
 

@@ -118,9 +118,9 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 68 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
+#line 160 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
       
-    
+
     [CascadingParameter]
     private Task<AuthenticationState> authenticationStateTask { get; set; }
 
@@ -133,6 +133,7 @@ using System.Security.Claims;
             navigationManager.NavigateTo("/login");
         }
     }
+
 
 #line default
 #line hidden

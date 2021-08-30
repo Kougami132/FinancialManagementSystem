@@ -25,6 +25,9 @@ namespace FMSystem.Shared
         public string QQ { get; set; }
         [CheckEmail]
         public string Email { get; set; }
+        [CheckPhoneNumber]
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
     }
 
     public class CheckUserNameAttribute : ValidationAttribute
@@ -92,6 +95,26 @@ namespace FMSystem.Shared
         public static bool IsEmail(string source)
         {
             return Regex.IsMatch(source, @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", RegexOptions.IgnoreCase);
+        }
+    }
+
+    public class CheckPhoneNumberAttribute : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            if (value != null && !IsPhoneNumber(value.ToString()))
+            {
+                return new ValidationResult("请输入合法的手机号", new[] { validationContext.MemberName });
+            }
+            else
+            {
+                return ValidationResult.Success;
+            }
+        }
+
+        public static bool IsPhoneNumber(string source)
+        {
+            return Regex.IsMatch(source, @"^1[0-9]{10}$", RegexOptions.IgnoreCase);
         }
     }
 }
