@@ -687,3 +687,7 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\build-g
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\build-gz\tegZnxNC.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\build-gz\LaFgo6Op.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\build-gz\cAIqBgIb.gz
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\bin\Debug\net5.0\wwwroot\service-worker-assets.js
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\bin\Debug\net5.0\wwwroot\service-worker.js
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\serviceworkers\wwwroot\service-worker.js
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Debug\net5.0\service-worker-assets.js

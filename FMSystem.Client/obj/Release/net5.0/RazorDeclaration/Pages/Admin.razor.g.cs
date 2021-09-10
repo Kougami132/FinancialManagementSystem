@@ -126,7 +126,7 @@ using System.Net.Http;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 35 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Admin.razor"
+#line 37 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Admin.razor"
        
 
     private User[] users, showingUsers = new List<User>().ToArray();

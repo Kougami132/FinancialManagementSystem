@@ -95,7 +95,17 @@
         <Layout Class="long_content">
             <div style="min-height: 100%;">
                 <Content Style="padding: 12px 12px 0; position: relative;">
-                    @Body
+                    <AuthorizeView>
+                        <Authorized>
+                            @Body
+                        </Authorized>
+                        <Authorizing>
+                            <div class="back_card" style="height: auto; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                                <img src="images/loading1.gif" style="width: 128px;" />
+                                <h5>身份验证中...</h5>
+                            </div>
+                        </Authorizing>
+                    </AuthorizeView>
                 </Content>
                 <Footer Style="text-align: center;">Copyright © 2021 Kougami<br />Powered by .NET 5.0 on Blazor WebAssembly</Footer>
             </div>
@@ -127,6 +137,15 @@
         }
         .auth {
             display: none;
+        }
+    }
+
+    @@media (max-width: 600px) {
+        .ant-menu-submenu-title span span:first-child {
+            display: none;
+        }
+        .ant-menu-submenu-title span span:last-child {
+            margin-left: 0;
         }
     }
 

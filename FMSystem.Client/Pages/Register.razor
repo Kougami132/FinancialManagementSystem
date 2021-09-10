@@ -20,8 +20,10 @@
             <FormItem Label="密码">
                 <InputPassword @bind-Value="@context.UserPwd" Placeholder="例: 123456" MaxLength="32" />
             </FormItem>
-            <div style="margin: 10px 0;">
-                <label><span style="color: red;">*</span>&nbsp;再次输入密码</label>
+            <div style="margin-bottom: 24px;">
+                <div style="padding-bottom: 8px;">
+                    <label style="height: 22px; font-size: 14px;"><span style="color: red;">*</span>&nbsp;再次输入密码</label>
+                </div>
                 <InputPassword @bind-Value="@password" Placeholder="例: 123456" MaxLength="32" />
             </div>
             <FormItem WrapperColOffset="6" WrapperColSpan="24">

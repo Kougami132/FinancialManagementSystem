@@ -118,7 +118,7 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 98 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Category\FilterAndInput.razor"
+#line 99 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Category\FilterAndInput.razor"
        
 
     [Parameter]

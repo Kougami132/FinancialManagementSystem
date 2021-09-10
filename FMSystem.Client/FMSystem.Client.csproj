@@ -1,7 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FMSystem.Shared\FMSystem.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
 
 </Project>

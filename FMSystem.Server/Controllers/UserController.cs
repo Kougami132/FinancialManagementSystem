@@ -1,6 +1,7 @@
 ﻿using FMSystem.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -105,7 +106,7 @@ namespace FMSystem.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<Response>> EditUser(User editUser)
         {
-            if (IsUserAdmin(User.Identity.Name) || _context.Users.Find(editUser.Id).UserName == User.Identity.Name) //如果Token权限为Admin或修改自己信息
+            if (IsUserAdmin(User.Identity.Name) || _context.Users.AsNoTracking().FirstOrDefault(i => i.Id == editUser.Id).UserName == User.Identity.Name) //如果Token权限为Admin或修改自己信息
             {
                 try
                 {
@@ -113,9 +114,9 @@ namespace FMSystem.Server.Controllers
                     await _context.SaveChangesAsync();
                     return new Response(1);
                 }
-                catch
+                catch(Exception e)
                 {
-                    return new Response(0);
+                    return new Response(0, e.ToString());
                 }
             }
             else

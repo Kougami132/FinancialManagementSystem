@@ -39,28 +39,28 @@
                 </Col>
                 <Col Flex=@("auto")>
                     <Divider />
-                    <Row>
+                    <Row Style="min-height: 25px;">
                         <p>@self.UserName</p>
                     </Row>
                     <Divider />
-                    <Row>
+                    <Row Style="min-height: 25px;">
                         @{string p = self.Permission == Permissions.ADMIN ? "管理员" : self.Permission == Permissions.NORMAL ? "普通用户" : "其他";}
                         <p>@p</p>
                     </Row>
                     <Divider />
-                    <Row>
+                    <Row Style="min-height: 25px;">
                         <p>@self.QQ</p>
                     </Row>
                     <Divider />
-                    <Row>
+                    <Row Style="min-height: 25px;">
                         <p>@self.Email</p>
                     </Row>
                     <Divider />
-                    <Row>
+                    <Row Style="min-height: 25px;">
                         <p>@self.PhoneNumber</p>
                     </Row>
                     <Divider />
-                    <Row>
+                    <Row Style="min-height: 25px;">
                         <p>@self.Address</p>
                     </Row>
                     <Divider />
@@ -70,7 +70,8 @@
         <TabPane Key="2" Tab="修改信心">
             <Form Model="editUser"
                   Loading="loading1"
-                  Layout="@FormLayout.Vertical">
+                  Layout="@FormLayout.Vertical"
+                  OnFinish="OnEditInfo">
                 <FormItem Label="用户名">
                     <Input @bind-Value="@context.UserName" />
                 </FormItem>
@@ -86,27 +87,32 @@
                 <FormItem Label="地址">
                     <Input @bind-Value="@context.Address" />
                 </FormItem>
-                <Button Type="primary" OnClick="OnEditInfo">
+                <Button Type="primary" HtmlType="submit">
                     保存
                 </Button>
             </Form>
         </TabPane>
         <TabPane Key="3" Tab="修改密码">
             <Form Model="editPwd"
-                    Loading="loading2"
-                    Layout="@FormLayout.Vertical">
+                  Loading="loading2"
+                  Layout="@FormLayout.Vertical"
+                  OnFinish="OnResetPwd">
                 <div style="margin-bottom: 24px;">
-                    <label style="height: 22px; margin-bottom: 8px;"><span style="color: red;">*</span>&nbsp;旧密码</label>
+                    <div style="padding-bottom: 8px;">
+                        <label style="height: 22px; font-size: 14px;"><span style="color: red;">*</span>&nbsp;旧密码</label>
+                    </div>
                     <InputPassword @bind-Value="@oldPwd" Placeholder="例: 123456" MaxLength="32" />
                 </div>
                 <FormItem Label="新密码">
                     <InputPassword @bind-Value="@context.UserPwd" Placeholder="例: 123456" MaxLength="32" />
                 </FormItem>
                 <div style="margin-bottom: 24px;">
-                    <label style="height: 22px; margin-bottom: 8px;"><span style="color: red;">*</span>&nbsp;再次输入新密码</label>
+                    <div style="padding-bottom: 8px;">
+                        <label style="height: 22px; font-size: 14px;"><span style="color: red;">*</span>&nbsp;再次输入新密码</label>
+                    </div>
                     <InputPassword @bind-Value="@newPwd" Placeholder="例: 123456" MaxLength="32" />
                 </div>
-                <Button Type="primary" OnClick="OnResetPwd">
+                <Button Type="primary" HtmlType="submit">
                     确定
                 </Button>
             </Form>
@@ -117,7 +123,7 @@
 <style>
     p {
         font-size: 16px;
-        margin: 16px 24px;
+        margin: 0 24px
     }
 </style>
 
@@ -163,13 +169,14 @@
         };
     }
 
-    private async Task OnEditInfo()
+    private async Task OnEditInfo(EditContext editContext)
     {
         loading1 = true;
         Response res = await Http.GetFromJsonAsync<Response>("Api/User/IsUserExist?username=" + editUser.UserName);
-        if (res.Msg == "Yes" && editUser.UserName.ToLower() != editUser.UserName.ToLower())
+        if (res.Msg == "Yes" && editUser.UserName.ToLower() != self.UserName.ToLower())
         {
             messageService.Error("用户名已存在");
+            loading1 = true;
             return;
         }
 
@@ -188,7 +195,7 @@
         }
     }
 
-    private async Task OnResetPwd()
+    private async Task OnResetPwd(EditContext editContext)
     {
         if (oldPwd != self.UserPwd)
         {

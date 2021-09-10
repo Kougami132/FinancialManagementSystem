@@ -11,10 +11,13 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\brows
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\ICON-LICENSE
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\README.md
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\favicon.ico
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.png
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\input.png
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\loading1.gif
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\loading2.gif
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\output.png
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\index.html
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\manifest.json
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\sample-data\weather.json
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\Microsoft.CSharp.dll
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\Microsoft.VisualBasic.Core.dll
@@ -520,6 +523,8 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\brows
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\web.config
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\blazor.boot.json
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\blazor.webassembly.js
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\service-worker.js
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\service-worker-assets.js
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\app.css.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\bootstrap\bootstrap.min.css.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\bootstrap\bootstrap.min.css.map.br
@@ -533,10 +538,13 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\brows
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\ICON-LICENSE.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\README.md.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\favicon.ico.br
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.png.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\input.png.br
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\loading1.gif.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\loading2.gif.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\output.png.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\index.html.br
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\manifest.json.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\sample-data\weather.json.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\Microsoft.CSharp.dll.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\Microsoft.VisualBasic.Core.dll.br
@@ -1041,6 +1049,8 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\brows
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\FMSystem.Client.dll.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\blazor.boot.json.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\blazor.webassembly.js.br
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\service-worker.js.br
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\service-worker-assets.js.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\app.css.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\bootstrap\bootstrap.min.css.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\bootstrap\bootstrap.min.css.map.gz
@@ -1054,10 +1064,13 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\brows
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\ICON-LICENSE.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\README.md.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\favicon.ico.gz
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.png.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\input.png.gz
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\loading1.gif.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\loading2.gif.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\output.png.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\index.html.gz
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\manifest.json.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\sample-data\weather.json.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\Microsoft.CSharp.dll.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\Microsoft.VisualBasic.Core.dll.gz
@@ -1562,3 +1575,5 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\brows
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\FMSystem.Client.dll.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\blazor.boot.json.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\blazor.webassembly.js.gz
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\service-worker.js.gz
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\service-worker-assets.js.gz

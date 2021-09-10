@@ -120,7 +120,7 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 35 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Register.razor"
+#line 37 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Register.razor"
        
 
     bool registerLoading = false;

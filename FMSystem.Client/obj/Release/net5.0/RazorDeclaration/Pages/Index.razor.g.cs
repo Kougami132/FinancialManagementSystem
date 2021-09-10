@@ -156,6 +156,10 @@ using Newtonsoft.Json;
         {
             await Filter();
         }
+        else
+        {
+            loading = true;
+        }
     }
 
     private async Task Filter()

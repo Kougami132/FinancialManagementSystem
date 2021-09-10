@@ -119,7 +119,7 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 126 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
+#line 132 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
       
 
     private bool loading1, loading2;
@@ -160,13 +160,14 @@ using Microsoft.AspNetCore.Components.Authorization;
         };
     }
 
-    private async Task OnEditInfo()
+    private async Task OnEditInfo(EditContext editContext)
     {
         loading1 = true;
         Response res = await Http.GetFromJsonAsync<Response>("Api/User/IsUserExist?username=" + editUser.UserName);
-        if (res.Msg == "Yes" && editUser.UserName.ToLower() != editUser.UserName.ToLower())
+        if (res.Msg == "Yes" && editUser.UserName.ToLower() != self.UserName.ToLower())
         {
             messageService.Error("用户名已存在");
+            loading1 = true;
             return;
         }
 
@@ -185,7 +186,7 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
     }
 
-    private async Task OnResetPwd()
+    private async Task OnResetPwd(EditContext editContext)
     {
         if (oldPwd != self.UserPwd)
         {

@@ -118,7 +118,7 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 100 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Admin\SingleInput.razor"
+#line 110 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Components\Admin\SingleInput.razor"
        
 
     [Parameter]
@@ -235,7 +235,9 @@ using System.Security.Claims;
                 UserPwd = Selected.First().UserPwd,
                 Permission = Selected.First().Permission,
                 QQ = Selected.First().QQ,
-                Email = Selected.First().Email
+                Email = Selected.First().Email,
+                PhoneNumber = Selected.First().PhoneNumber,
+                Address = Selected.First().Address
             };
             dwVisible2 = true;
 

@@ -48,7 +48,7 @@ namespace FMSystem.Server
             services.AddDbContext<FMContext>();
             services.AddCors(options => 
             {
-                options.AddPolicy("Admin", builder => builder.AllowAnyOrigin().AllowAnyHeader());
+                options.AddPolicy("AllowAll", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
 
             services.AddSwaggerGen(c =>
@@ -73,7 +73,7 @@ namespace FMSystem.Server
 
             app.UseRouting();
 
-            app.UseCors("Admin");
+            app.UseCors("AllowAll");
 
             app.UseAuthentication();
             app.UseAuthorization();
