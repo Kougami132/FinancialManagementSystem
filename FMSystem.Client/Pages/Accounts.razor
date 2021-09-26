@@ -4,20 +4,112 @@
 @inject MessageService messageService
 @using System.Security.Claims
 
+<PageTitle Title="账户管理 - 个人财务管理系统" />
 
-<FMSystem.Client.Components.Account.FilterAndInput @bind-Owner="owner"
-                                                   @bind-SearchValue="searchName"
-                                                   @bind-Type="type"
-                                                   @bind-Selected="selectedAccounts"
-                                                   RefrashData="RefrashData"
-                                                   RefrashTable="RefrashTable">
-</FMSystem.Client.Components.Account.FilterAndInput>
+<div style="display: flex; justify-content: space-between;">
+    <div class="back_card" style="margin-bottom: 0;">
+        <div style="float: left; margin-right: 4px;">
+            <Search Placeholder="搜索账户" @bind-Value="searchName" Style="width: 100px;" OnChange="RefrashTable" ClassicSearchIcon />
+        </div>
+        <Select DataSource="@options"
+                @bind-Value="type"
+                DefaultValue="@("all")"
+                ValueName="@nameof(Option.Value)"
+                LabelName="@nameof(Option.Name)"
+                DisabledName="@nameof(Option.IsDisabled)"
+                OnSelectedItemChanged="@(async(i) => { await RefrashTable(); })"
+                style="width: 100px; text-align: center;">
+        </Select>
+    </div>
 
+    <div class="back_card" style="margin-bottom: 0;">
+        <Button Type="primary" Icon="plus" OnClick="@(()=> { dwVisible1 = true; })">新增账户</Button>
+        <Button Icon="edit" OnClick=" OnEdit">修改信息</Button>
+        <Button Loading="deleteLoading" Type="dashed" Danger OnClick="@(() => { if (selectedAccounts != null && selectedAccounts.Count() != 0) modalVisible = true; })">删除</Button>
+    </div>
+</div>
 
-<FMSystem.Client.Components.Account.TableInput Obj="table"
-                                               Data="showingAccounts"
-                                               @bind-Selected="selectedAccounts">
-</FMSystem.Client.Components.Account.TableInput>
+<div class="back_card" style="padding-bottom: 80px;">
+    <Table @ref="table" DataSource="@showingAccounts" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" @bind-SelectedRows="selectedAccounts">
+        <Selection Key="@(context.Id.ToString())" />
+        <Column Title="名称" @bind-Field="@context.Name" />
+        @{string p = @context.Type == PaymentType.BANK ? "银行" : @context.Type == PaymentType.CASH ? "现金" : @context.Type == PaymentType.ONLINE ? "线上" : "其他";}
+        <Column Title="种类" Field="@p" />
+        <Column Title="说明" Field="@context.Description" />
+    </Table>
+    <Pagination DefaultCurrent="1" Total="@showingAccounts.Length" OnChange="@((args)=> { tablePageIndex = args.Page; })" Style="position: absolute; right: 24px; bottom: 24px;" />
+</div>
+
+<Drawer Closable="true" Width="360" Visible="dwVisible1" Title=@("新增账户") OnClose="@(()=> { dwVisible1 = false; })">
+    <Form @ref="form1"
+          Loading="loading1"
+          Layout="@FormLayout.Vertical"
+          Model="@newAccount"
+          ValidateOnChange="true"
+          OnFinish="NewOnFinish"
+          OnFinishFailed="NewOnFinishFailed"
+          Style="padding: 12px;">
+        <FormItem Label="账户名称">
+            <Input @bind-Value="@context.Name" Placeholder="例: 工商银行6226" MaxLength="16" />
+        </FormItem>
+        <FormItem Label="账户分类">
+            <Select DataSource="@newOptions"
+                    @bind-Value="@context.Type"
+                    ValueName="@nameof(realOption.Value)"
+                    LabelName="@nameof(realOption.Name)"
+                    DisabledName="@nameof(realOption.IsDisabled)"
+                    Style="width: 100px; text-align: center;">
+            </Select>
+        </FormItem>
+        <FormItem Label="说明">
+            <Input @bind-Value="@context.Description" />
+        </FormItem>
+        <FormItem WrapperColOffset="6" WrapperColSpan="24">
+            <Button Type="default" OnClick="@(()=> { dwVisible1 = false; })">取消</Button>
+            <Button Type="primary" OnClick="NewOnSubmit">提交</Button>
+        </FormItem>
+    </Form>
+</Drawer>
+
+<Drawer Closable="true" Width="360" Visible="dwVisible2" Title=@("修改信息") OnClose="@(()=> { dwVisible2 = false; })">
+    <Form @ref="form2"
+          Loading="loading2"
+          Layout="@FormLayout.Vertical"
+          Model="@editAccount"
+          ValidateOnChange="true"
+          OnFinish="EditOnFinish"
+          OnFinishFailed="EditOnFinishFailed"
+          Style="padding: 12px;">
+        <FormItem Label="账户名称">
+            <Input @bind-Value="@context.Name" Placeholder="例: 工商银行6226" MaxLength="16" />
+        </FormItem>
+        <FormItem Label="账户分类">
+            <Select DataSource="@newOptions"
+                    @bind-Value="@context.Type"
+                    ValueName="@nameof(realOption.Value)"
+                    LabelName="@nameof(realOption.Name)"
+                    DisabledName="@nameof(realOption.IsDisabled)"
+                    Style="width: 100px; text-align: center;">
+            </Select>
+        </FormItem>
+        <FormItem Label="说明">
+            <Input @bind-Value="@context.Description" />
+        </FormItem>
+        <FormItem WrapperColOffset="6" WrapperColSpan="24">
+            <Button Type="default" OnClick="@(()=> { dwVisible2 = false; })">取消</Button>
+            <Button Type="primary" OnClick="EditOnSubmit">提交</Button>
+        </FormItem>
+    </Form>
+</Drawer>
+
+<Modal Title="提示"
+       Width="300"
+       Visible="@modalVisible"
+       OnOk="OnDelete"
+       OnCancel="@(() => { modalVisible = false; })">
+    <Text>删除选中账户</Text>
+</Modal>
+
 
 
 @code {
@@ -26,6 +118,11 @@
     private IEnumerable<Account> selectedAccounts;
     private string searchName, type;
     int owner;
+    private bool dwVisible1, dwVisible2, loading1, loading2, deleteLoading, modalVisible;
+    private AntDesign.Form<Account> form1, form2;
+    private Account newAccount = new() { Type = PaymentType.OTHER };
+    private Account editAccount = new();
+    private int tablePageIndex;
 
     private AntDesign.Table<Account> table;
 
@@ -75,4 +172,159 @@
         }
     }
 
+
+
+    public class Option
+    {
+        public string Value { get; set; }
+        public string Name { get; set; }
+        public bool IsDisabled { get; set; }
+    }
+
+    private List<Option> options = new List<Option>()
+    {
+        new Option {Value = "all", Name = "全部"},
+        new Option {Value = "bank", Name = "银行"},
+        new Option {Value = "cash", Name = "现金"},
+        new Option {Value = "online", Name = "线上"},
+        new Option {Value = "other", Name = "其它"}
+    };
+
+    public class realOption
+    {
+        public PaymentType Value { get; set; }
+        public string Name { get; set; }
+        public bool IsDisabled { get; set; }
+    }
+
+    private List<realOption> newOptions = new List<realOption>()
+    {
+        new realOption {Value = PaymentType.BANK, Name = "银行"},
+        new realOption {Value = PaymentType.CASH, Name = "现金"},
+        new realOption {Value = PaymentType.ONLINE, Name = "线上"},
+        new realOption {Value = PaymentType.OTHER, Name = "其它"}
+    };
+
+    private async Task NewOnSubmit()
+    {
+        Response response = await Http.GetFromJsonAsync<Response>("Api/Account/IsAccountExist?name=" + newAccount.Name);
+        if (response.Msg == "Yes")
+        {
+            messageService.Error("账户已存在");
+        }
+        else
+        {
+            loading1 = true;
+            newAccount.User = owner;
+            form1.Submit();
+        }
+    }
+
+    private async Task NewOnFinish(EditContext newContext)
+    {
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Account/AddAccount", newContext.Model);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            newAccount = new() { Type = PaymentType.OTHER };  //清空表单
+            loading1 = false;
+            dwVisible1 = false;
+            messageService.Success("提交成功");
+        }
+        else
+        {
+            loading1 = false;
+            messageService.Error("提交失败");
+        }
+    }
+
+    private async Task NewOnFinishFailed(EditContext editContext)
+    {
+        loading1 = false;
+        messageService.Error("提交失败");
+    }
+
+    private void OnEdit()
+    {
+        if (selectedAccounts == null || selectedAccounts.Count() == 0)
+        {
+            messageService.Error("请先选中一行数据");
+        }
+        else if (selectedAccounts.Count() != 1)
+        {
+            messageService.Error("只能对单项进行编辑");
+        }
+        else
+        {
+            editAccount = new()
+            {
+                Id = selectedAccounts.First().Id,
+                Name = selectedAccounts.First().Name,
+                Type = selectedAccounts.First().Type,
+                Description = selectedAccounts.First().Description
+            };
+            dwVisible2 = true;
+        }
+    }
+
+    private async Task EditOnSubmit()
+    {
+        Response response = await Http.GetFromJsonAsync<Response>("Api/Account/IsAccountExist?name=" + editAccount.Name);
+        if (response.Msg == "Yes" && editAccount.Name != selectedAccounts.First().Name)
+        {
+            messageService.Error("用户名已存在");
+        }
+        else
+        {
+            loading2 = true;
+            editAccount.User = owner;
+            form2.Submit();
+        }
+    }
+
+    private async Task EditOnFinish(EditContext editContext)
+    {
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Account/EditAccount", editContext.Model);
+        Response response = await (responseMsg).Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            loading2 = false;
+            dwVisible2 = false;
+            messageService.Success("提交成功");
+        }
+        else
+        {
+            loading2 = false;
+            messageService.Error("提交失败");
+        }
+
+    }
+
+    private async Task EditOnFinishFailed(EditContext editContext)
+    {
+        loading2 = false;
+        messageService.Error("提交失败");
+    }
+
+    private async Task OnDelete()
+    {
+        modalVisible = false;
+        deleteLoading = true;
+        int[] ids = selectedAccounts.Select(i => i.Id).ToArray();
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Account/DeleteAccount", ids);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            deleteLoading = false;
+            messageService.Success("删除成功");
+        }
+        else
+        {
+            deleteLoading = false;
+            messageService.Error("删除失败");
+        }
+    }
 }

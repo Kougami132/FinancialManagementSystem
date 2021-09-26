@@ -1201,7 +1201,7 @@
       "url": "_content\/AntDesign\/less\/upload\/style\/rtl.less"
     },
     {
-      "hash": "sha256-+pqDp5uLV+6qNegkn8aG8yUHf0xUaDyu9D8u2no4rTw=",
+      "hash": "sha256-pEOmFUsLFF61U38Fmz3b0U+XZ4AGjhJruTPStTCQnsY=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -2025,11 +2025,11 @@
       "url": "_framework\/FMSystem.Shared.pdb"
     },
     {
-      "hash": "sha256-7wUMuN11YsbFmm2JaOJY4r0c1a\/4Qs9jVw1jwXaLby0=",
+      "hash": "sha256-\/kOMywLsy5T5O5xL+LP91WuYWJFK+yDHJ+u+9EmTvlw=",
       "url": "_framework\/FMSystem.Client.dll"
     },
     {
-      "hash": "sha256-0RpbtcndxnfHDiUWmCClj7lBBaT9C7o2JaeYsEYDhRM=",
+      "hash": "sha256-6JC6ZBnReVhr\/rnODLZWwnbkZjJEoZ7LGG5XmU7FbzM=",
       "url": "_framework\/FMSystem.Client.pdb"
     },
     {
@@ -2901,12 +2901,16 @@
       "url": "css\/open-iconic\/README.md"
     },
     {
-      "hash": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=",
+      "hash": "sha256-DM74lYbk9A60i33DllBwWUWycytkNBsjdqxMhA4AHHk=",
+      "url": "decode.js"
+    },
+    {
+      "hash": "sha256-kSaq96GtghQp56jTvNjAldUI7G4dcD2xoih0KJxQJ8c=",
       "url": "favicon.ico"
     },
     {
       "hash": "sha256-oEo6d+KqX5fjxTiZk\/w9NB3Mi0+ycS5yLwCKwr4IkbA=",
-      "url": "icon-512.png"
+      "url": "images\/icon-512.png"
     },
     {
       "hash": "sha256-EzzgJDbmODgG8skuwyjVFXOoFL5cSbIM3KvT5tUXnaE=",
@@ -2921,15 +2925,35 @@
       "url": "images\/loading2.gif"
     },
     {
+      "hash": "sha256-0JPQzfRLgzEj9cV2Mt72s8f17qGfFXDXm88u9sSEOr4=",
+      "url": "images\/logo.png"
+    },
+    {
+      "hash": "sha256-CnS3Wd+HbkWFXgeQicZio1HkwKMvEnkab\/pnvqoBRN0=",
+      "url": "images\/logo1.png"
+    },
+    {
+      "hash": "sha256-Ux1QLbQUauXv7huftbs5SZdKxKTQv8ZOXm91wR+O2AU=",
+      "url": "images\/logo2.png"
+    },
+    {
+      "hash": "sha256-h7gz7yUEF9p3NFngSYvxiucSUlwWEDwMs3r1dqgVf0E=",
+      "url": "images\/menu1.png"
+    },
+    {
+      "hash": "sha256-phfLB8DfqCdFW3azn0A8xGmIIeKcendULN5WkadPWZQ=",
+      "url": "images\/menu2.png"
+    },
+    {
       "hash": "sha256-iTesj70\/XocybzSK4u\/QLvFbJMow0fU60pKAoUwyMQA=",
       "url": "images\/output.png"
     },
     {
-      "hash": "sha256-9+SOHKoG+VWrf1t+1AXKZYk\/8\/KfhXrjFfOytzjhZPA=",
+      "hash": "sha256-QcijwfO0Y\/fF7IxXaaizl1S\/SDNOH7LzIoa\/jK1XUJo=",
       "url": "index.html"
     },
     {
-      "hash": "sha256-wSCMXGmw8hw9KiU9tYLVt3XuAEQZpIMecCWfY2nTSE0=",
+      "hash": "sha256-VhoK4ychjClwrYESLNrLBWsvxVTV1vzudySv6IS3SSU=",
       "url": "manifest.json"
     },
     {
@@ -2945,5 +2969,5 @@
       "url": "FMSystem.Client.bundle.scp.css"
     }
   ],
-  "version": "Lp1IjoWf"
+  "version": "RQ08dRCL"
 };

@@ -119,13 +119,18 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 24 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Categories.razor"
+#line 115 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Categories.razor"
        
 
     private Category[] categories, showingCategories = new List<Category>().ToArray();
     private IEnumerable<Category> selectedCategories;
     private string searchName, type;
     int owner;
+    private bool dwVisible1, dwVisible2, loading1, loading2, deleteLoading, modalVisible;
+    private AntDesign.Form<Category> form1, form2;
+    private Category newCategory = new() { Type = InputOrOutput.INPUT };
+    private Category editCategory = new();
+    private int tablePageIndex;
 
     private AntDesign.Table<Category> table;
 
@@ -168,6 +173,157 @@ using System.Security.Claims;
         }
     }
 
+
+
+    public class Option
+    {
+        public string Value { get; set; }
+        public string Name { get; set; }
+        public bool IsDisabled { get; set; }
+    }
+
+    private List<Option> options = new List<Option>()
+{
+        new Option {Value = "all", Name = "全部"},
+        new Option {Value = "input", Name = "收入"},
+        new Option {Value = "output", Name = "支出"}
+    };
+
+    public class realOption
+    {
+        public InputOrOutput Value { get; set; }
+        public string Name { get; set; }
+        public bool IsDisabled { get; set; }
+    }
+
+    private List<realOption> newOptions = new List<realOption>()
+{
+        new realOption {Value = InputOrOutput.INPUT, Name = "收入"},
+        new realOption {Value = InputOrOutput.OUTPUT, Name = "支出"}
+    };
+
+    private async Task NewOnSubmit()
+    {
+        Response response = await Http.GetFromJsonAsync<Response>("Api/Category/IsCategoryExist?name=" + newCategory.Name);
+        if (response.Msg == "Yes")
+        {
+            messageService.Error("分类已存在");
+        }
+        else
+        {
+            loading1 = true;
+            newCategory.User = owner;
+            form1.Submit();
+        }
+    }
+
+    private async Task NewOnFinish(EditContext newContext)
+    {
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Category/AddCategory", newContext.Model);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            newCategory = new() { Type = InputOrOutput.INPUT };  //清空表单
+            loading1 = false;
+            dwVisible1 = false;
+            messageService.Success("提交成功");
+        }
+        else
+        {
+            loading1 = false;
+            messageService.Error("提交失败");
+        }
+    }
+
+    private async Task NewOnFinishFailed(EditContext editContext)
+    {
+        loading1 = false;
+        messageService.Error("提交失败");
+    }
+
+    private void OnEdit()
+    {
+        if (selectedCategories == null || selectedCategories.Count() == 0)
+        {
+            messageService.Error("请先选中一行数据");
+        }
+        else if (selectedCategories.Count() != 1)
+        {
+            messageService.Error("只能对单项进行编辑");
+        }
+        else
+        {
+            editCategory = new()
+            {
+                Id = selectedCategories.First().Id,
+                Name = selectedCategories.First().Name,
+                Type = selectedCategories.First().Type,
+                Description = selectedCategories.First().Description
+            };
+            dwVisible2 = true;
+        }
+    }
+
+    private async Task EditOnSubmit()
+    {
+        Response response = await Http.GetFromJsonAsync<Response>("Api/Category/IsCategoryExist?name=" + editCategory.Name);
+        if (response.Msg == "Yes" && editCategory.Name != selectedCategories.First().Name)
+        {
+            messageService.Error("分类名已存在");
+        }
+        else
+        {
+            loading2 = true;
+            editCategory.User = owner;
+            form2.Submit();
+        }
+    }
+
+    private async Task EditOnFinish(EditContext editContext)
+    {
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Category/EditCategory", editContext.Model);
+        Response response = await (responseMsg).Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            loading2 = false;
+            dwVisible2 = false;
+            messageService.Success("提交成功");
+        }
+        else
+        {
+            loading2 = false;
+            messageService.Error("提交失败");
+        }
+
+    }
+
+    private async Task EditOnFinishFailed(EditContext editContext)
+    {
+        loading2 = false;
+        messageService.Error("提交失败");
+    }
+
+    private async Task OnDelete()
+    {
+        modalVisible = false;
+        deleteLoading = true;
+        int[] ids = selectedCategories.Select(i => i.Id).ToArray();
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Category/DeleteCategory", ids);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            deleteLoading = false;
+            messageService.Success("删除成功");
+        }
+        else
+        {
+            deleteLoading = false;
+            messageService.Error("删除失败");
+        }
+    }
 
 #line default
 #line hidden

@@ -119,13 +119,18 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 23 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
+#line 115 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
        
 
     private Account[] accounts, showingAccounts = new List<Account>().ToArray();
     private IEnumerable<Account> selectedAccounts;
     private string searchName, type;
     int owner;
+    private bool dwVisible1, dwVisible2, loading1, loading2, deleteLoading, modalVisible;
+    private AntDesign.Form<Account> form1, form2;
+    private Account newAccount = new() { Type = PaymentType.OTHER };
+    private Account editAccount = new();
+    private int tablePageIndex;
 
     private AntDesign.Table<Account> table;
 
@@ -175,6 +180,161 @@ using System.Security.Claims;
         }
     }
 
+
+
+    public class Option
+    {
+        public string Value { get; set; }
+        public string Name { get; set; }
+        public bool IsDisabled { get; set; }
+    }
+
+    private List<Option> options = new List<Option>()
+    {
+        new Option {Value = "all", Name = "全部"},
+        new Option {Value = "bank", Name = "银行"},
+        new Option {Value = "cash", Name = "现金"},
+        new Option {Value = "online", Name = "线上"},
+        new Option {Value = "other", Name = "其它"}
+    };
+
+    public class realOption
+    {
+        public PaymentType Value { get; set; }
+        public string Name { get; set; }
+        public bool IsDisabled { get; set; }
+    }
+
+    private List<realOption> newOptions = new List<realOption>()
+    {
+        new realOption {Value = PaymentType.BANK, Name = "银行"},
+        new realOption {Value = PaymentType.CASH, Name = "现金"},
+        new realOption {Value = PaymentType.ONLINE, Name = "线上"},
+        new realOption {Value = PaymentType.OTHER, Name = "其它"}
+    };
+
+    private async Task NewOnSubmit()
+    {
+        Response response = await Http.GetFromJsonAsync<Response>("Api/Account/IsAccountExist?name=" + newAccount.Name);
+        if (response.Msg == "Yes")
+        {
+            messageService.Error("账户已存在");
+        }
+        else
+        {
+            loading1 = true;
+            newAccount.User = owner;
+            form1.Submit();
+        }
+    }
+
+    private async Task NewOnFinish(EditContext newContext)
+    {
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Account/AddAccount", newContext.Model);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            newAccount = new() { Type = PaymentType.OTHER };  //清空表单
+            loading1 = false;
+            dwVisible1 = false;
+            messageService.Success("提交成功");
+        }
+        else
+        {
+            loading1 = false;
+            messageService.Error("提交失败");
+        }
+    }
+
+    private async Task NewOnFinishFailed(EditContext editContext)
+    {
+        loading1 = false;
+        messageService.Error("提交失败");
+    }
+
+    private void OnEdit()
+    {
+        if (selectedAccounts == null || selectedAccounts.Count() == 0)
+        {
+            messageService.Error("请先选中一行数据");
+        }
+        else if (selectedAccounts.Count() != 1)
+        {
+            messageService.Error("只能对单项进行编辑");
+        }
+        else
+        {
+            editAccount = new()
+            {
+                Id = selectedAccounts.First().Id,
+                Name = selectedAccounts.First().Name,
+                Type = selectedAccounts.First().Type,
+                Description = selectedAccounts.First().Description
+            };
+            dwVisible2 = true;
+        }
+    }
+
+    private async Task EditOnSubmit()
+    {
+        Response response = await Http.GetFromJsonAsync<Response>("Api/Account/IsAccountExist?name=" + editAccount.Name);
+        if (response.Msg == "Yes" && editAccount.Name != selectedAccounts.First().Name)
+        {
+            messageService.Error("用户名已存在");
+        }
+        else
+        {
+            loading2 = true;
+            editAccount.User = owner;
+            form2.Submit();
+        }
+    }
+
+    private async Task EditOnFinish(EditContext editContext)
+    {
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Account/EditAccount", editContext.Model);
+        Response response = await (responseMsg).Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            loading2 = false;
+            dwVisible2 = false;
+            messageService.Success("提交成功");
+        }
+        else
+        {
+            loading2 = false;
+            messageService.Error("提交失败");
+        }
+
+    }
+
+    private async Task EditOnFinishFailed(EditContext editContext)
+    {
+        loading2 = false;
+        messageService.Error("提交失败");
+    }
+
+    private async Task OnDelete()
+    {
+        modalVisible = false;
+        deleteLoading = true;
+        int[] ids = selectedAccounts.Select(i => i.Id).ToArray();
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/Account/DeleteAccount", ids);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            deleteLoading = false;
+            messageService.Success("删除成功");
+        }
+        else
+        {
+            deleteLoading = false;
+            messageService.Error("删除失败");
+        }
+    }
 
 #line default
 #line hidden

@@ -113,7 +113,7 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Logout.razor"
+#line 11 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Logout.razor"
        
 
     protected override async Task OnInitializedAsync()

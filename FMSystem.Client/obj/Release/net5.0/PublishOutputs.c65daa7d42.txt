@@ -10,6 +10,7 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\brows
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\font\fonts\open-iconic.woff
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\ICON-LICENSE
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\README.md
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\decode.js
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\favicon.ico
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.png
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\input.png
@@ -537,6 +538,7 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\brows
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\font\fonts\open-iconic.woff.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\ICON-LICENSE.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\README.md.br
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\decode.js.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\favicon.ico.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.png.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\input.png.br
@@ -1063,6 +1065,7 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\brows
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\font\fonts\open-iconic.woff.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\ICON-LICENSE.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\css\open-iconic\README.md.gz
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\decode.js.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\favicon.ico.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\icon-512.png.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\images\input.png.gz

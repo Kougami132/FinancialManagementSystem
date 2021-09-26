@@ -5,32 +5,183 @@
 @using System.Net.Http
 @inject HttpClient Http
 @inject MessageService messageService
+@using System.Security.Claims
 
-
+<PageTitle Title="用户管理 - 个人财务管理系统" />
 
 <div style="display: flex; justify-content: space-between;">
-    <!-- #region 单个操作按钮(搜索、新建、修改) -->
-    <FMSystem.Client.Components.Admin.SingleInput @bind-SearchValue="searchName"
-                                                  @bind-Permission="permission"
-                                                  @bind-Selected="selectedUsers"
-                                                  RefrashData="RefrashData"
-                                                  RefrashTable="RefrashTable">
-    </FMSystem.Client.Components.Admin.SingleInput>
-    <!-- #endregion -->
+    <div class="back_card" style="margin-bottom: 0;">
+        <div style="float: left; margin-right: 4px;">
+            <Search Placeholder="搜索用户" @bind-Value="searchName" Style="width: 100px;" OnChange="RefrashTable" ClassicSearchIcon />
+        </div>
+        <Select DataSource="@options"
+                @bind-Value="permission"
+                DefaultValue="@("all")"
+                ValueName="@nameof(Option.Value)"
+                LabelName="@nameof(Option.Name)"
+                DisabledName="@nameof(Option.IsDisabled)"
+                OnSelectedItemChanged="@(async(i) => { await RefrashTable(); })"
+                style="width: 100px; text-align: center;">
+        </Select>
+        <Button Type="primary" Icon="plus" OnClick="@(()=> { dwVisible1 = true; })">新增用户</Button>
+        <Button Icon="edit" OnClick=" OnEdit">修改信息</Button>
+    </div>
 
-    <!-- #region 批量操作按钮(更改权限、重置密码、清空数据、删除) -->
-    <FMSystem.Client.Components.Admin.PluralInput Selected="selectedUsers"
-                                                  Refrash="RefrashData">
-    </FMSystem.Client.Components.Admin.PluralInput>
-    <!-- #endregion -->
+    <div class="back_card" style="margin-bottom: 0;">
+        <Spin Spinning="editLoading">
+            <Button Type="primary" Danger OnClick="@(() => { if (selectedUsers != null && selectedUsers.Count() != 0) modalVisible1 = true; })">重置密码</Button>
+            <Button Danger OnClick="@(() => { if (selectedUsers != null && selectedUsers.Count() != 0) modalVisible2 = true; })">清空数据</Button>
+            <Button Type="dashed" Danger OnClick="@(() => { if (selectedUsers != null && selectedUsers.Count() != 0) modalVisible3 = true; })">删除</Button>
+        </Spin>
+    </div>
 </div>
 
-<!-- #region Table表格 -->
-<FMSystem.Client.Components.Admin.TableInput Obj="table"
-                                             Data="showingUsers"
-                                             @bind-Selected="selectedUsers">
-</FMSystem.Client.Components.Admin.TableInput>
-<!-- #endregion -->
+<Drawer Closable="true" Width="360" Visible="dwVisible1" Title=@("新增用户") OnClose="@(()=> { dwVisible1 = false; })">
+    <Form @ref="form1"
+          Loading="loading1"
+          Layout="@FormLayout.Vertical"
+          Model="@newUser"
+          ValidateOnChange="true"
+          OnFinish="NewOnFinish"
+          OnFinishFailed="NewOnFinishFailed"
+          Style="padding: 12px;">
+        <FormItem Label="用户名">
+            <Input @bind-Value="@context.UserName" Placeholder="例: test132" MaxLength="16" />
+        </FormItem>
+        <FormItem Label="密码">
+            <InputPassword @bind-Value="@context.UserPwd" Placeholder="例: 123456" MaxLength="32" />
+        </FormItem>
+        <FormItem Label="权限组">
+            <Select DataSource="@newOptions"
+                    @bind-Value="@context.Permission"
+                    ValueName="@nameof(realOption.Value)"
+                    LabelName="@nameof(realOption.Name)"
+                    DisabledName="@nameof(realOption.IsDisabled)"
+                    Style="width: 100px; text-align: center;">
+            </Select>
+        </FormItem>
+        <FormItem Label="QQ">
+            <Input @bind-Value="@context.QQ" Placeholder="例: 1234567890" />
+        </FormItem>
+        <FormItem Label="邮箱">
+            <Input @bind-Value="@context.Email" Placeholder="例: test132@gmail.com" />
+        </FormItem>
+        <FormItem Label="手机号">
+            <Input @bind-Value="@context.PhoneNumber" Placeholder="例: 18324221977" />
+        </FormItem>
+        <FormItem Label="地址">
+            <Input @bind-Value="@context.Address" Placeholder="例: 瓯海区 新桥街道 六虹桥路1000号" />
+        </FormItem>
+        <FormItem WrapperColOffset="6" WrapperColSpan="24">
+            <Button Type="default" OnClick="@(()=> { dwVisible1 = false; })">取消</Button>
+            <Button Type="primary" OnClick="NewOnSubmit">提交</Button>
+        </FormItem>
+    </Form>
+</Drawer>
+
+<Drawer Closable="true" Width="360" Visible="dwVisible2" Title=@("修改信息") OnClose="@(()=> { dwVisible2 = false; })">
+    <Form @ref="form2"
+          Loading="loading2"
+          Layout="@FormLayout.Vertical"
+          Model="@editUser"
+          ValidateOnChange="true"
+          OnFinish="EditOnFinish"
+          OnFinishFailed="EditOnFinishFailed"
+          Style="padding: 12px;">
+        <FormItem Label="用户名">
+            <Input @bind-Value="@context.UserName" Placeholder="例: test132" MaxLength="16" />
+        </FormItem>
+        <FormItem Label="密码">
+            <InputPassword @bind-Value="@context.UserPwd" Placeholder="例: 123456" MaxLength="32" />
+        </FormItem>
+        <FormItem Label="权限组">
+            <Select DataSource="@newOptions"
+                    @bind-Value="@context.Permission"
+                    ValueName="@nameof(realOption.Value)"
+                    LabelName="@nameof(realOption.Name)"
+                    DisabledName="@nameof(realOption.IsDisabled)"
+                    Style="width: 100px; text-align: center;"
+                    Disabled="@self">
+            </Select>
+        </FormItem>
+        <FormItem Label="QQ">
+            <Input @bind-Value="@context.QQ" Placeholder="例: 1234567890" />
+        </FormItem>
+        <FormItem Label="邮箱">
+            <Input @bind-Value="@context.Email" Placeholder="例: test132@gmail.com" />
+        </FormItem>
+        <FormItem Label="手机号">
+            <Input @bind-Value="@context.PhoneNumber" Placeholder="例: 18324221977" />
+        </FormItem>
+        <FormItem Label="地址">
+            <Input @bind-Value="@context.Address" Placeholder="例: 瓯海区 新桥街道 六虹桥路1000号" />
+        </FormItem>
+        <FormItem WrapperColOffset="6" WrapperColSpan="24">
+            <Button Type="default" OnClick="@(()=> { dwVisible2 = false; })">取消</Button>
+            <Button Type="primary" OnClick="EditOnSubmit">提交</Button>
+        </FormItem>
+    </Form>
+</Drawer>
+
+<Modal Title="提示"
+       Width="300"
+       Visible="@modalVisible1"
+       OnOk="OnResetPwd"
+       OnCancel="@(() => { modalVisible1 = false; })">
+    <Text>重置选中用户密码为</Text>
+    <Input @bind-Value="editPwd" Placeholder="例: 123456" MaxLength="32" />
+</Modal>
+
+<Modal Title="提示"
+       Width="300"
+       Visible="@modalVisible2"
+       OnOk="OnClearData"
+       OnCancel="@(() => { modalVisible2 = false; })">
+    <Text>清除选中用户数据</Text>
+</Modal>
+
+<Modal Title="提示"
+       Width="300"
+       Visible="@modalVisible3"
+       OnOk="OnDelete"
+       OnCancel="@(() => { modalVisible3 = false; })">
+    <Text>删除选中用户</Text>
+</Modal>
+
+<div class="back_card" style="padding-bottom: 80px;">
+    <Table @ref="table" DataSource="@showingUsers" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" @bind-SelectedRows="selectedUsers">
+        <Selection Key="@(context.Id.ToString())" />
+        <Column Title="用户" @bind-Field="@context.UserName" />
+        <Column Title="密码" @bind-Field="@context.UserPwd" />
+        @{string p = @context.Permission == Permissions.ADMIN ? "管理员" : @context.Permission == Permissions.NORMAL ? "普通用户" : "其他";}
+        <Column Title="权限组" Field="@p" />
+        <Column Title="QQ" Field="@context.QQ" />
+        <Column Title="邮箱" Field="@context.Email" />
+        <Column Title="手机号" Field="@context.PhoneNumber" />
+        <Column Title="地址" Field="@context.Address" />
+        <ActionColumn>
+            <Button Type="link" OnClick="@(async i => { await ShowDetail(context.Id); })">详情</Button>
+        </ActionColumn>
+    </Table>
+    <Pagination DefaultCurrent="1" Total="@showingUsers.Length" OnChange="@((args)=> { tablePageIndex = args.Page; })" Style="position: absolute; right: 24px; bottom: 24px;" />
+</div>
+
+<Modal Title="信息详情"
+       Visible="@modalVisible"
+       OnOk="@HandleOk"
+       OnCancel="@HandleCancel"
+       OkText="@("修改")"
+       CancelText="@("关闭")"
+       Width="320"
+       Centered>
+    <p>用户名: @detailUser.UserName</p>
+    @{string p = detailUser.Permission == Permissions.ADMIN ? "管理员" : detailUser.Permission == Permissions.NORMAL ? "普通用户" : "其他";}
+    <p>权限组: @p</p>
+    <p>QQ: @detailUser.QQ</p>
+    <p>邮箱: @detailUser.Email</p>
+    <p>手机号: @detailUser.PhoneNumber</p>
+    <p>地址: @detailUser.Address</p>
+</Modal>
 
 
 
@@ -38,9 +189,15 @@
 
     private User[] users, showingUsers = new List<User>().ToArray();
     private IEnumerable<User> selectedUsers;
+    private User detailUser;
     private string searchName, permission;
+    private int tablePageIndex;
+    private bool modalVisible;
 
     private AntDesign.Table<User> table;
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -74,4 +231,271 @@
         }
     }
 
+
+    private bool dwVisible1, dwVisible2, loading1, loading2;
+    private AntDesign.Form<User> form1, form2;
+    private User newUser = new() { Permission = Permissions.NORMAL };
+    private User editUser = new();
+    private bool self = false;
+
+
+    public class Option
+    {
+        public string Value { get; set; }
+        public string Name { get; set; }
+        public bool IsDisabled { get; set; }
+    }
+
+    private List<Option> options = new List<Option>()
+{
+        new Option {Value = "all", Name = "全部"},
+        new Option {Value = "admin", Name = "管理员"},
+        new Option {Value = "normal", Name = "普通用户"}
+    };
+
+    public class realOption
+    {
+        public Permissions Value { get; set; }
+        public string Name { get; set; }
+        public bool IsDisabled { get; set; }
+    }
+
+    private List<realOption> newOptions = new List<realOption>()
+{
+        new realOption {Value = Permissions.ADMIN, Name = "管理员"},
+        new realOption {Value = Permissions.NORMAL, Name = "普通用户"}
+    };
+
+
+
+    private async Task NewOnSubmit()
+    {
+        Response response = await Http.GetFromJsonAsync<Response>("Api/User/IsUserExist?username=" + newUser.UserName);
+        if (response.Msg == "Yes")
+        {
+            messageService.Error("用户名已存在");
+        }
+        else
+        {
+            loading1 = true;
+            form1.Submit();
+        }
+    }
+
+    private async Task NewOnFinish(EditContext newContext)
+    {
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/AddUser", newContext.Model);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            newUser = new User() { Permission = Permissions.NORMAL };  //清空表单
+            loading1 = false;
+            dwVisible1 = false;
+            messageService.Success("提交成功");
+        }
+        else
+        {
+            loading1 = false;
+            messageService.Error("提交失败");
+        }
+    }
+
+    private async Task NewOnFinishFailed(EditContext editContext)
+    {
+        loading1 = false;
+        messageService.Error("提交失败");
+    }
+
+    private void OnEdit()
+    {
+        if (selectedUsers == null || selectedUsers.Count() == 0)
+        {
+            messageService.Error("请先选中一行数据");
+        }
+        else if (selectedUsers.Count() != 1)
+        {
+            messageService.Error("只能对单项进行编辑");
+        }
+        else
+        {
+            editUser = new()
+            {
+                Id = selectedUsers.First().Id,
+                UserName = selectedUsers.First().UserName,
+                UserPwd = selectedUsers.First().UserPwd,
+                Permission = selectedUsers.First().Permission,
+                QQ = selectedUsers.First().QQ,
+                Email = selectedUsers.First().Email,
+                PhoneNumber = selectedUsers.First().PhoneNumber,
+                Address = selectedUsers.First().Address
+            };
+            dwVisible2 = true;
+
+            //不得修改自己的权限组
+            AuthenticationState authState = authenticationStateTask.Result;
+            ClaimsPrincipal user = authState.User;
+            if (editUser.UserName == user.Identity.Name)
+            {
+                self = true;
+            }
+            else
+            {
+                self = false;
+            }
+        }
+    }
+
+    private async Task EditOnSubmit()
+    {
+        Response response = await Http.GetFromJsonAsync<Response>("Api/User/IsUserExist?username=" + editUser.UserName);
+        if (response.Msg == "Yes" && editUser.UserName.ToLower() != selectedUsers.First().UserName.ToLower())
+        {
+            messageService.Error("用户名已存在");
+        }
+        else
+        {
+            loading2 = true;
+            form2.Submit();
+        }
+    }
+
+    private async Task EditOnFinish(EditContext editContext)
+    {
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/EditUser", editContext.Model);
+        Response response = await (responseMsg).Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            loading2 = false;
+            dwVisible2 = false;
+            messageService.Success("提交成功");
+        }
+        else
+        {
+            loading2 = false;
+            messageService.Error("提交失败");
+        }
+
+    }
+
+    private async Task EditOnFinishFailed(EditContext editContext)
+    {
+        loading2 = false;
+        messageService.Error("提交失败");
+    }
+
+    private bool editLoading, modalVisible1, modalVisible2, modalVisible3;
+    private string editPwd;
+
+
+    private async Task OnResetPwd()
+    {
+        if (editPwd == "") return;
+        modalVisible1 = false;
+        editLoading = true;
+        int[] ids = selectedUsers.Select(i => i.Id).ToArray();
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/ResetUserPwd?password=" + editPwd, ids);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            editLoading = false;
+            messageService.Success("重置成功");
+        }
+        else
+        {
+            editLoading = false;
+            messageService.Error("重置失败");
+        }
+    }
+
+    private async Task OnClearData()
+    {
+        modalVisible2 = false;
+        editLoading = true;
+        int[] ids = selectedUsers.Select(i => i.Id).ToArray();
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/ClearUserData", ids);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            editLoading = false;
+            messageService.Success("清除成功");
+        }
+        else
+        {
+            editLoading = false;
+            messageService.Error("清除失败");
+        }
+    }
+
+    private async Task OnDelete()
+    {
+        AuthenticationState authState = await authenticationStateTask;
+        ClaimsPrincipal user = authState.User;
+        if (selectedUsers.Any(i => i.UserName == user.Identity.Name))
+        {
+            messageService.Error("不得删除自己");
+            return;
+        }
+        modalVisible3 = false;
+        editLoading = true;
+        int[] ids = selectedUsers.Select(i => i.Id).ToArray();
+        HttpResponseMessage responseMsg = await Http.PostAsJsonAsync("Api/User/DeleteUser", ids);
+        Response response = await responseMsg.Content.ReadFromJsonAsync<Response>();
+        if (response.Type == 1)
+        {
+            await RefrashData();   //刷新表格
+            editLoading = false;
+            messageService.Success("删除成功");
+        }
+        else
+        {
+            editLoading = false;
+            messageService.Error("删除失败");
+        }
+    }
+
+
+
+    private async Task ShowDetail(int id)
+    {
+        detailUser = users.FirstOrDefault(i => i.Id == id);
+        modalVisible = true;
+    }
+
+    private async Task HandleOk()
+    {
+        editUser = new()
+        {
+            Id = detailUser.Id,
+            UserName = detailUser.UserName,
+            UserPwd = detailUser.UserPwd,
+            Permission = detailUser.Permission,
+            QQ = detailUser.QQ,
+            Email = detailUser.Email,
+            PhoneNumber = detailUser.PhoneNumber,
+            Address = detailUser.Address
+        };
+        modalVisible = false;
+        dwVisible2 = true;
+
+        //不得修改自己的权限组
+        AuthenticationState authState = authenticationStateTask.Result;
+        ClaimsPrincipal user = authState.User;
+        if (editUser.UserName == user.Identity.Name)
+        {
+            self = true;
+        }
+        else
+        {
+            self = false;
+        }
+    }
+
+    private async Task HandleCancel()
+    {
+        modalVisible = false;
+    }
 }

@@ -199,7 +199,7 @@
       "OneOf.dll": "sha256-K99lDyL6VrtTDYGRk5o+Q3caW25Uogee\/1e7aIvpgLY=",
       "System.IO.Pipelines.dll": "sha256-3ET+mpR7F058YRj9YaLHOVXBqOW6iUxtIpeiKPYw4PA=",
       "FMSystem.Shared.dll": "sha256-HHqRs\/MseTsYci3TL9cMWrkqvin6OTwYUdKLetaHgKY=",
-      "FMSystem.Client.dll": "sha256-oRkHCxN80AaFNC3Rdl8gamRVFDmIKCh5UikV9VApF6M="
+      "FMSystem.Client.dll": "sha256-jnGMRRHpKBENFj\/nh3ll\/V1Srdu1vQBreQzhmJhGABc="
     },
     "lazyAssembly": null,
     "pdb": null,

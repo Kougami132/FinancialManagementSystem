@@ -118,7 +118,7 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 170 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
+#line 179 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
       
 
     [CascadingParameter]

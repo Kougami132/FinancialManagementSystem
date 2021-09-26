@@ -120,7 +120,7 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Login.razor"
+#line 41 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Login.razor"
        
     private bool loginLoading;
     private LoginDto loginUser = new();

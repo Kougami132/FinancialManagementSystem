@@ -4,96 +4,94 @@
 @using System.Security.Claims
 
 <Layout Style="height: 100vh;">
-    <Header Class="header">
-        <div class="menu_horizontal">
-            <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedKeys=@(new []{"1"})>
-                <MenuItem Key="1" RouterLink="/" RouterMatch="NavLinkMatch.All">
-                    <Icon Type="home" Theme="outline"></Icon>
-                    首页
-                </MenuItem>
-                @{
-                    RenderFragment sub1Title =
-                    @<span>
-                        <Icon Type="table" Theme="outline"></Icon>
-                        <span>数据管理</span>
-                    </span>;
-                }
-                <SubMenu Key="sub1" TitleTemplate=@sub1Title>
+    <Sider Collapsible
+           Collapsed=@collapsed 
+           NoTrigger 
+           Width="256"
+           Class="pc site-layout-background" 
+           Style="box-shadow: 0 0 10px #888888; z-index: 99999;">
+        <div class="logo">
+            <img src="images/logo1.png" style="height: 100%;" />
+            @if (!collapsed)
+            {
+                <img src="images/logo2.png" style="height: 100%;" />
+            }
+        </div>
+        <Menu Mode="MenuMode.Inline"
+              DefaultSelectedKeys=@(new[] {"1"})
+              DefaultOpenKeys=@(new[] {"sub1"})>
+            <MenuItem Key="1" RouterLink="/" RouterMatch="NavLinkMatch.All">
+                <Icon Type="home" Theme="outline"></Icon>
+                <span>首页</span>
+            </MenuItem>
+            @{
+                RenderFragment sub1Title =
+                @<span>
+                    <Icon Type="table" Theme="outline"></Icon>
+                    <span>数据管理</span>
+                </span>;
+            }
+            <SubMenu Key="sub1" TitleTemplate=@sub1Title>
+                <MenuItemGroup Key="group1" Title="记录管理">
+                    <MenuDivider />
                     <MenuItem Key="2" RouterLink="/records">账单管理</MenuItem>
+                </MenuItemGroup>
+                <MenuItemGroup Key="group2" Title="选项管理">
+                    <MenuDivider />
                     <MenuItem Key="3" RouterLink="/categories">分类管理</MenuItem>
                     <MenuItem Key="4" RouterLink="/accounts">账户管理</MenuItem>
-                </SubMenu>
-                <MenuItem Key="5" RouterLink="/settings">
-                    <Icon Type="user" Theme="outline"></Icon>
-                    个人中心
+                </MenuItemGroup>
+            </SubMenu>
+            <MenuItem Key="5" RouterLink="/settings">
+                <Icon Type="user" Theme="outline"></Icon>
+                <span>个人中心</span>
+            </MenuItem>
+            <AuthorizeView Policy="Admin">
+                <MenuItem Key="6" RouterLink="/admin">
+                    <Icon Type="team" Theme="outline"></Icon>
+                    <span>用户管理</span>
                 </MenuItem>
-                <AuthorizeView Policy="Admin">
-                    <MenuItem Key="6" RouterLink="/admin">
-                        <Icon Type="team" Theme="outline"></Icon>
-                        用户管理
-                    </MenuItem>
-                </AuthorizeView>
-                <MenuItem Key="7" RouterLink="/logout">
-                    <Icon Type="logout" Theme="outline"></Icon>
-                    注销
-                </MenuItem>
-            </Menu>
-        </div>
-        <div class="site-button-ghost-wrapper auth">
-            <AuthorizeView>
-                <Authorized>
+            </AuthorizeView>
+        </Menu>
+    </Sider>
+    <Layout>
+        <Header Class="site-layout-background" Style="padding: 0; box-shadow: 0 0 10px #888888; z-index: 99998;">
+            <div class="pc" style="float: left;">
+                @if (collapsed)
+                {
+                    <Icon Type="menu-unfold" Theme="outline" Class="trigger" OnClick="@(i => { collapsed = !collapsed; })" />
+                }
+                else
+                {
+                    <Icon Type="menu-fold" Theme="outline" Class="trigger" OnClick="@(i => { collapsed = !collapsed; })" />
+                }
+            </div>
+            <div class="pc site-button-ghost-wrapper" style="float: right; color: black;">
+                <AuthorizeView>
                     你好, <b>@context.User.Identity.Name</b> !
                     <Button Type="link" Danger OnClick="@(() => { navigationManager.NavigateTo("/logout"); })">注销</Button>
-                </Authorized>
-                <NotAuthorized>
-                    <Button Type="link" OnClick="@(() => { navigationManager.NavigateTo("/login"); })">登录</Button>
-                    <Button Type="link" OnClick="@(() => { navigationManager.NavigateTo("/register"); })">注册</Button>
-                </NotAuthorized>
-            </AuthorizeView>
-        </div>
-    </Header>
-    <Layout>
-        <Sider Width="256" Class="site-layout-background menu_inline">
-            <Menu Mode="MenuMode.Inline"
-                  DefaultSelectedKeys=@(new[] {"1"})
-                  DefaultOpenKeys=@(new[] {"sub1"})
-                  Style="height: 100%; border-right: 0;">
-                <MenuItem Key="1" RouterLink="/" RouterMatch="NavLinkMatch.All">
-                    <Icon Type="home" Theme="outline"></Icon>
-                    首页
-                </MenuItem>
-                @{
-                    RenderFragment sub1Title =
-                    @<span>
-                        <Icon Type="table" Theme="outline"></Icon>
-                        <span>数据管理</span>
-                    </span>;
-                }
-                <SubMenu Key="sub1" TitleTemplate=@sub1Title>
-                    <MenuItemGroup Key="group1" Title="记录管理">
-                        <MenuDivider />
-                        <MenuItem Key="2" RouterLink="/records">账单管理</MenuItem>
-                    </MenuItemGroup>
-                    <MenuItemGroup Key="group2" Title="选项管理">
-                        <MenuDivider />
-                        <MenuItem Key="3" RouterLink="/categories">分类管理</MenuItem>
-                        <MenuItem Key="4" RouterLink="/accounts">账户管理</MenuItem>
-                    </MenuItemGroup>
-                </SubMenu>
-                <MenuItem Key="5" RouterLink="/settings">
-                    <Icon Type="user" Theme="outline"></Icon>
-                    个人中心
-                </MenuItem>
-                <AuthorizeView Policy="Admin">
-                    <MenuItem Key="6" RouterLink="/admin">
-                        <Icon Type="team" Theme="outline"></Icon>
-                        用户管理
-                    </MenuItem>
                 </AuthorizeView>
-            </Menu>
-        </Sider>
-        <Layout Class="long_content">
-            <div style="min-height: 100%;">
+            </div>
+
+            <img class="mobile mobile-logo" src="images/logo1.png" />
+            <div class="mobile">
+                @if (open)
+                {
+                    <img src="images/menu2.png" class="mobile-menu-button" @onclick="@(i => { open = false; slideClass = "slide-up"; })" />
+                }
+                else
+                {
+                    <img src="images/menu1.png" class="mobile-menu-button" @onclick="@(i => { open = true; slideClass = ""; })" />
+                }
+            </div>
+        </Header>
+        <div class="mobile">
+            <div class="slide @slideClass" style="width: 100%; position: absolute; box-shadow: 0 0 10px #888888; z-index: 99997;">
+                <NavMenu />
+            </div>
+        </div>
+        <Content Class="long-content">
+            <div style="min-height: 100%;" @ontouchstart="@(i => { open = false; slideClass = "slide-up"; })">
                 <Content Style="padding: 12px 12px 0; position: relative;">
                     <AuthorizeView>
                         <Authorized>
@@ -109,60 +107,84 @@
                 </Content>
                 <Footer Style="text-align: center;">Copyright © 2021 Kougami<br />Powered by .NET 5.0 on Blazor WebAssembly</Footer>
             </div>
-        </Layout>
+        </Content>
     </Layout>
 </Layout>
 
 <style>
 
-    @@media (min-width: 1400px) {
-        .menu_horizontal {
+    @@media (min-width: 768px) {
+
+        .ant-layout-header .trigger {
+            font-size: 18px;
+            line-height: 64px;
+            padding: 0 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .ant-layout-header .trigger:hover {
+            color: #1890ff;
+        }
+
+        .mobile {
             display: none;
         }
-        .menu_inline {
-            display: block;
-        }
+
     }
 
-    @@media (max-width: 1400px) {
-        .menu_horizontal {
-            display: block;
-        }
-        .menu_inline {
+    @@media (max-width: 768px) {
+
+        .pc {
             display: none;
         }
-        .ant-menu-horizontal  {
-            display: flex;
+
+        .mobile-logo, .mobile-menu-button {
+            height: 40px;
+            margin: 12px;
+        }
+        .mobile-logo {
+            float: left;
+        }
+        .mobile-menu-button {
+            float: right;
+        }
+
+        .ant-menu-item {
             justify-content: center;
         }
-        .auth {
-            display: none;
+        .ant-menu-submenu-title {
+            justify-content: center;
         }
-    }
+        .ant-menu-item-group-title {
+            text-align: center;
+        }
 
-    @@media (max-width: 600px) {
-        .ant-menu-submenu-title span span:first-child {
-            display: none;
+        .slide {
+            transition: all .5s cubic-bezier(0, 1, 0.5, 1);
+            transform: translateY(0);
         }
-        .ant-menu-submenu-title span span:last-child {
-            margin-left: 0;
+        .slide-up {
+            transform: translateY(-100%);
         }
-    }
 
-    .auth {
-        color: white;
-        float: right;
     }
 
     .site-layout-background {
         background: #fff;
     }
 
-    .long_content {
-        overflow: scroll;
-        min-height: 100%;
+    .logo {
+        height: 44px;
+        margin: 10px;
+        display: flex;
+        justify-content: space-evenly;
     }
-    .long_content::-webkit-scrollbar {
+
+    .long-content {
+        overflow: scroll;
+        height: 100%;
+    }
+    .long-content::-webkit-scrollbar {
         display: none;
     }
 
@@ -171,12 +193,15 @@
         margin: 12px;
         position: relative;
         background: #fff;
-        border-radius: 10px;
+        border-radius: 4px;
     }
 
 </style>
 
 @code{
+
+    private string slideClass = "slide-up";
+    private bool collapsed, open;
 
     [CascadingParameter]
     private Task<AuthenticationState> authenticationStateTask { get; set; }

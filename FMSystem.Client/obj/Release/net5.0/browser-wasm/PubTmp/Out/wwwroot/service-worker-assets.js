@@ -49,6 +49,10 @@
       "url": "css\/open-iconic\/README.md"
     },
     {
+      "hash": "sha256-DM74lYbk9A60i33DllBwWUWycytkNBsjdqxMhA4AHHk=",
+      "url": "decode.js"
+    },
+    {
       "hash": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=",
       "url": "favicon.ico"
     },
@@ -73,11 +77,11 @@
       "url": "images\/output.png"
     },
     {
-      "hash": "sha256-9+SOHKoG+VWrf1t+1AXKZYk\/8\/KfhXrjFfOytzjhZPA=",
+      "hash": "sha256-v0ZfA4Iz5WRwzWnLPnHCXWd8+TJqTJknvd\/WQoxdgbI=",
       "url": "index.html"
     },
     {
-      "hash": "sha256-wSCMXGmw8hw9KiU9tYLVt3XuAEQZpIMecCWfY2nTSE0=",
+      "hash": "sha256-VhoK4ychjClwrYESLNrLBWsvxVTV1vzudySv6IS3SSU=",
       "url": "manifest.json"
     },
     {
@@ -2085,11 +2089,11 @@
       "url": "_framework\/FMSystem.Shared.dll"
     },
     {
-      "hash": "sha256-oRkHCxN80AaFNC3Rdl8gamRVFDmIKCh5UikV9VApF6M=",
+      "hash": "sha256-jnGMRRHpKBENFj\/nh3ll\/V1Srdu1vQBreQzhmJhGABc=",
       "url": "_framework\/FMSystem.Client.dll"
     },
     {
-      "hash": "sha256-N9L3w+NCu7Fm\/nC6PbiEyUzbw7MG1ILv3DhO+46n76Q=",
+      "hash": "sha256-3UcLVUmdS7JsZXXRqnTver1NzJxwugtG2HXFHg8rkcM=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -2097,5 +2101,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "kYGKX0vY"
+  "version": "6t7DHzNo"
 };

@@ -246,7 +246,7 @@ using Newtonsoft.Json;
         List<object> lineObj = line.ConvertAll(i => (object)i);
         List<object> data = new List<object> { columnObj, null };
         List<object> test = new List<object> { new List<object>
-        {
+    {
             new {time = "2019-03", value = 350.4545445, type = "uv"},
             new {time = "2019-04", value = 922.54400, type = "uv"},
             new {time = "2019-05", value = 3045.450, type = "uv"},
@@ -258,7 +258,7 @@ using Newtonsoft.Json;
             new {time = "2019-06", value = 2245.540, type = "bill"},
             new {time = "2019-07", value = 36543.045452, type = "bill"}
         }, new List<object>
-        {
+    {
             new {time = "2019-03", rate = 465.13568, name = "test"},
             new {time = "2019-04", rate = 46593.356549, name = "test"},
             new {time = "2019-05", rate = 4978.16594564, name = "test"},

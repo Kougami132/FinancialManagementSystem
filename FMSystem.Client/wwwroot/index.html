@@ -6,21 +6,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>个人财务管理系统</title>
         <base href="/" />
+
+        <!-- default -->
         <!--<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />-->
         <link href="css/app.css" rel="stylesheet" />
         <!--<link href="FinancialManagementSystem.styles.css" rel="stylesheet" />-->
+
+        <!-- Ant Design -->
         <link href="_content/AntDesign/css/ant-design-blazor.css" rel="stylesheet">
+
+        <!-- PWA -->
         <link href="manifest.json" rel="manifest" />
-        <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+        <link rel="apple-touch-icon" sizes="512x512" href="images/icon-512.png" />
+
     </head>
 
     <body>
         <!--<div id="app">Loading...</div>-->
         <div id="app">
             <div style="width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction:  column;">
-                <h1>财务管理系统</h1>
+                <img src="images/logo.png" style="max-width: 100%;" />
                 <img src="images/loading2.gif" style="width: 128px;" />
-                <h5>加载中...</h5>
+                <h5>少女祈祷中...</h5>
             </div>
         </div>
 
@@ -30,11 +37,48 @@
             <a href="" class="reload">Reload</a>
             <a class="dismiss">🗙</a>
         </div>
+
+        <!-- 压缩 -->
         <script src="_framework/blazor.webassembly.js"></script>
+        <!--<script src="decode.js"></script>
+        <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+        <script>
+            Blazor.start({
+                loadBootResource: function (type, name, defaultUri, integrity) {
+                    if (type !== 'dotnetjs' && location.hostname !== 'localhost') {
+                        return (async function () {
+                            const response = await fetch(defaultUri + '.br', { cache: 'no-cache' });
+                            if (!response.ok) {
+                                throw new Error(response.statusText);
+                            }
+                            const originalResponseBuffer = await response.arrayBuffer();
+                            const originalResponseArray = new Int8Array(originalResponseBuffer);
+                            const decompressedResponseArray = BrotliDecode(originalResponseArray);
+                            const contentType = type ===
+                                'dotnetwasm' ? 'application/wasm' : 'application/octet-stream';
+                            return new Response(decompressedResponseArray,
+                                { headers: { 'content-type': contentType } });
+                        })();
+                    }
+                }
+            });
+        </script>-->
+
+        <!-- PWA -->
         <script>navigator.serviceWorker.register('service-worker.js');</script>
+
+        <!-- Ant Design -->
         <script src="_content/AntDesign/js/ant-design-blazor.js"></script>
         <script src="https://unpkg.com/@antv/g2plot@1.1.28/dist/g2plot.js"></script>
         <script src="_content/AntDesign.Charts/ant-design-charts-blazor.js"></script>
+
+        <!-- Page Title -->
+        <script>
+            window.setTitle = (title) => {
+                document.title = title;
+            };
+        </script>
+
     </body>
 
 </html>
