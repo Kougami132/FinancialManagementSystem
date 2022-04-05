@@ -7,10 +7,11 @@
 <PageTitle Title="个人中心 - 个人财务管理系统" />
 
 <div class="back_card">
-    <Tabs DefaultActiveKey="1" TabPosition="@TabPosition.Left">
-        <TabPane Key="1" Tab="个人信息">
-            <Row>
-                <Col>
+    <div class="tab-box">
+        <Tabs DefaultActiveKey="1" TabPosition="@TabPosition.Left" Style="min-width: 777px;">
+            <TabPane Key="1" Tab="个人信息">
+                <Row>
+                    <Col>
                     <Divider />
                     <Row Style="justify-content: flex-end;">
                         <p>用户名:</p>
@@ -36,8 +37,8 @@
                         <p>地址:</p>
                     </Row>
                     <Divider />
-                </Col>
-                <Col Flex=@("auto")>
+                    </Col>
+                    <Col Flex=@("auto")>
                     <Divider />
                     <Row Style="min-height: 25px;">
                         <p>@self.UserName</p>
@@ -64,66 +65,73 @@
                         <p>@self.Address</p>
                     </Row>
                     <Divider />
-                </Col>
-            </Row>
-        </TabPane>
-        <TabPane Key="2" Tab="修改信心">
-            <Form Model="editUser"
-                  Loading="loading1"
-                  Layout="@FormLayout.Vertical"
-                  OnFinish="OnEditInfo">
-                <FormItem Label="用户名">
-                    <Input @bind-Value="@context.UserName" />
-                </FormItem>
-                <FormItem Label="QQ">
-                    <Input @bind-Value="@context.QQ" />
-                </FormItem>
-                <FormItem Label="邮箱">
-                    <Input @bind-Value="@context.Email" />
-                </FormItem>
-                <FormItem Label="手机号">
-                    <Input @bind-Value="@context.PhoneNumber" />
-                </FormItem>
-                <FormItem Label="地址">
-                    <Input @bind-Value="@context.Address" />
-                </FormItem>
-                <Button Type="primary" HtmlType="submit">
-                    保存
-                </Button>
-            </Form>
-        </TabPane>
-        <TabPane Key="3" Tab="修改密码">
-            <Form Model="editPwd"
-                  Loading="loading2"
-                  Layout="@FormLayout.Vertical"
-                  OnFinish="OnResetPwd">
-                <div style="margin-bottom: 24px;">
-                    <div style="padding-bottom: 8px;">
-                        <label style="height: 22px; font-size: 14px;"><span style="color: red;">*</span>&nbsp;旧密码</label>
+                    </Col>
+                </Row>
+            </TabPane>
+            <TabPane Key="2" Tab="修改信息">
+                <Form Model="editUser"
+                      Loading="loading1"
+                      Layout="@FormLayout.Vertical"
+                      OnFinish="OnEditInfo">
+                    <FormItem Label="用户名">
+                        <Input @bind-Value="@context.UserName" />
+                    </FormItem>
+                    <FormItem Label="QQ">
+                        <Input @bind-Value="@context.QQ" />
+                    </FormItem>
+                    <FormItem Label="邮箱">
+                        <Input @bind-Value="@context.Email" />
+                    </FormItem>
+                    <FormItem Label="手机号">
+                        <Input @bind-Value="@context.PhoneNumber" />
+                    </FormItem>
+                    <FormItem Label="地址">
+                        <Input @bind-Value="@context.Address" />
+                    </FormItem>
+                    <Button Type="primary" HtmlType="submit">
+                        保存
+                    </Button>
+                </Form>
+            </TabPane>
+            <TabPane Key="3" Tab="修改密码">
+                <Form Model="editPwd"
+                      Loading="loading2"
+                      Layout="@FormLayout.Vertical"
+                      OnFinish="OnResetPwd">
+                    <div style="margin-bottom: 24px;">
+                        <div style="padding-bottom: 8px;">
+                            <label style="height: 22px; font-size: 14px;"><span style="color: red;">*</span>&nbsp;旧密码</label>
+                        </div>
+                        <InputPassword @bind-Value="@oldPwd" Placeholder="例: 123456" MaxLength="32" />
                     </div>
-                    <InputPassword @bind-Value="@oldPwd" Placeholder="例: 123456" MaxLength="32" />
-                </div>
-                <FormItem Label="新密码">
-                    <InputPassword @bind-Value="@context.UserPwd" Placeholder="例: 123456" MaxLength="32" />
-                </FormItem>
-                <div style="margin-bottom: 24px;">
-                    <div style="padding-bottom: 8px;">
-                        <label style="height: 22px; font-size: 14px;"><span style="color: red;">*</span>&nbsp;再次输入新密码</label>
+                    <FormItem Label="新密码">
+                        <InputPassword @bind-Value="@context.UserPwd" Placeholder="例: 123456" MaxLength="32" />
+                    </FormItem>
+                    <div style="margin-bottom: 24px;">
+                        <div style="padding-bottom: 8px;">
+                            <label style="height: 22px; font-size: 14px;"><span style="color: red;">*</span>&nbsp;再次输入新密码</label>
+                        </div>
+                        <InputPassword @bind-Value="@newPwd" Placeholder="例: 123456" MaxLength="32" />
                     </div>
-                    <InputPassword @bind-Value="@newPwd" Placeholder="例: 123456" MaxLength="32" />
-                </div>
-                <Button Type="primary" HtmlType="submit">
-                    确定
-                </Button>
-            </Form>
-        </TabPane>
-    </Tabs>
+                    <Button Type="primary" HtmlType="submit">
+                        确定
+                    </Button>
+                </Form>
+            </TabPane>
+        </Tabs>
+    </div>
 </div>
 
 <style>
     p {
         font-size: 16px;
         margin: 0 24px
+    }
+    .tab-box {
+        overflow: scroll;
+    }
+    .tab-box::-webkit-scrollbar {
+        display: none;
     }
 </style>
 

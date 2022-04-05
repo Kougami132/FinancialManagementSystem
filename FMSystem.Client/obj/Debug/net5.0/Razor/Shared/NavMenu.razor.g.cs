@@ -106,7 +106,7 @@ using Microsoft.AspNetCore.Components.Authorization;
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
             __builder.OpenComponent<AntDesign.Menu>(0);
-            __builder.AddAttribute(1, "Mode", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<AntDesign.MenuMode>(
+            __builder.AddAttribute(1, "Mode", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<AntDesign.MenuMode>(
 #nullable restore
 #line 1 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\NavMenu.razor"
             MenuMode.Inline
@@ -115,7 +115,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(2, "DefaultSelectedKeys", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.IEnumerable<System.String>>(
+            __builder.AddAttribute(2, "DefaultSelectedKeys", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.IEnumerable<System.String>>(
 #nullable restore
 #line 2 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\NavMenu.razor"
                             new[] {"1"}
@@ -124,7 +124,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(3, "DefaultOpenKeys", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.IEnumerable<System.String>>(
+            __builder.AddAttribute(3, "DefaultOpenKeys", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.IEnumerable<System.String>>(
 #nullable restore
 #line 3 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\NavMenu.razor"
                         new[] {"sub1"}
@@ -137,7 +137,7 @@ using Microsoft.AspNetCore.Components.Authorization;
                 __builder2.OpenComponent<AntDesign.MenuItem>(5);
                 __builder2.AddAttribute(6, "Key", "1");
                 __builder2.AddAttribute(7, "RouterLink", "/");
-                __builder2.AddAttribute(8, "RouterMatch", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
+                __builder2.AddAttribute(8, "RouterMatch", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
 #nullable restore
 #line 4 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\NavMenu.razor"
                                                   NavLinkMatch.All
@@ -185,7 +185,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 #nullable disable
                 __builder2.OpenComponent<AntDesign.SubMenu>(21);
                 __builder2.AddAttribute(22, "Key", "sub1");
-                __builder2.AddAttribute(23, "TitleTemplate", new Microsoft.AspNetCore.Components.RenderFragment(
+                __builder2.AddAttribute(23, "TitleTemplate", (Microsoft.AspNetCore.Components.RenderFragment)(
 #nullable restore
 #line 15 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\NavMenu.razor"
                                        sub1Title

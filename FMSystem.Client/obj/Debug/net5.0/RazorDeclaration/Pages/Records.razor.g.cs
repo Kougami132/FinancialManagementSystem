@@ -126,7 +126,7 @@ using System.Text.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 195 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
+#line 198 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
        
 
     private Record[] records = new List<Record>().ToArray(), showingRecords = new List<Record>().ToArray();
@@ -227,6 +227,8 @@ using System.Text.Json;
             date = Convert.ToDateTime(date.ToShortDateString());
             showingRecords = showingRecords.Where(i => DateTime.Compare(i.CreateTime, date) <= 0).ToArray();
         }
+
+        tablePageIndex = 1;
     }
 
 

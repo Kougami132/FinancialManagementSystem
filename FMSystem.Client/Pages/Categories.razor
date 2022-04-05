@@ -6,7 +6,7 @@
 
 <PageTitle Title="分类管理 - 个人财务管理系统" />
 
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
     <div class="back_card" style="margin-bottom: 0;">
         <div style="float: left; margin-right: 4px;">
             <Search Placeholder="搜索分类" @bind-Value="searchName" Style="width: 100px;" OnChange="RefrashTable" ClassicSearchIcon />
@@ -100,14 +100,14 @@
 </Modal>
 
 <div class="back_card" style="padding-bottom: 80px;">
-    <Table @ref="table" DataSource="@showingCategories" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" @bind-SelectedRows="selectedCategories">
+    <Table @ref="table" DataSource="@showingCategories" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" @bind-SelectedRows="selectedCategories" Bordered>
         <Selection Key="@(context.Id.ToString())" />
         <Column Title="名称" @bind-Field="@context.Name" />
         @{string p = @context.Type == InputOrOutput.INPUT ? "收入" : "支出";}
         <Column Title="种类" Field="@p" />
         <Column Title="说明" Field="@context.Description" />
     </Table>
-    <Pagination DefaultCurrent="1" Total="@showingCategories.Length" OnChange="@((args)=> { tablePageIndex = args.Page; })" Style="position: absolute; right: 24px; bottom: 24px;" />
+    <Pagination Current="tablePageIndex" DefaultCurrent="1" Total="@showingCategories.Length" OnChange="@((args)=> { tablePageIndex = args.Page; })" Style="position: absolute; right: 24px; bottom: 24px;" />
 </div>
 
 
@@ -163,6 +163,8 @@
         {
             showingCategories = showingCategories.Where(i => i.Name.ToLower().Contains(searchName.ToLower())).ToArray();
         }
+
+        tablePageIndex = 1;
     }
 
 

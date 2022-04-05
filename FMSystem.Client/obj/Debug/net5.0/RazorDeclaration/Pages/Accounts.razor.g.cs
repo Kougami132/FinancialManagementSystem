@@ -178,6 +178,7 @@ using System.Security.Claims;
         {
             showingAccounts = showingAccounts.Where(i => i.Name.ToLower().Contains(searchName.ToLower())).ToArray();
         }
+        tablePageIndex = 1;
     }
 
 

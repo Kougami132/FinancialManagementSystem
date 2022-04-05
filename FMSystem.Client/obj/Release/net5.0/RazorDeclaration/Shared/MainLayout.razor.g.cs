@@ -118,8 +118,11 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 179 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
+#line 247 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
       
+
+    private string slideClass = "slide-up";
+    private bool collapsed, open;
 
     [CascadingParameter]
     private Task<AuthenticationState> authenticationStateTask { get; set; }

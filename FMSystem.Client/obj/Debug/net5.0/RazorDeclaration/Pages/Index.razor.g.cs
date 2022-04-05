@@ -126,7 +126,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 91 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Index.razor"
+#line 95 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Index.razor"
        
 
     private IEnumerable<Record> records;
@@ -198,7 +198,7 @@ using Newtonsoft.Json;
         }
         //await UpdateColumnLineChartData();
         await UpdateChartData();
-        await UpdateColumnData();
+        //await UpdateColumnData();
     }
 
     private async Task UpdateColumnLineChartData()

@@ -119,7 +119,7 @@ using System.Security.Claims;
             __builder.CloseComponent();
             __builder.AddMarkupContent(2, "\r\n\r\n");
             __builder.OpenComponent<AntDesign.Card>(3);
-            __builder.AddAttribute(4, "Bordered", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(4, "Bordered", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 11 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Register.razor"
                 true
@@ -128,7 +128,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(5, "Title", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.AddAttribute(5, "Title", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 11 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Register.razor"
                               "注册新用户"
@@ -138,7 +138,7 @@ using System.Security.Claims;
 #nullable disable
             ));
             __builder.AddAttribute(6, "Style", "width:400px; cursor: default;");
-            __builder.AddAttribute(7, "Hoverable", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(7, "Hoverable", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 11 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Register.razor"
                                                                                         true
@@ -208,7 +208,7 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-                        , 24, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.UserName = __value, context.UserName)), 25, () => context.UserName);
+                        , 24, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.UserName = __value, context.UserName)), 25, () => context.UserName);
                     }
                     ));
                     __builder3.CloseComponent();
@@ -218,7 +218,7 @@ using System.Security.Claims;
                     __builder3.AddAttribute(29, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder4) => {
                         __builder4.OpenComponent<AntDesign.InputPassword>(30);
                         __builder4.AddAttribute(31, "Placeholder", "例: 123456");
-                        __builder4.AddAttribute(32, "MaxLength", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+                        __builder4.AddAttribute(32, "MaxLength", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 23 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Register.razor"
                                                                                                  32
@@ -227,7 +227,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
                         ));
-                        __builder4.AddAttribute(33, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                        __builder4.AddAttribute(33, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 23 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Register.razor"
                                              context.UserPwd
@@ -236,8 +236,8 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
                         ));
-                        __builder4.AddAttribute(34, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.UserPwd = __value, context.UserPwd))));
-                        __builder4.AddAttribute(35, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => context.UserPwd));
+                        __builder4.AddAttribute(34, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.UserPwd = __value, context.UserPwd))));
+                        __builder4.AddAttribute(35, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => context.UserPwd));
                         __builder4.CloseComponent();
                     }
                     ));
@@ -248,7 +248,7 @@ using System.Security.Claims;
                     __builder3.AddMarkupContent(39, "<div style=\"padding-bottom: 8px;\"><label style=\"height: 22px; font-size: 14px;\"><span style=\"color: red;\">*</span>&nbsp;再次输入密码</label></div>\r\n                ");
                     __builder3.OpenComponent<AntDesign.InputPassword>(40);
                     __builder3.AddAttribute(41, "Placeholder", "例: 123456");
-                    __builder3.AddAttribute(42, "MaxLength", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+                    __builder3.AddAttribute(42, "MaxLength", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 29 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Register.razor"
                                                                                           32
@@ -257,7 +257,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(43, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                    __builder3.AddAttribute(43, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 29 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Register.razor"
                                              password
@@ -266,13 +266,13 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(44, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => password = __value, password))));
-                    __builder3.AddAttribute(45, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => password));
+                    __builder3.AddAttribute(44, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => password = __value, password))));
+                    __builder3.AddAttribute(45, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => password));
                     __builder3.CloseComponent();
                     __builder3.CloseElement();
                     __builder3.AddMarkupContent(46, "\r\n            ");
                     __builder3.OpenComponent<AntDesign.FormItem>(47);
-                    __builder3.AddAttribute(48, "WrapperColOffset", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
+                    __builder3.AddAttribute(48, "WrapperColOffset", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
 #nullable restore
 #line 31 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Register.razor"
                                         6
@@ -281,7 +281,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(49, "WrapperColSpan", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
+                    __builder3.AddAttribute(49, "WrapperColSpan", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
 #nullable restore
 #line 31 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Register.razor"
                                                            24
@@ -293,7 +293,7 @@ using System.Security.Claims;
                     __builder3.AddAttribute(50, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder4) => {
                         __builder4.OpenComponent<AntDesign.Button>(51);
                         __builder4.AddAttribute(52, "Type", "default");
-                        __builder4.AddAttribute(53, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                        __builder4.AddAttribute(53, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 32 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Register.razor"
                                                   ()=> { navigationManager.NavigateTo("/login"); }

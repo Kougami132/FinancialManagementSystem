@@ -119,7 +119,7 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 114 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
+#line 115 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
        
 
     private Account[] accounts, showingAccounts = new List<Account>().ToArray();

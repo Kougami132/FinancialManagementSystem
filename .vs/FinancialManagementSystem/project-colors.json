@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7a4ef556-e479-49c5-9409-d9ae042731d0": {
+      "ProjectGuid": "7a4ef556-e479-49c5-9409-d9ae042731d0",
+      "DisplayName": "FMSystem.Client",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -119,7 +119,7 @@ using Microsoft.AspNetCore.Components.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 132 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
+#line 140 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
       
 
     private bool loading1, loading2;

@@ -6,7 +6,7 @@
 
 <PageTitle Title="账户管理 - 个人财务管理系统" />
 
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
     <div class="back_card" style="margin-bottom: 0;">
         <div style="float: left; margin-right: 4px;">
             <Search Placeholder="搜索账户" @bind-Value="searchName" Style="width: 100px;" OnChange="RefrashTable" ClassicSearchIcon />
@@ -30,14 +30,14 @@
 </div>
 
 <div class="back_card" style="padding-bottom: 80px;">
-    <Table @ref="table" DataSource="@showingAccounts" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" @bind-SelectedRows="selectedAccounts">
+    <Table @ref="table" DataSource="@showingAccounts" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" @bind-SelectedRows="selectedAccounts" Bordered>
         <Selection Key="@(context.Id.ToString())" />
         <Column Title="名称" @bind-Field="@context.Name" />
         @{string p = @context.Type == PaymentType.BANK ? "银行" : @context.Type == PaymentType.CASH ? "现金" : @context.Type == PaymentType.ONLINE ? "线上" : "其他";}
         <Column Title="种类" Field="@p" />
         <Column Title="说明" Field="@context.Description" />
     </Table>
-    <Pagination DefaultCurrent="1" Total="@showingAccounts.Length" OnChange="@((args)=> { tablePageIndex = args.Page; })" Style="position: absolute; right: 24px; bottom: 24px;" />
+    <Pagination Current="tablePageIndex" DefaultCurrent="1" Total="@showingAccounts.Length" OnChange="@((args)=> { tablePageIndex = args.Page; })" Style="position: absolute; right: 24px; bottom: 24px;" />
 </div>
 
 <Drawer Closable="true" Width="360" Visible="dwVisible1" Title=@("新增账户") OnClose="@(()=> { dwVisible1 = false; })">
@@ -170,6 +170,7 @@
         {
             showingAccounts = showingAccounts.Where(i => i.Name.ToLower().Contains(searchName.ToLower())).ToArray();
         }
+        tablePageIndex = 1;
     }
 
 

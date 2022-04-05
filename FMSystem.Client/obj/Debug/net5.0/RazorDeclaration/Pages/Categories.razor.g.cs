@@ -171,6 +171,8 @@ using System.Security.Claims;
         {
             showingCategories = showingCategories.Where(i => i.Name.ToLower().Contains(searchName.ToLower())).ToArray();
         }
+
+        tablePageIndex = 1;
     }
 
 

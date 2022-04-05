@@ -9,7 +9,7 @@
            NoTrigger 
            Width="256"
            Class="pc site-layout-background" 
-           Style="box-shadow: 0 0 10px #888888; z-index: 99999;">
+           Style="box-shadow: 0 0 10px #888888; z-index: 999;">
         <div class="logo">
             <img src="images/logo1.png" style="height: 100%;" />
             @if (!collapsed)
@@ -55,7 +55,7 @@
         </Menu>
     </Sider>
     <Layout>
-        <Header Class="site-layout-background" Style="padding: 0; box-shadow: 0 0 10px #888888; z-index: 99998;">
+        <Header Class="site-layout-background" Style="padding: 0; box-shadow: 0 0 10px #888888; z-index: 99;">
             <div class="pc" style="float: left;">
                 @if (collapsed)
                 {
@@ -86,12 +86,49 @@
             </div>
         </Header>
         <div class="mobile">
-            <div class="slide @slideClass" style="width: 100%; position: absolute; box-shadow: 0 0 10px #888888; z-index: 99997;">
-                <NavMenu />
+            <div class="slide @slideClass" style="width: 100%; position: absolute; z-index: 9;">
+                <Menu Mode="MenuMode.Inline"
+                      DefaultSelectedKeys=@(new[] {"1"})
+                      DefaultOpenKeys=@(new[] {"sub1"})>
+                    <MenuItem Key="1" RouterLink="/" RouterMatch="NavLinkMatch.All" @onclick="@(i => { open = false; slideClass = "slide-up"; })">
+                        <Icon Type="home" Theme="outline"></Icon>
+                        <span>首页</span>
+                    </MenuItem>
+                    @{
+                        RenderFragment sub1Title =
+                        @<span>
+                            <Icon Type="table" Theme="outline"></Icon>
+                            <span>数据管理</span>
+                        </span>;
+                    }
+                    <SubMenu Key="sub1" TitleTemplate=@sub1Title>
+                        <MenuItemGroup Key="group1" Title="记录管理">
+                            <MenuDivider />
+                            <MenuItem Key="2" RouterLink="/records" @onclick="@(i => { open = false; slideClass = "slide-up"; })">账单管理</MenuItem>
+                        </MenuItemGroup>
+                        <MenuItemGroup Key="group2" Title="选项管理">
+                            <MenuDivider />
+                            <MenuItem Key="3" RouterLink="/categories" @onclick="@(i => { open = false; slideClass = "slide-up"; })">分类管理</MenuItem>
+                            <MenuItem Key="4" RouterLink="/accounts" @onclick="@(i => { open = false; slideClass = "slide-up"; })">账户管理</MenuItem>
+                        </MenuItemGroup>
+                    </SubMenu>
+                    <MenuItem Key="5" RouterLink="/settings" @onclick="@(i => { open = false; slideClass = "slide-up"; })">
+                        <Icon Type="user" Theme="outline"></Icon>
+                        <span>个人中心</span>
+                    </MenuItem>
+                    <AuthorizeView Policy="Admin">
+                        <MenuItem Key="6" RouterLink="/admin" @onclick="@(i => { open = false; slideClass = "slide-up"; })">
+                            <Icon Type="team" Theme="outline"></Icon>
+                            <span>用户管理</span>
+                        </MenuItem>
+                    </AuthorizeView>
+                </Menu>
             </div>
         </div>
         <Content Class="long-content">
-            <div style="min-height: 100%;" @ontouchstart="@(i => { open = false; slideClass = "slide-up"; })">
+            <div style="min-height: 100%;"
+                 @ontouchstart="@(i => { open = false; slideClass = "slide-up"; })"
+                 @onmousedown="@(i => { open = false; slideClass = "slide-up"; })">
                 <Content Style="padding: 12px 12px 0; position: relative;">
                     <AuthorizeView>
                         <Authorized>
@@ -99,7 +136,7 @@
                         </Authorized>
                         <Authorizing>
                             <div class="back_card" style="height: auto; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                                <img src="images/loading1.gif" style="width: 128px;" />
+                                <img src="images/loading2.gif" style="width: 128px;" />
                                 <h5>身份验证中...</h5>
                             </div>
                         </Authorizing>
@@ -113,7 +150,7 @@
 
 <style>
 
-    @@media (min-width: 768px) {
+    @@media (min-width: 769px) {
 
         .ant-layout-header .trigger {
             font-size: 18px;
@@ -162,9 +199,11 @@
         .slide {
             transition: all .5s cubic-bezier(0, 1, 0.5, 1);
             transform: translateY(0);
+            opacity: 1;
         }
         .slide-up {
             transform: translateY(-100%);
+            opacity: 0;
         }
 
     }
@@ -193,7 +232,14 @@
         margin: 12px;
         position: relative;
         background: #fff;
-        border-radius: 4px;
+        border-radius: 5px;
+    }
+
+    .ant-table-content {
+        overflow: scroll;
+    }
+    .ant-table-content::-webkit-scrollbar {
+        display: none;
     }
 
 </style>

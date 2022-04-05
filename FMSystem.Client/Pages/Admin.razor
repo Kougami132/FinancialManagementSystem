@@ -9,7 +9,7 @@
 
 <PageTitle Title="用户管理 - 个人财务管理系统" />
 
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
     <div class="back_card" style="margin-bottom: 0;">
         <div style="float: left; margin-right: 4px;">
             <Search Placeholder="搜索用户" @bind-Value="searchName" Style="width: 100px;" OnChange="RefrashTable" ClassicSearchIcon />
@@ -149,19 +149,16 @@
 </Modal>
 
 <div class="back_card" style="padding-bottom: 80px;">
-    <Table @ref="table" DataSource="@showingUsers" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" @bind-SelectedRows="selectedUsers">
+    <Table @ref="table" DataSource="@showingUsers" PageSize="10" HidePagination="true" @bind-PageIndex="@tablePageIndex" @bind-SelectedRows="selectedUsers" Bordered>
         <Selection Key="@(context.Id.ToString())" />
         <Column Title="用户" @bind-Field="@context.UserName" />
-        <Column Title="密码" @bind-Field="@context.UserPwd" />
+        @*<Column Title="密码" @bind-Field="@context.UserPwd" />*@
         @{string p = @context.Permission == Permissions.ADMIN ? "管理员" : @context.Permission == Permissions.NORMAL ? "普通用户" : "其他";}
         <Column Title="权限组" Field="@p" />
         <Column Title="QQ" Field="@context.QQ" />
         <Column Title="邮箱" Field="@context.Email" />
         <Column Title="手机号" Field="@context.PhoneNumber" />
         <Column Title="地址" Field="@context.Address" />
-        <ActionColumn>
-            <Button Type="link" OnClick="@(async i => { await ShowDetail(context.Id); })">详情</Button>
-        </ActionColumn>
     </Table>
     <Pagination DefaultCurrent="1" Total="@showingUsers.Length" OnChange="@((args)=> { tablePageIndex = args.Page; })" Style="position: absolute; right: 24px; bottom: 24px;" />
 </div>
@@ -182,6 +179,12 @@
     <p>手机号: @detailUser.PhoneNumber</p>
     <p>地址: @detailUser.Address</p>
 </Modal>
+
+<style>
+    .ant-table-content > table {
+        min-width: 777px;
+    }
+</style>
 
 
 

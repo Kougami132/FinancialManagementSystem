@@ -10,47 +10,51 @@
 <div>
     <Row Justify="space-between" Align="bottom">
         <AntDesign.Col>
-            <Row Justify="space-around" Style="margin: 16px 0;">
-                <AntDesign.Col>
-                    <RadioGroup @bind-Value="period" ButtonStyle="solid" OnChange="@(async(string i) => { await Filter(); })">
-                        <Radio RadioButton Value="@("all")">总</Radio>
-                        <Radio RadioButton Value="@("month")">月</Radio>
-                        <Radio RadioButton Value="@("week")">周</Radio>
-                        <Radio RadioButton Value="@("day")">日</Radio>
-                    </RadioGroup>
-                </AntDesign.Col>
-            </Row>
-            <Row Align="middle" Style="margin: 16px 0;">
-                <AntDesign.Col Offset="6">
-                    <Avatar Src="images/input.png"></Avatar>
-                </AntDesign.Col>
-                <AntDesign.Col Flex="@("auto")">
-                    <Row Justify="space-around">
-                        <AntDesign.Col>
-                            <span style="color: lightgreen; font-size: 30px;">@input</span>
-                        </AntDesign.Col>
-                    </Row>
-                </AntDesign.Col>
-            </Row>
-            <Row Align="middle" Style="margin: 16px 0;">
-                <AntDesign.Col Offset="6">
-                    <Avatar Src="images/output.png"></Avatar>
-                </AntDesign.Col>
-                <AntDesign.Col Flex="@("auto")">
-                    <Row Justify="space-around">
-                        <AntDesign.Col>
-                            <span style="color: red; font-size: 30px;">@output</span>
-                        </AntDesign.Col>
-                    </Row>
-                </AntDesign.Col>
-            </Row>
+
+            <div class="back_card">
+                <Row Justify="space-around" Style="margin: 24px 0;">
+                    <AntDesign.Col>
+                        <RadioGroup @bind-Value="period" ButtonStyle="RadioButtonStyle.Solid" OnChange="@(async(string i) => { await Filter(); })" Size="large">
+                            <Radio RadioButton Value="@("all")">总</Radio>
+                            <Radio RadioButton Value="@("month")">月</Radio>
+                            <Radio RadioButton Value="@("week")">周</Radio>
+                            <Radio RadioButton Value="@("day")">日</Radio>
+                        </RadioGroup>
+                    </AntDesign.Col>
+                </Row>
+                <Row Align="middle" Style="margin: 24px 0;">
+                    <AntDesign.Col Offset="4">
+                        <Avatar Src="images/input.png"></Avatar>
+                    </AntDesign.Col>
+                    <AntDesign.Col Flex="@("auto")">
+                        <Row Justify="space-around">
+                            <AntDesign.Col>
+                                <span style="font-size: 30px;">@input</span><span style="color: #00FF00;"> (↑100%)</span>
+                            </AntDesign.Col>
+                        </Row>
+                    </AntDesign.Col>
+                </Row>
+                <Row Align="middle" Style="margin: 24px 0;">
+                    <AntDesign.Col Offset="4">
+                        <Avatar Src="images/output.png"></Avatar>
+                    </AntDesign.Col>
+                    <AntDesign.Col Flex="@("auto")">
+                        <Row Justify="space-around">
+                            <AntDesign.Col>
+                                <span style="font-size: 30px;">@output</span><span style="color: #FF0000;"> (↑100%)</span>
+                            </AntDesign.Col>
+                        </Row>
+                    </AntDesign.Col>
+                </Row>
+            </div>
+
             <div class="back_card" style="margin-bottom: 0;">
-                <RadioGroup @bind-Value="type" ButtonStyle="solid" OnChange="@(async(InputOrOutput i) => { await UpdateSum(); })">
+                <RadioGroup @bind-Value="type" ButtonStyle="RadioButtonStyle.Solid" OnChange="@(async(InputOrOutput i) => { await UpdateSum(); })">
                     <Radio RadioButton Value="@InputOrOutput.INPUT">收入</Radio>
                     <Radio RadioButton Value="@InputOrOutput.OUTPUT">支出</Radio>
                 </RadioGroup>
                 <Divider Type="DirectionVHType.Vertical" />
-                <RadioGroup @bind-Value="cORa" ButtonStyle="solid" OnChange="@(async(string i) => { await UpdateChartData(); })">
+                <RadioGroup @bind-Value="cORa" ButtonStyle="RadioButtonStyle.Solid" OnChange="@(async(string i) => { await UpdateChartData(); })">
                     <Radio RadioButton Value="@("category")">按分类</Radio>
                     <Radio RadioButton Value="@("account")">按账户</Radio>
                 </RadioGroup>
@@ -61,7 +65,7 @@
                 <Row Justify="space-around" Align="middle">
                     <AntDesign.Col>
                         @*<GroupedColumnLine @ref="groupedColumnLine" Config="groupedColumnLineConfig" TItem="object" />*@
-                        <GroupedColumn @ref="groupedColumn" Config="groupedColumnConfig" TItem="object" />
+                        @*<GroupedColumn @ref="groupedColumn" Config="groupedColumnConfig" TItem="object" />*@
                     </AntDesign.Col>
                 </Row>
             </div>
@@ -159,7 +163,7 @@
         }
         //await UpdateColumnLineChartData();
         await UpdateChartData();
-        await UpdateColumnData();
+        //await UpdateColumnData();
     }
 
     private async Task UpdateColumnLineChartData()

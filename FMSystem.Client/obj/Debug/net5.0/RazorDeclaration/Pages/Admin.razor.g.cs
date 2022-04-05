@@ -133,7 +133,7 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 188 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Admin.razor"
+#line 191 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Admin.razor"
        
 
     private User[] users, showingUsers = new List<User>().ToArray();
