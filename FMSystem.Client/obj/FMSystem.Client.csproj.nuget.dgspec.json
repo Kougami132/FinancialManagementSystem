@@ -52,7 +52,7 @@
           "dependencies": {
             "AntDesign": {
               "target": "Package",
-              "version": "[0.9.0, )"
+              "version": "[0.10.5, )"
             },
             "AntDesign.Charts": {
               "target": "Package",

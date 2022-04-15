@@ -111,15 +111,13 @@ using Microsoft.AspNetCore.Components.Authorization;
                 __builder2.OpenComponent<AntDesign.Content>(3);
                 __builder2.AddAttribute(4, "Style", "display: flex; justify-content: center; align-items: center;");
                 __builder2.AddAttribute(5, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
-                    __builder3.AddContent(6, 
 #nullable restore
 #line 5 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\LoginLayout.razor"
-         Body
+__builder3.AddContent(6, Body);
 
 #line default
 #line hidden
 #nullable disable
-                    );
                 }
                 ));
                 __builder2.CloseComponent();

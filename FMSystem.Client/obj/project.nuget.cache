@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "DBL7Hgr7q2bYN4NLFZVR6VJBqUV9lLBE6JcpRf/rvkaqb+JrO787WnMCS/5ZHq4FqZCfhM53x2ps0mbM8xd/QQ==",
+  "dgSpecHash": "TKonOc2xcPC54tRXeIZg9VTsHdMauOMT8Bq971uejOwARC9MlK+qxaZJVUiSswYJjnDFsNV4rOrU8cMyTs3JtQ==",
   "success": true,
   "projectFilePath": "E:\\Project C#\\FinancialManagementSystem\\FMSystem.Client\\FMSystem.Client.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Wither\\.nuget\\packages\\antdesign\\0.9.0\\antdesign.0.9.0.nupkg.sha512",
+    "C:\\Users\\Wither\\.nuget\\packages\\antdesign\\0.10.5\\antdesign.0.10.5.nupkg.sha512",
     "C:\\Users\\Wither\\.nuget\\packages\\antdesign.charts\\0.2.1\\antdesign.charts.0.2.1.nupkg.sha512",
     "C:\\Users\\Wither\\.nuget\\packages\\blazored.localstorage\\4.1.5\\blazored.localstorage.4.1.5.nupkg.sha512",
     "C:\\Users\\Wither\\.nuget\\packages\\microsoft.aspnetcore.authorization\\5.0.10\\microsoft.aspnetcore.authorization.5.0.10.nupkg.sha512",

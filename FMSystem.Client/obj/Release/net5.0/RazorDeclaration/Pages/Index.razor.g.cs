@@ -110,13 +110,6 @@ using AntDesign.Charts;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 6 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Index.razor"
-using Newtonsoft.Json;
-
-#line default
-#line hidden
-#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -126,7 +119,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 91 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Index.razor"
+#line 109 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Index.razor"
        
 
     private IEnumerable<Record> records;
@@ -136,11 +129,10 @@ using Newtonsoft.Json;
     private string period = "all";
     private double input = 0;
     private double output = 0;
-    private IChartComponent groupedColumnLine;
-    private IChartComponent groupedColumn;
     private IChartComponent donut;
     private IChartComponent radar;
     private IChartComponent rose;
+    private IChartComponent line;
     private InputOrOutput type = InputOrOutput.INPUT;
     private string cORa = "category";
     private bool loading = false;
@@ -196,121 +188,8 @@ using Newtonsoft.Json;
                 output += i.Value;
             }
         }
-        //await UpdateColumnLineChartData();
         await UpdateChartData();
-        await UpdateColumnData();
-    }
-
-    private async Task UpdateColumnLineChartData()
-    {
-        List<ColumnDto> column = new();
-        List<LineDto> line = new();
-        column.AddRange(new List<ColumnDto>(Enumerable.Range(1, 10).Select(i => new ColumnDto()
-        {
-            value = 0,
-            type = i <= 5 ? "收入" : "支出"
-        })));
-        line.AddRange(new List<LineDto>(Enumerable.Range(1, 5).Select(i => new LineDto()
-        {
-            rate = 0,
-            name = "收支比"
-        })));
-        DateTime now = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-        for (int i = 0; i < showingRecords.Count(); i++)
-        {
-            Record currentRecord = showingRecords.ElementAt(i);
-            int day = (now - currentRecord.CreateTime).Days;
-            if (day < 5)
-            {
-                if (currentRecord.Type == InputOrOutput.INPUT)
-                {
-                    column[day].value += currentRecord.Value;
-                }
-                else if (currentRecord.Type == InputOrOutput.OUTPUT)
-                {
-                    column[day + 5].value += currentRecord.Value;
-                }
-            }
-        }
-        for (int i = 0; i < 5; i++)
-        {
-            column[i].time = now.AddDays(-i).ToShortDateString();
-            column[i + 5].time = now.AddDays(-i).ToShortDateString();
-            //data.Value[i].Type = "收入";
-            //data.Value[i + 5].Type = "支出";
-            line[i].time = now.AddDays(-i).ToShortDateString();
-            line[i].rate = column[i + 5].value == 0 ? 0 : column[i].value / column[i + 5].value;
-            //data.Rate[i].Name = "收支比";
-        }
-        List<object> columnObj = column.ConvertAll(i => (object)i);
-        List<object> lineObj = line.ConvertAll(i => (object)i);
-        List<object> data = new List<object> { columnObj, null };
-        List<object> test = new List<object> { new List<object>
-    {
-            new {time = "2019-03", value = 350.4545445, type = "uv"},
-            new {time = "2019-04", value = 922.54400, type = "uv"},
-            new {time = "2019-05", value = 3045.450, type = "uv"},
-            new {time = "2019-06", value = 4554.5440, type = "uv"},
-            new {time = "2019-07", value = 47564.0, type = "uv"},
-            new {time = "2019-03", value = 2434.4520, type = "bill"},
-            new {time = "2019-04", value = 30453.450, type = "bill"},
-            new {time = "2019-05", value = 25453.0, type = "bill"},
-            new {time = "2019-06", value = 2245.540, type = "bill"},
-            new {time = "2019-07", value = 36543.045452, type = "bill"}
-        }, new List<object>
-    {
-            new {time = "2019-03", rate = 465.13568, name = "test"},
-            new {time = "2019-04", rate = 46593.356549, name = "test"},
-            new {time = "2019-05", rate = 4978.16594564, name = "test"},
-            new {time = "2019-06", rate = 3874.458540, name = "test"},
-            new {time = "2019-07", rate = 79746.6568, name = "test"}
-        } };
-        messageService.Info(JsonConvert.SerializeObject(data));
-        await groupedColumnLine.ChangeData(data);
-    }
-
-    private async Task UpdateColumnData()
-    {
-        List<ColumnDto> data = new();
-
-        data.AddRange(new List<ColumnDto>(Enumerable.Range(1, 14).Select(i => new ColumnDto()
-        {
-            value = 0,
-            type = i <= 7 ? "收入" : "支出"
-        })));
-        int count = period == "month" ? 30 : period == "week" ? 7 : 1;
-        DateTime now = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-        for (int i = 0; i < records.Count(); i++)
-        {
-            Record currentRecord = records.ElementAt(i);
-            int day = (now - currentRecord.CreateTime).Days;
-            if (day < 7 * count)
-            {
-                if (currentRecord.Type == InputOrOutput.INPUT)
-                {
-                    data[day / count].value += currentRecord.Value;
-                }
-                else if (currentRecord.Type == InputOrOutput.OUTPUT)
-                {
-                    data[day / count + 7].value += currentRecord.Value;
-                }
-            }
-        }
-        for (int i = 0; i < 7; i++)
-        {
-            if (count == 1)
-            {
-                data[i].time = now.AddDays(-i).ToShortDateString();
-                data[i + 7].time = now.AddDays(-i).ToShortDateString();
-            }
-            else
-            {
-                data[i].time = now.AddDays(-(i + 1) * count).ToShortDateString() + " - " + now.AddDays(-i * count).ToShortDateString();
-                data[i + 7].time = now.AddDays(-(i + 1) * count).ToShortDateString() + " - " + now.AddDays(-i * count).ToShortDateString();
-            }
-        }
-        data.Reverse();
-        await groupedColumn.ChangeData(data);
+        await UpdateLineData();
     }
 
     private async Task UpdateChartData()
@@ -393,6 +272,35 @@ using Newtonsoft.Json;
         await radar.ChangeData(data);
     }
 
+    private async Task UpdateLineData()
+    {
+        List<LineDto> data = new();
+        data.AddRange(new List<LineDto>(Enumerable.Range(1, 14).Select(i => new LineDto()
+        {
+            date = DateTime.Today.AddDays(- (i - 1) % 7).ToShortDateString(),
+            value = 0,
+            type = i <= 7 ? "收入" : "支出"
+        })));
+        DateTime now = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+        for (int i = 0; i < records.Count(); i++)
+        {
+            Record currentRecord = records.ElementAt(i);
+            int day = (now - currentRecord.CreateTime).Days;
+            if (day < 7)
+            {
+                if (currentRecord.Type == InputOrOutput.INPUT)
+                {
+                    data[day].value += currentRecord.Value;
+                }
+                else if (currentRecord.Type == InputOrOutput.OUTPUT)
+                {
+                    data[day + 7].value += currentRecord.Value;
+                }
+            }
+        }
+        await line.ChangeData(data);
+    }
+
     private readonly DonutConfig donutConfig = new DonutConfig
     {
         ForceFit = true,
@@ -437,40 +345,32 @@ using Newtonsoft.Json;
         }
     };
 
-    private readonly GroupedColumnLineConfig groupedColumnLineConfig = new GroupedColumnLineConfig()
+    private readonly LineConfig lineConfig = new LineConfig
     {
-        XField = "time",
-        YField = new[] { "value", "rate" },
-        ColumnGroupField = "type",
-        LineSeriesField = "name"
-    };
-
-    private readonly GroupedColumnConfig groupedColumnConfig = new GroupedColumnConfig
-    {
-        Width = 1000,
-        Height = 222,
-        XField = "time",
-        YField = "value",
-        XAxis = new CatAxis
+        Title = new AntDesign.Charts.Title
         {
             Visible = true,
-            Title = new BaseAxisTitle
-            {
-                Visible = false
-            }
+            Text = "收支图"
         },
+        Description = new Description
+        {
+            Visible = true,
+            Text = ""
+        },
+        Padding = "auto",
+        ForceFit = true,
+        XField = "date",
+        YField = "value",
+        SeriesField = "type",
         YAxis = new ValueAxis
         {
-            Min = 0
+            Label = new BaseAxisLabel()
         },
-        Label = new ColumnViewConfigLabel
+        Legend = new Legend
         {
-            Visible = true
-        },
-        GroupField = "type",
-        Color = new[] { "#1ca9e6", "#f88c24" }
+            Position = "right-top"
+        }
     };
-
 
 
 

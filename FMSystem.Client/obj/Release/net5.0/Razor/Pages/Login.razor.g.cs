@@ -119,7 +119,7 @@ using System.Security.Claims;
             __builder.CloseComponent();
             __builder.AddMarkupContent(2, "\r\n\r\n");
             __builder.OpenComponent<AntDesign.Card>(3);
-            __builder.AddAttribute(4, "Bordered", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(4, "Bordered", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 13 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Login.razor"
                 true
@@ -128,7 +128,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(5, "Title", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.AddAttribute(5, "Title", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 13 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Login.razor"
                               "用户登录"
@@ -138,7 +138,7 @@ using System.Security.Claims;
 #nullable disable
             ));
             __builder.AddAttribute(6, "Style", "width:400px; cursor: default;");
-            __builder.AddAttribute(7, "Hoverable", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(7, "Hoverable", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 13 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Login.razor"
                                                                                        true
@@ -182,7 +182,7 @@ using System.Security.Claims;
 #nullable disable
                 , 14, "padding: 12px;", 15, (context) => (__builder3) => {
                     __builder3.OpenComponent<AntDesign.Space>(16);
-                    __builder3.AddAttribute(17, "Direction", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<AntDesign.DirectionVHType>(
+                    __builder3.AddAttribute(17, "Direction", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<AntDesign.DirectionVHType>(
 #nullable restore
 #line 20 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Login.razor"
                                DirectionVHType.Vertical
@@ -192,7 +192,7 @@ using System.Security.Claims;
 #nullable disable
                     ));
                     __builder3.AddAttribute(18, "Style", "width:100%");
-                    __builder3.AddAttribute(19, "Size", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, (System.String, System.String)>>(
+                    __builder3.AddAttribute(19, "Size", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, (System.String, System.String)>>(
 #nullable restore
 #line 20 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Login.razor"
                                                                                     "middle"
@@ -220,7 +220,7 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-                            , 28, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => loginUser.UserName = __value, loginUser.UserName)), 29, () => loginUser.UserName, 30, (__builder6) => {
+                            , 28, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => loginUser.UserName = __value, loginUser.UserName)), 29, () => loginUser.UserName, 30, (__builder6) => {
                                 __builder6.OpenComponent<AntDesign.Icon>(31);
                                 __builder6.AddAttribute(32, "Type", "user");
                                 __builder6.CloseComponent();
@@ -248,7 +248,7 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-                            , 42, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => loginUser.Password = __value, loginUser.Password)), 43, () => loginUser.Password, 44, (__builder6) => {
+                            , 42, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => loginUser.Password = __value, loginUser.Password)), 43, () => loginUser.Password, 44, (__builder6) => {
                                 __builder6.OpenComponent<AntDesign.Icon>(45);
                                 __builder6.AddAttribute(46, "Type", "lock");
                                 __builder6.CloseComponent();
@@ -264,7 +264,7 @@ using System.Security.Claims;
                             __builder5.AddAttribute(51, "Type", "primary");
                             __builder5.AddAttribute(52, "Size", "large");
                             __builder5.AddAttribute(53, "Block", true);
-                            __builder5.AddAttribute(54, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                            __builder5.AddAttribute(54, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 32 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Login.razor"
                                                                        OnLogin
@@ -289,7 +289,7 @@ using System.Security.Claims;
                 __builder2.AddMarkupContent(57, "\r\n        ");
                 __builder2.OpenComponent<AntDesign.Button>(58);
                 __builder2.AddAttribute(59, "Type", "link");
-                __builder2.AddAttribute(60, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                __builder2.AddAttribute(60, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 36 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Login.razor"
                                        () => { navigationManager.NavigateTo("/register"); }

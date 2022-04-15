@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "AntDesign/0.9.0": {
+      "AntDesign/0.10.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components.DataAnnotations.Validation": "3.2.0-rc1.20223.4",
@@ -1616,7 +1616,7 @@
       }
     },
     "net5.0/browser-wasm": {
-      "AntDesign/0.9.0": {
+      "AntDesign/0.10.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components.DataAnnotations.Validation": "3.2.0-rc1.20223.4",
@@ -3251,14 +3251,15 @@
     }
   },
   "libraries": {
-    "AntDesign/0.9.0": {
-      "sha512": "DsNk3cig63LcyAOAMCOG/2MTx91TU3xQihf4iaTLotNVLwvX5GdcRmA3mmzwf15U/0Dk5TjXOUGtEWek5rmQfQ==",
+    "AntDesign/0.10.5": {
+      "sha512": "gVoNmSon8DPJDkHT5MNG0hgCdOLzYbZEUt2ei/pS4xbZKyQQT0u3mt2pwd0yFMS/QEtoR20DebkUX+HjrYQKLQ==",
       "type": "package",
-      "path": "antdesign/0.9.0",
+      "path": "antdesign/0.10.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "antdesign.0.9.0.nupkg.sha512",
+        "README.md",
+        "antdesign.0.10.5.nupkg.sha512",
         "antdesign.nuspec",
         "build/AntDesign.props",
         "build/Microsoft.AspNetCore.StaticWebAssets.props",
@@ -3273,6 +3274,30 @@
         "staticwebassets/css/ant-design-blazor.dark.css",
         "staticwebassets/js/ant-design-blazor.js",
         "staticwebassets/js/ant-design-blazor.js.map",
+        "staticwebassets/js/split/ObservableApi/intersectionObserver.js",
+        "staticwebassets/js/split/ObservableApi/mutationObserver.js",
+        "staticwebassets/js/split/ObservableApi/observableApi.js",
+        "staticwebassets/js/split/ObservableApi/resizeObserver.js",
+        "staticwebassets/js/split/interop.js",
+        "staticwebassets/js/split/modules/components/backtopHelper.js",
+        "staticwebassets/js/split/modules/components/export.js",
+        "staticwebassets/js/split/modules/components/iconHelper.js",
+        "staticwebassets/js/split/modules/components/inputHelper.js",
+        "staticwebassets/js/split/modules/components/mentionsHelper.js",
+        "staticwebassets/js/split/modules/components/modalHelper.js",
+        "staticwebassets/js/split/modules/components/overlay.js",
+        "staticwebassets/js/split/modules/components/overlayHelper.js",
+        "staticwebassets/js/split/modules/components/tableHelper.js",
+        "staticwebassets/js/split/modules/components/uploadHelper.js",
+        "staticwebassets/js/split/modules/dom/dragHelper.js",
+        "staticwebassets/js/split/modules/dom/eventHelper.js",
+        "staticwebassets/js/split/modules/dom/exports.js",
+        "staticwebassets/js/split/modules/dom/infoHelper.js",
+        "staticwebassets/js/split/modules/dom/manipulationHelper.js",
+        "staticwebassets/js/split/modules/dom/types.js",
+        "staticwebassets/js/split/modules/enums.js",
+        "staticwebassets/js/split/modules/stateProvider.js",
+        "staticwebassets/js/split/modules/styleHelper.js",
         "staticwebassets/less/affix/style/entry.less",
         "staticwebassets/less/affix/style/index.less",
         "staticwebassets/less/alert/style/entry.less",
@@ -3296,6 +3321,7 @@
         "staticwebassets/less/back-top/style/responsive.less",
         "staticwebassets/less/badge/style/entry.less",
         "staticwebassets/less/badge/style/index.less",
+        "staticwebassets/less/badge/style/patch.less",
         "staticwebassets/less/badge/style/ribbon.less",
         "staticwebassets/less/badge/style/rtl.less",
         "staticwebassets/less/breadcrumb/style/entry.less",
@@ -3409,6 +3435,7 @@
         "staticwebassets/less/menu/style/dark.less",
         "staticwebassets/less/menu/style/entry.less",
         "staticwebassets/less/menu/style/index.less",
+        "staticwebassets/less/menu/style/light.less",
         "staticwebassets/less/menu/style/patch.less",
         "staticwebassets/less/menu/style/rtl.less",
         "staticwebassets/less/menu/style/status.less",
@@ -3524,6 +3551,7 @@
         "staticwebassets/less/table/style/bordered.less",
         "staticwebassets/less/table/style/entry.less",
         "staticwebassets/less/table/style/index.less",
+        "staticwebassets/less/table/style/patch.less",
         "staticwebassets/less/table/style/radius.less",
         "staticwebassets/less/table/style/rtl.less",
         "staticwebassets/less/table/style/size.less",
@@ -8020,7 +8048,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "AntDesign >= 0.9.0",
+      "AntDesign >= 0.10.5",
       "AntDesign.Charts >= 0.2.1",
       "Blazored.LocalStorage >= 4.1.5",
       "FMSystem.Shared >= 1.0.0",
@@ -8084,7 +8112,7 @@
         "dependencies": {
           "AntDesign": {
             "target": "Package",
-            "version": "[0.9.0, )"
+            "version": "[0.10.5, )"
           },
           "AntDesign.Charts": {
             "target": "Package",

@@ -27,17 +27,10 @@ namespace FMSystem.Shared
         }
     }
 
-    public class ColumnDto
-    {
-        public string time { get; set; }
-        public double value { get; set; }
-        public string type { get; set; }
-    }
-
     public class LineDto
     {
-        public string time { get; set; }
-        public double rate { get; set; }
-        public string name { get; set; }
+        public string date { get; set; }
+        public double value { get; set; }
+        public string type { get; set; }
     }
 }

@@ -227,6 +227,8 @@ using System.Text.Json;
             date = Convert.ToDateTime(date.ToShortDateString());
             showingRecords = showingRecords.Where(i => DateTime.Compare(i.CreateTime, date) <= 0).ToArray();
         }
+
+        tablePageIndex = 1;
     }
 
 

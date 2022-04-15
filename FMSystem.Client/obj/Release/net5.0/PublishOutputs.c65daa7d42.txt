@@ -197,7 +197,7 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\brows
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_CJK.dat
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_EFIGS.dat
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_no_CJK.dat
-E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\dotnet.5.0.6.js
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\dotnet.5.0.13.js
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\FMSystem.Client.styles.css
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_content\AntDesign.Charts\ant-design-charts-blazor.js
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_content\AntDesign.Charts\g2plot.js
@@ -730,7 +730,7 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\brows
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_CJK.dat.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_EFIGS.dat.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_no_CJK.dat.br
-E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\dotnet.5.0.6.js.br
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\dotnet.5.0.13.js.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\FMSystem.Client.styles.css.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_content\AntDesign.Charts\ant-design-charts-blazor.js.br
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_content\AntDesign.Charts\g2plot.js.br
@@ -1262,7 +1262,7 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\brows
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_CJK.dat.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_EFIGS.dat.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\icudt_no_CJK.dat.gz
-E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\dotnet.5.0.6.js.gz
+E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_framework\dotnet.5.0.13.js.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\FMSystem.Client.styles.css.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_content\AntDesign.Charts\ant-design-charts-blazor.js.gz
 E:\Project C#\FinancialManagementSystem\FMSystem.Client\obj\Release\net5.0\browser-wasm\PubTmp\Out\wwwroot\_content\AntDesign.Charts\g2plot.js.gz
