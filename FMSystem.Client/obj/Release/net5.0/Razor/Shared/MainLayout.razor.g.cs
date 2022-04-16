@@ -117,7 +117,7 @@ using System.Security.Claims;
             __builder.AddAttribute(2, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
                 __builder2.OpenComponent<AntDesign.Sider>(3);
                 __builder2.AddAttribute(4, "Collapsible", true);
-                __builder2.AddAttribute(5, "Collapsed", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+                __builder2.AddAttribute(5, "Collapsed", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 8 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                       collapsed
@@ -127,7 +127,7 @@ using System.Security.Claims;
 #nullable disable
                 ));
                 __builder2.AddAttribute(6, "NoTrigger", true);
-                __builder2.AddAttribute(7, "Width", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+                __builder2.AddAttribute(7, "Width", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 10 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                   256
@@ -162,7 +162,7 @@ using System.Security.Claims;
                     __builder3.CloseElement();
                     __builder3.AddMarkupContent(16, "\r\n        ");
                     __builder3.OpenComponent<AntDesign.Menu>(17);
-                    __builder3.AddAttribute(18, "Mode", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<AntDesign.MenuMode>(
+                    __builder3.AddAttribute(18, "Mode", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<AntDesign.MenuMode>(
 #nullable restore
 #line 20 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                     MenuMode.Inline
@@ -171,7 +171,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(19, "DefaultSelectedKeys", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.IEnumerable<System.String>>(
+                    __builder3.AddAttribute(19, "DefaultSelectedKeys", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.IEnumerable<System.String>>(
 #nullable restore
 #line 21 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                                     new[] {"1"}
@@ -180,7 +180,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(20, "DefaultOpenKeys", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.IEnumerable<System.String>>(
+                    __builder3.AddAttribute(20, "DefaultOpenKeys", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.IEnumerable<System.String>>(
 #nullable restore
 #line 22 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                                 new[] {"sub1"}
@@ -193,7 +193,7 @@ using System.Security.Claims;
                         __builder4.OpenComponent<AntDesign.MenuItem>(22);
                         __builder4.AddAttribute(23, "Key", "1");
                         __builder4.AddAttribute(24, "RouterLink", "/");
-                        __builder4.AddAttribute(25, "RouterMatch", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
+                        __builder4.AddAttribute(25, "RouterMatch", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
 #nullable restore
 #line 23 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                                                           NavLinkMatch.All
@@ -242,7 +242,7 @@ using System.Security.Claims;
 #nullable disable
                         __builder4.OpenComponent<AntDesign.SubMenu>(39);
                         __builder4.AddAttribute(40, "Key", "sub1");
-                        __builder4.AddAttribute(41, "TitleTemplate", (Microsoft.AspNetCore.Components.RenderFragment)(
+                        __builder4.AddAttribute(41, "TitleTemplate", new Microsoft.AspNetCore.Components.RenderFragment(
 #nullable restore
 #line 34 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                                                sub1Title
@@ -364,7 +364,7 @@ using System.Security.Claims;
                         __builder4.AddAttribute(107, "Type", "menu-unfold");
                         __builder4.AddAttribute(108, "Theme", "outline");
                         __builder4.AddAttribute(109, "Class", "trigger");
-                        __builder4.AddAttribute(110, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                        __builder4.AddAttribute(110, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 62 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                                                                                         i => { collapsed = !collapsed; }
@@ -387,7 +387,7 @@ using System.Security.Claims;
                         __builder4.AddAttribute(112, "Type", "menu-fold");
                         __builder4.AddAttribute(113, "Theme", "outline");
                         __builder4.AddAttribute(114, "Class", "trigger");
-                        __builder4.AddAttribute(115, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                        __builder4.AddAttribute(115, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 66 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                                                                                       i => { collapsed = !collapsed; }
@@ -415,19 +415,21 @@ using System.Security.Claims;
                             __builder5.AddMarkupContent(123, "\r\n                    你好, ");
                             __builder5.OpenElement(124, "b");
                             __builder5.AddAttribute(125, "b-zxn7neniqv");
+                            __builder5.AddContent(126, 
 #nullable restore
 #line 71 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
-__builder5.AddContent(126, context.User.Identity.Name);
+                            context.User.Identity.Name
 
 #line default
 #line hidden
 #nullable disable
+                            );
                             __builder5.CloseElement();
                             __builder5.AddMarkupContent(127, " !\r\n                    ");
                             __builder5.OpenComponent<AntDesign.Button>(128);
                             __builder5.AddAttribute(129, "Type", "link");
                             __builder5.AddAttribute(130, "Danger", true);
-                            __builder5.AddAttribute(131, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                            __builder5.AddAttribute(131, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 72 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                                                           () => { navigationManager.NavigateTo("/logout"); }
@@ -522,7 +524,7 @@ __builder5.AddContent(126, context.User.Identity.Name);
                     __builder3.AddAttribute(154, "style", "width: 100%; position: absolute; z-index: 9;");
                     __builder3.AddAttribute(155, "b-zxn7neniqv");
                     __builder3.OpenComponent<AntDesign.Menu>(156);
-                    __builder3.AddAttribute(157, "Mode", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<AntDesign.MenuMode>(
+                    __builder3.AddAttribute(157, "Mode", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<AntDesign.MenuMode>(
 #nullable restore
 #line 90 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                             MenuMode.Inline
@@ -531,7 +533,7 @@ __builder5.AddContent(126, context.User.Identity.Name);
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(158, "DefaultSelectedKeys", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.IEnumerable<System.String>>(
+                    __builder3.AddAttribute(158, "DefaultSelectedKeys", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.IEnumerable<System.String>>(
 #nullable restore
 #line 91 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                                             new[] {"1"}
@@ -540,7 +542,7 @@ __builder5.AddContent(126, context.User.Identity.Name);
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(159, "DefaultOpenKeys", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.IEnumerable<System.String>>(
+                    __builder3.AddAttribute(159, "DefaultOpenKeys", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Collections.Generic.IEnumerable<System.String>>(
 #nullable restore
 #line 92 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                                         new[] {"sub1"}
@@ -553,7 +555,7 @@ __builder5.AddContent(126, context.User.Identity.Name);
                         __builder4.OpenComponent<AntDesign.MenuItem>(161);
                         __builder4.AddAttribute(162, "Key", "1");
                         __builder4.AddAttribute(163, "RouterLink", "/");
-                        __builder4.AddAttribute(164, "RouterMatch", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
+                        __builder4.AddAttribute(164, "RouterMatch", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
 #nullable restore
 #line 93 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                                                                   NavLinkMatch.All
@@ -611,7 +613,7 @@ __builder5.AddContent(126, context.User.Identity.Name);
 #nullable disable
                         __builder4.OpenComponent<AntDesign.SubMenu>(179);
                         __builder4.AddAttribute(180, "Key", "sub1");
-                        __builder4.AddAttribute(181, "TitleTemplate", (Microsoft.AspNetCore.Components.RenderFragment)(
+                        __builder4.AddAttribute(181, "TitleTemplate", new Microsoft.AspNetCore.Components.RenderFragment(
 #nullable restore
 #line 104 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
                                                        sub1Title
@@ -784,13 +786,15 @@ __builder5.AddContent(126, context.User.Identity.Name);
                         __builder4.AddAttribute(251, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder5) => {
                             __builder5.OpenComponent<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>(252);
                             __builder5.AddAttribute(253, "Authorized", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder6) => {
+                                __builder6.AddContent(254, 
 #nullable restore
 #line 135 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Shared\MainLayout.razor"
-__builder6.AddContent(254, Body);
+                             Body
 
 #line default
 #line hidden
 #nullable disable
+                                );
                             }
                             ));
                             __builder5.AddAttribute(255, "Authorizing", (Microsoft.AspNetCore.Components.RenderFragment)((__builder6) => {

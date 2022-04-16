@@ -123,7 +123,7 @@ using Microsoft.AspNetCore.Components.Authorization;
             __builder.AddAttribute(6, "class", "tab-box");
             __builder.OpenComponent<AntDesign.Tabs>(7);
             __builder.AddAttribute(8, "DefaultActiveKey", "1");
-            __builder.AddAttribute(9, "TabPosition", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<AntDesign.TabPosition>(
+            __builder.AddAttribute(9, "TabPosition", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<AntDesign.TabPosition>(
 #nullable restore
 #line 11 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
                                                  TabPosition.Left
@@ -215,7 +215,7 @@ using Microsoft.AspNetCore.Components.Authorization;
                         __builder4.CloseComponent();
                         __builder4.AddMarkupContent(63, "\r\n                    ");
                         __builder4.OpenComponent<AntDesign.Col>(64);
-                        __builder4.AddAttribute(65, "Flex", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
+                        __builder4.AddAttribute(65, "Flex", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
 #nullable restore
 #line 41 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
                                 "auto"
@@ -232,13 +232,15 @@ using Microsoft.AspNetCore.Components.Authorization;
                             __builder5.AddAttribute(70, "Style", "min-height: 25px;");
                             __builder5.AddAttribute(71, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder6) => {
                                 __builder6.OpenElement(72, "p");
+                                __builder6.AddContent(73, 
 #nullable restore
 #line 44 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
-__builder6.AddContent(73, self.UserName);
+                            self.UserName
 
 #line default
 #line hidden
 #nullable disable
+                                );
                                 __builder6.CloseElement();
                             }
                             ));
@@ -258,13 +260,15 @@ __builder6.AddContent(73, self.UserName);
 #line hidden
 #nullable disable
                                 __builder6.OpenElement(80, "p");
+                                __builder6.AddContent(81, 
 #nullable restore
 #line 49 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
-__builder6.AddContent(81, p);
+                            p
 
 #line default
 #line hidden
 #nullable disable
+                                );
                                 __builder6.CloseElement();
                             }
                             ));
@@ -277,13 +281,15 @@ __builder6.AddContent(81, p);
                             __builder5.AddAttribute(86, "Style", "min-height: 25px;");
                             __builder5.AddAttribute(87, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder6) => {
                                 __builder6.OpenElement(88, "p");
+                                __builder6.AddContent(89, 
 #nullable restore
 #line 53 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
-__builder6.AddContent(89, self.QQ);
+                            self.QQ
 
 #line default
 #line hidden
 #nullable disable
+                                );
                                 __builder6.CloseElement();
                             }
                             ));
@@ -296,13 +302,15 @@ __builder6.AddContent(89, self.QQ);
                             __builder5.AddAttribute(94, "Style", "min-height: 25px;");
                             __builder5.AddAttribute(95, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder6) => {
                                 __builder6.OpenElement(96, "p");
+                                __builder6.AddContent(97, 
 #nullable restore
 #line 57 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
-__builder6.AddContent(97, self.Email);
+                            self.Email
 
 #line default
 #line hidden
 #nullable disable
+                                );
                                 __builder6.CloseElement();
                             }
                             ));
@@ -315,13 +323,15 @@ __builder6.AddContent(97, self.Email);
                             __builder5.AddAttribute(102, "Style", "min-height: 25px;");
                             __builder5.AddAttribute(103, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder6) => {
                                 __builder6.OpenElement(104, "p");
+                                __builder6.AddContent(105, 
 #nullable restore
 #line 61 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
-__builder6.AddContent(105, self.PhoneNumber);
+                            self.PhoneNumber
 
 #line default
 #line hidden
 #nullable disable
+                                );
                                 __builder6.CloseElement();
                             }
                             ));
@@ -334,13 +344,15 @@ __builder6.AddContent(105, self.PhoneNumber);
                             __builder5.AddAttribute(110, "Style", "min-height: 25px;");
                             __builder5.AddAttribute(111, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder6) => {
                                 __builder6.OpenElement(112, "p");
+                                __builder6.AddContent(113, 
 #nullable restore
 #line 65 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
-__builder6.AddContent(113, self.Address);
+                            self.Address
 
 #line default
 #line hidden
 #nullable disable
+                                );
                                 __builder6.CloseElement();
                             }
                             ));
@@ -406,7 +418,7 @@ __builder6.AddContent(113, self.Address);
 #line default
 #line hidden
 #nullable disable
-                            , 132, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.UserName = __value, context.UserName)), 133, () => context.UserName);
+                            , 132, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.UserName = __value, context.UserName)), 133, () => context.UserName);
                         }
                         ));
                         __builder4.CloseComponent();
@@ -422,7 +434,7 @@ __builder6.AddContent(113, self.Address);
 #line default
 #line hidden
 #nullable disable
-                            , 140, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.QQ = __value, context.QQ)), 141, () => context.QQ);
+                            , 140, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.QQ = __value, context.QQ)), 141, () => context.QQ);
                         }
                         ));
                         __builder4.CloseComponent();
@@ -438,7 +450,7 @@ __builder6.AddContent(113, self.Address);
 #line default
 #line hidden
 #nullable disable
-                            , 148, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Email = __value, context.Email)), 149, () => context.Email);
+                            , 148, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Email = __value, context.Email)), 149, () => context.Email);
                         }
                         ));
                         __builder4.CloseComponent();
@@ -454,7 +466,7 @@ __builder6.AddContent(113, self.Address);
 #line default
 #line hidden
 #nullable disable
-                            , 156, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.PhoneNumber = __value, context.PhoneNumber)), 157, () => context.PhoneNumber);
+                            , 156, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.PhoneNumber = __value, context.PhoneNumber)), 157, () => context.PhoneNumber);
                         }
                         ));
                         __builder4.CloseComponent();
@@ -470,7 +482,7 @@ __builder6.AddContent(113, self.Address);
 #line default
 #line hidden
 #nullable disable
-                            , 164, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Address = __value, context.Address)), 165, () => context.Address);
+                            , 164, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Address = __value, context.Address)), 165, () => context.Address);
                         }
                         ));
                         __builder4.CloseComponent();
@@ -531,7 +543,7 @@ __builder6.AddContent(113, self.Address);
                         __builder4.AddMarkupContent(185, "<div style=\"padding-bottom: 8px;\"><label style=\"height: 22px; font-size: 14px;\"><span style=\"color: red;\">*</span>&nbsp;旧密码</label></div>\r\n                        ");
                         __builder4.OpenComponent<AntDesign.InputPassword>(186);
                         __builder4.AddAttribute(187, "Placeholder", "例: 123456");
-                        __builder4.AddAttribute(188, "MaxLength", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+                        __builder4.AddAttribute(188, "MaxLength", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 105 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
                                                                                                 32
@@ -540,7 +552,7 @@ __builder6.AddContent(113, self.Address);
 #line hidden
 #nullable disable
                         ));
-                        __builder4.AddAttribute(189, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                        __builder4.AddAttribute(189, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 105 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
                                                      oldPwd
@@ -549,8 +561,8 @@ __builder6.AddContent(113, self.Address);
 #line hidden
 #nullable disable
                         ));
-                        __builder4.AddAttribute(190, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => oldPwd = __value, oldPwd))));
-                        __builder4.AddAttribute(191, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => oldPwd));
+                        __builder4.AddAttribute(190, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => oldPwd = __value, oldPwd))));
+                        __builder4.AddAttribute(191, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => oldPwd));
                         __builder4.CloseComponent();
                         __builder4.CloseElement();
                         __builder4.AddMarkupContent(192, "\r\n                    ");
@@ -559,7 +571,7 @@ __builder6.AddContent(113, self.Address);
                         __builder4.AddAttribute(195, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder5) => {
                             __builder5.OpenComponent<AntDesign.InputPassword>(196);
                             __builder5.AddAttribute(197, "Placeholder", "例: 123456");
-                            __builder5.AddAttribute(198, "MaxLength", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+                            __builder5.AddAttribute(198, "MaxLength", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 108 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
                                                                                                          32
@@ -568,7 +580,7 @@ __builder6.AddContent(113, self.Address);
 #line hidden
 #nullable disable
                             ));
-                            __builder5.AddAttribute(199, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                            __builder5.AddAttribute(199, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 108 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
                                                      context.UserPwd
@@ -577,8 +589,8 @@ __builder6.AddContent(113, self.Address);
 #line hidden
 #nullable disable
                             ));
-                            __builder5.AddAttribute(200, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.UserPwd = __value, context.UserPwd))));
-                            __builder5.AddAttribute(201, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => context.UserPwd));
+                            __builder5.AddAttribute(200, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.UserPwd = __value, context.UserPwd))));
+                            __builder5.AddAttribute(201, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => context.UserPwd));
                             __builder5.CloseComponent();
                         }
                         ));
@@ -589,7 +601,7 @@ __builder6.AddContent(113, self.Address);
                         __builder4.AddMarkupContent(205, "<div style=\"padding-bottom: 8px;\"><label style=\"height: 22px; font-size: 14px;\"><span style=\"color: red;\">*</span>&nbsp;再次输入新密码</label></div>\r\n                        ");
                         __builder4.OpenComponent<AntDesign.InputPassword>(206);
                         __builder4.AddAttribute(207, "Placeholder", "例: 123456");
-                        __builder4.AddAttribute(208, "MaxLength", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+                        __builder4.AddAttribute(208, "MaxLength", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 114 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
                                                                                                 32
@@ -598,7 +610,7 @@ __builder6.AddContent(113, self.Address);
 #line hidden
 #nullable disable
                         ));
-                        __builder4.AddAttribute(209, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                        __builder4.AddAttribute(209, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 114 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Settings.razor"
                                                      newPwd
@@ -607,8 +619,8 @@ __builder6.AddContent(113, self.Address);
 #line hidden
 #nullable disable
                         ));
-                        __builder4.AddAttribute(210, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => newPwd = __value, newPwd))));
-                        __builder4.AddAttribute(211, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => newPwd));
+                        __builder4.AddAttribute(210, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => newPwd = __value, newPwd))));
+                        __builder4.AddAttribute(211, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => newPwd));
                         __builder4.CloseComponent();
                         __builder4.CloseElement();
                         __builder4.AddMarkupContent(212, "\r\n                    ");

@@ -7,4 +7,3 @@ E:\Project C#\FinancialManagementSystem\FMSystem.Shared\obj\Release\netstandard2
 E:\Project C#\FinancialManagementSystem\FMSystem.Shared\obj\Release\netstandard2.1\FMSystem.Shared.csproj.CoreCompileInputs.cache
 E:\Project C#\FinancialManagementSystem\FMSystem.Shared\obj\Release\netstandard2.1\FMSystem.Shared.dll
 E:\Project C#\FinancialManagementSystem\FMSystem.Shared\obj\Release\netstandard2.1\FMSystem.Shared.pdb
-E:\Project C#\FinancialManagementSystem\FMSystem.Shared\obj\Release\netstandard2.1\FMSystem.Shared.GeneratedMSBuildEditorConfig.editorconfig

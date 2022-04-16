@@ -127,7 +127,7 @@ using System.Security.Claims;
             __builder.OpenComponent<AntDesign.Search>(10);
             __builder.AddAttribute(11, "Placeholder", "搜索账户");
             __builder.AddAttribute(12, "Style", "width: 100px;");
-            __builder.AddAttribute(13, "OnChange", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, 
+            __builder.AddAttribute(13, "OnChange", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, 
 #nullable restore
 #line 12 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                                                                 RefrashTable
@@ -137,7 +137,7 @@ using System.Security.Claims;
 #nullable disable
             )));
             __builder.AddAttribute(14, "ClassicSearchIcon", true);
-            __builder.AddAttribute(15, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+            __builder.AddAttribute(15, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 12 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                     searchName
@@ -146,8 +146,8 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(16, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => searchName = __value, searchName))));
-            __builder.AddAttribute(17, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => searchName));
+            __builder.AddAttribute(16, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => searchName = __value, searchName))));
+            __builder.AddAttribute(17, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => searchName));
             __builder.CloseComponent();
             __builder.CloseElement();
             __builder.AddMarkupContent(18, "\r\n        ");
@@ -207,7 +207,7 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-            , 28, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => type = __value, type)), 29, () => type);
+            , 28, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => type = __value, type)), 29, () => type);
             __builder.CloseElement();
             __builder.AddMarkupContent(30, "\r\n\r\n    ");
             __builder.OpenElement(31, "div");
@@ -216,7 +216,7 @@ using System.Security.Claims;
             __builder.OpenComponent<AntDesign.Button>(34);
             __builder.AddAttribute(35, "Type", "primary");
             __builder.AddAttribute(36, "Icon", "plus");
-            __builder.AddAttribute(37, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(37, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 26 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                       ()=> { dwVisible1 = true; }
@@ -233,7 +233,7 @@ using System.Security.Claims;
             __builder.AddMarkupContent(40, "\r\n        ");
             __builder.OpenComponent<AntDesign.Button>(41);
             __builder.AddAttribute(42, "Icon", "edit");
-            __builder.AddAttribute(43, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(43, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 27 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                       OnEdit
@@ -249,7 +249,7 @@ using System.Security.Claims;
             __builder.CloseComponent();
             __builder.AddMarkupContent(46, "\r\n        ");
             __builder.OpenComponent<AntDesign.Button>(47);
-            __builder.AddAttribute(48, "Loading", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(48, "Loading", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 28 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                          deleteLoading
@@ -260,7 +260,7 @@ using System.Security.Claims;
             ));
             __builder.AddAttribute(49, "Type", "dashed");
             __builder.AddAttribute(50, "Danger", true);
-            __builder.AddAttribute(51, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(51, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 28 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                                         () => { if (selectedAccounts != null && selectedAccounts.Count() != 0) modalVisible = true; }
@@ -312,7 +312,7 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-            , 64, Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tablePageIndex = __value, tablePageIndex)), 65, 
+            , 64, Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tablePageIndex = __value, tablePageIndex)), 65, 
 #nullable restore
 #line 33 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                                                                                                                 selectedAccounts
@@ -320,9 +320,9 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-            , 66, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => selectedAccounts = __value, selectedAccounts)), 67, (context) => (__builder2) => {
+            , 66, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => selectedAccounts = __value, selectedAccounts)), 67, (context) => (__builder2) => {
                 __builder2.OpenComponent<AntDesign.Selection>(68);
-                __builder2.AddAttribute(69, "Key", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(69, "Key", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 34 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                           context.Id.ToString()
@@ -341,7 +341,7 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-                , 74, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Name = __value, context.Name)), 75, () => context.Name);
+                , 74, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Name = __value, context.Name)), 75, () => context.Name);
 #nullable restore
 #line 36 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
           string p = @context.Type == PaymentType.BANK ? "银行" : @context.Type == PaymentType.CASH ? "现金" : @context.Type == PaymentType.ONLINE ? "线上" : "其他";
@@ -381,7 +381,7 @@ using System.Security.Claims;
             );
             __builder.AddMarkupContent(84, "\r\n    ");
             __builder.OpenComponent<AntDesign.Pagination>(85);
-            __builder.AddAttribute(86, "Current", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(86, "Current", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 40 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                          tablePageIndex
@@ -390,7 +390,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(87, "DefaultCurrent", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(87, "DefaultCurrent", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 40 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                          1
@@ -399,7 +399,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(88, "Total", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(88, "Total", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 40 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                                     showingAccounts.Length
@@ -408,7 +408,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(89, "OnChange", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<AntDesign.PaginationEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<AntDesign.PaginationEventArgs>(this, 
+            __builder.AddAttribute(89, "OnChange", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<AntDesign.PaginationEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<AntDesign.PaginationEventArgs>(this, 
 #nullable restore
 #line 40 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                                                                         (args)=> { tablePageIndex = args.Page; }
@@ -422,7 +422,7 @@ using System.Security.Claims;
             __builder.CloseElement();
             __builder.AddMarkupContent(91, "\r\n\r\n");
             __builder.OpenComponent<AntDesign.Drawer>(92);
-            __builder.AddAttribute(93, "Closable", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(93, "Closable", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 43 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                   true
@@ -431,7 +431,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(94, "Width", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(94, "Width", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 43 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                360
@@ -440,7 +440,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(95, "Visible", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(95, "Visible", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 43 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                              dwVisible1
@@ -449,7 +449,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(96, "Title", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<Microsoft.AspNetCore.Components.RenderFragment, System.String>>(
+            __builder.AddAttribute(96, "Title", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<Microsoft.AspNetCore.Components.RenderFragment, System.String>>(
 #nullable restore
 #line 43 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                                  "新增账户"
@@ -458,7 +458,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(97, "OnClose", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
+            __builder.AddAttribute(97, "OnClose", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
 #nullable restore
 #line 43 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                                                     ()=> { dwVisible1 = false; }
@@ -536,7 +536,7 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-                        , 115, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Name = __value, context.Name)), 116, () => context.Name);
+                        , 115, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Name = __value, context.Name)), 116, () => context.Name);
                     }
                     ));
                     __builder3.CloseComponent();
@@ -584,7 +584,7 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-                        , 128, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Type = __value, context.Type)), 129, () => context.Type);
+                        , 128, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Type = __value, context.Type)), 129, () => context.Type);
                     }
                     ));
                     __builder3.CloseComponent();
@@ -600,13 +600,13 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-                        , 136, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Description = __value, context.Description)), 137, () => context.Description);
+                        , 136, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Description = __value, context.Description)), 137, () => context.Description);
                     }
                     ));
                     __builder3.CloseComponent();
                     __builder3.AddMarkupContent(138, "\r\n        ");
                     __builder3.OpenComponent<AntDesign.FormItem>(139);
-                    __builder3.AddAttribute(140, "WrapperColOffset", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
+                    __builder3.AddAttribute(140, "WrapperColOffset", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
 #nullable restore
 #line 67 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                     6
@@ -615,7 +615,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(141, "WrapperColSpan", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
+                    __builder3.AddAttribute(141, "WrapperColSpan", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
 #nullable restore
 #line 67 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                        24
@@ -627,7 +627,7 @@ using System.Security.Claims;
                     __builder3.AddAttribute(142, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder4) => {
                         __builder4.OpenComponent<AntDesign.Button>(143);
                         __builder4.AddAttribute(144, "Type", "default");
-                        __builder4.AddAttribute(145, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                        __builder4.AddAttribute(145, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 68 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                               ()=> { dwVisible1 = false; }
@@ -644,7 +644,7 @@ using System.Security.Claims;
                         __builder4.AddMarkupContent(148, "\r\n            ");
                         __builder4.OpenComponent<AntDesign.Button>(149);
                         __builder4.AddAttribute(150, "Type", "primary");
-                        __builder4.AddAttribute(151, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                        __builder4.AddAttribute(151, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 69 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                             NewOnSubmit
@@ -677,7 +677,7 @@ using System.Security.Claims;
             __builder.CloseComponent();
             __builder.AddMarkupContent(155, "\r\n\r\n");
             __builder.OpenComponent<AntDesign.Drawer>(156);
-            __builder.AddAttribute(157, "Closable", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(157, "Closable", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 74 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                   true
@@ -686,7 +686,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(158, "Width", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(158, "Width", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 74 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                360
@@ -695,7 +695,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(159, "Visible", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(159, "Visible", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 74 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                              dwVisible2
@@ -704,7 +704,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(160, "Title", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<Microsoft.AspNetCore.Components.RenderFragment, System.String>>(
+            __builder.AddAttribute(160, "Title", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<Microsoft.AspNetCore.Components.RenderFragment, System.String>>(
 #nullable restore
 #line 74 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                                  "修改信息"
@@ -713,7 +713,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(161, "OnClose", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
+            __builder.AddAttribute(161, "OnClose", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
 #nullable restore
 #line 74 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                                                     ()=> { dwVisible2 = false; }
@@ -791,7 +791,7 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-                        , 179, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Name = __value, context.Name)), 180, () => context.Name);
+                        , 179, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Name = __value, context.Name)), 180, () => context.Name);
                     }
                     ));
                     __builder3.CloseComponent();
@@ -839,7 +839,7 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-                        , 192, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Type = __value, context.Type)), 193, () => context.Type);
+                        , 192, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Type = __value, context.Type)), 193, () => context.Type);
                     }
                     ));
                     __builder3.CloseComponent();
@@ -855,13 +855,13 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-                        , 200, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Description = __value, context.Description)), 201, () => context.Description);
+                        , 200, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Description = __value, context.Description)), 201, () => context.Description);
                     }
                     ));
                     __builder3.CloseComponent();
                     __builder3.AddMarkupContent(202, "\r\n        ");
                     __builder3.OpenComponent<AntDesign.FormItem>(203);
-                    __builder3.AddAttribute(204, "WrapperColOffset", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
+                    __builder3.AddAttribute(204, "WrapperColOffset", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
 #nullable restore
 #line 98 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                     6
@@ -870,7 +870,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(205, "WrapperColSpan", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
+                    __builder3.AddAttribute(205, "WrapperColSpan", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
 #nullable restore
 #line 98 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                                        24
@@ -882,7 +882,7 @@ using System.Security.Claims;
                     __builder3.AddAttribute(206, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder4) => {
                         __builder4.OpenComponent<AntDesign.Button>(207);
                         __builder4.AddAttribute(208, "Type", "default");
-                        __builder4.AddAttribute(209, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                        __builder4.AddAttribute(209, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 99 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                               ()=> { dwVisible2 = false; }
@@ -899,7 +899,7 @@ using System.Security.Claims;
                         __builder4.AddMarkupContent(212, "\r\n            ");
                         __builder4.OpenComponent<AntDesign.Button>(213);
                         __builder4.AddAttribute(214, "Type", "primary");
-                        __builder4.AddAttribute(215, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                        __builder4.AddAttribute(215, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 100 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                                             EditOnSubmit
@@ -933,7 +933,7 @@ using System.Security.Claims;
             __builder.AddMarkupContent(219, "\r\n\r\n");
             __builder.OpenComponent<AntDesign.Modal>(220);
             __builder.AddAttribute(221, "Title", "提示");
-            __builder.AddAttribute(222, "Width", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Double>>(
+            __builder.AddAttribute(222, "Width", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Double>>(
 #nullable restore
 #line 106 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
               300
@@ -942,7 +942,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(223, "Visible", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(223, "Visible", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 107 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                  modalVisible
@@ -951,7 +951,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(224, "OnOk", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(224, "OnOk", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 108 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
              OnDelete
@@ -960,7 +960,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(225, "OnCancel", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(225, "OnCancel", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 109 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Accounts.razor"
                    () => { modalVisible = false; }

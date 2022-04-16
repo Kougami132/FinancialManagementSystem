@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TKonOc2xcPC54tRXeIZg9VTsHdMauOMT8Bq971uejOwARC9MlK+qxaZJVUiSswYJjnDFsNV4rOrU8cMyTs3JtQ==",
+  "dgSpecHash": "LB1CeLYfCMuR+EqngMKNzJdz19JDLGGBp92QBzLxn0lGUO1RsC3+YxNfE/yDPQ6khOMWtc8fEAqvoG+pOnja9A==",
   "success": true,
   "projectFilePath": "E:\\Project C#\\FinancialManagementSystem\\FMSystem.Client\\FMSystem.Client.csproj",
   "expectedPackageFiles": [
@@ -129,7 +129,7 @@
     "C:\\Users\\Wither\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Wither\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Wither\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Wither\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.13\\microsoft.netcore.app.runtime.browser-wasm.5.0.13.nupkg.sha512"
+    "C:\\Users\\Wither\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.6\\microsoft.netcore.app.runtime.browser-wasm.5.0.6.nupkg.sha512"
   ],
   "logs": []
 }

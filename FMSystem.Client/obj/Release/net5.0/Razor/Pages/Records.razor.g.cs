@@ -161,7 +161,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-            , 13, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => type = __value, type)), 14, () => type, 15, (__builder2) => {
+            , 13, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => type = __value, type)), 14, () => type, 15, (__builder2) => {
                 __Blazor.FMSystem.Client.Pages.Records.TypeInference.CreateRadio_1(__builder2, 16, 17, true, 18, 
 #nullable restore
 #line 13 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
@@ -259,7 +259,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-            , 43, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => category = __value, category)), 44, () => category, 45, (__value) => {
+            , 43, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => category = __value, category)), 44, () => category, 45, (__value) => {
 #nullable restore
 #line 17 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                       fixSelect1 = __value;
@@ -326,7 +326,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-            , 56, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => account = __value, account)), 57, () => account, 58, (__value) => {
+            , 56, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => account = __value, account)), 57, () => account, 58, (__value) => {
 #nullable restore
 #line 27 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                       fixSelect2 = __value;
@@ -339,7 +339,7 @@ using System.Text.Json;
             __builder.AddMarkupContent(59, "\r\n        ");
             __builder.OpenComponent<AntDesign.RangePicker<DateTime?[]>>(60);
             __builder.AddAttribute(61, "AllowClear", true);
-            __builder.AddAttribute(62, "OnChange", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<AntDesign.DateRangeChangedEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<AntDesign.DateRangeChangedEventArgs>(this, 
+            __builder.AddAttribute(62, "OnChange", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<AntDesign.DateRangeChangedEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<AntDesign.DateRangeChangedEventArgs>(this, 
 #nullable restore
 #line 37 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                                                           async(i) => { await RefrashTable(); }
@@ -348,7 +348,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(63, "OnClearClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
+            __builder.AddAttribute(63, "OnClearClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
 #nullable restore
 #line 37 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                                                                                                                   async(i) => { await RefrashTable(); }
@@ -357,7 +357,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(64, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<DateTime?[]>(
+            __builder.AddAttribute(64, "Value", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<DateTime?[]>(
 #nullable restore
 #line 37 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                   dateFilter
@@ -366,8 +366,8 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(65, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<DateTime?[]>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<DateTime?[]>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => dateFilter = __value, dateFilter))));
-            __builder.AddAttribute(66, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<DateTime?[]>>>(() => dateFilter));
+            __builder.AddAttribute(65, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<DateTime?[]>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<DateTime?[]>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => dateFilter = __value, dateFilter))));
+            __builder.AddAttribute(66, "ValueExpression", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<DateTime?[]>>>(() => dateFilter));
             __builder.CloseComponent();
             __builder.CloseElement();
             __builder.AddMarkupContent(67, "\r\n\r\n    ");
@@ -377,7 +377,7 @@ using System.Text.Json;
             __builder.OpenComponent<AntDesign.Button>(71);
             __builder.AddAttribute(72, "Type", "primary");
             __builder.AddAttribute(73, "Icon", "plus");
-            __builder.AddAttribute(74, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(74, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 41 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                       ()=> { newRecord.CreateTime = DateTime.Today; dwVisible1 = true; RefrashNewSelect(); }
@@ -394,7 +394,7 @@ using System.Text.Json;
             __builder.AddMarkupContent(77, "\r\n        ");
             __builder.OpenComponent<AntDesign.Button>(78);
             __builder.AddAttribute(79, "Icon", "edit");
-            __builder.AddAttribute(80, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(80, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 42 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                       OnEdit
@@ -410,7 +410,7 @@ using System.Text.Json;
             __builder.CloseComponent();
             __builder.AddMarkupContent(83, "\r\n        ");
             __builder.OpenComponent<AntDesign.Button>(84);
-            __builder.AddAttribute(85, "Loading", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(85, "Loading", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 43 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                          deleteLoading
@@ -421,7 +421,7 @@ using System.Text.Json;
             ));
             __builder.AddAttribute(86, "Type", "dashed");
             __builder.AddAttribute(87, "Danger", true);
-            __builder.AddAttribute(88, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(88, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 43 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                                         () => { if (selectedRecords != null && selectedRecords.Count() != 0) modalVisible = true; }
@@ -439,7 +439,7 @@ using System.Text.Json;
             __builder.CloseElement();
             __builder.AddMarkupContent(91, "\r\n\r\n");
             __builder.OpenComponent<AntDesign.Drawer>(92);
-            __builder.AddAttribute(93, "Closable", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(93, "Closable", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 47 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                   true
@@ -448,7 +448,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(94, "Width", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(94, "Width", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 47 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                360
@@ -457,7 +457,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(95, "Visible", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(95, "Visible", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 47 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                              dwVisible1
@@ -466,7 +466,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(96, "Title", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<Microsoft.AspNetCore.Components.RenderFragment, System.String>>(
+            __builder.AddAttribute(96, "Title", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<Microsoft.AspNetCore.Components.RenderFragment, System.String>>(
 #nullable restore
 #line 47 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                                  "新增记录"
@@ -475,7 +475,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(97, "OnClose", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
+            __builder.AddAttribute(97, "OnClose", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
 #nullable restore
 #line 47 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                                                     ()=> { dwVisible1 = false; }
@@ -569,7 +569,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-                        , 116, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Type = __value, context.Type)), 117, () => context.Type, 118, (__builder5) => {
+                        , 116, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Type = __value, context.Type)), 117, () => context.Type, 118, (__builder5) => {
                             __Blazor.FMSystem.Client.Pages.Records.TypeInference.CreateRadio_8(__builder5, 119, 120, true, 121, 
 #nullable restore
 #line 58 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
@@ -638,7 +638,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-                        , 138, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Category = __value, context.Category)), 139, () => context.Category);
+                        , 138, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Category = __value, context.Category)), 139, () => context.Category);
                     }
                     ));
                     __builder3.CloseComponent();
@@ -686,7 +686,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-                        , 151, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Account = __value, context.Account)), 152, () => context.Account);
+                        , 151, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Account = __value, context.Account)), 152, () => context.Account);
                     }
                     ));
                     __builder3.CloseComponent();
@@ -702,7 +702,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-                        , 160, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Value = __value, context.Value)), 161, () => context.Value, 162, (__builder5) => {
+                        , 160, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Value = __value, context.Value)), 161, () => context.Value, 162, (__builder5) => {
                             __builder5.AddMarkupContent(163, " ￥ ");
                         }
                         , 164, (__builder5) => {
@@ -732,7 +732,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-                        , 174, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.CreateTime = __value, context.CreateTime)), 175, () => context.CreateTime);
+                        , 174, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.CreateTime = __value, context.CreateTime)), 175, () => context.CreateTime);
                     }
                     ));
                     __builder3.CloseComponent();
@@ -748,13 +748,13 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-                        , 182, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Description = __value, context.Description)), 183, () => context.Description);
+                        , 182, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Description = __value, context.Description)), 183, () => context.Description);
                     }
                     ));
                     __builder3.CloseComponent();
                     __builder3.AddMarkupContent(184, "\r\n        ");
                     __builder3.OpenComponent<AntDesign.FormItem>(185);
-                    __builder3.AddAttribute(186, "WrapperColOffset", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
+                    __builder3.AddAttribute(186, "WrapperColOffset", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
 #nullable restore
 #line 90 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                     6
@@ -763,7 +763,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(187, "WrapperColSpan", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
+                    __builder3.AddAttribute(187, "WrapperColSpan", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
 #nullable restore
 #line 90 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                        24
@@ -775,7 +775,7 @@ using System.Text.Json;
                     __builder3.AddAttribute(188, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder4) => {
                         __builder4.OpenComponent<AntDesign.Button>(189);
                         __builder4.AddAttribute(190, "Type", "default");
-                        __builder4.AddAttribute(191, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                        __builder4.AddAttribute(191, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 91 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                               ()=> { dwVisible1 = false; }
@@ -792,7 +792,7 @@ using System.Text.Json;
                         __builder4.AddMarkupContent(194, "\r\n            ");
                         __builder4.OpenComponent<AntDesign.Button>(195);
                         __builder4.AddAttribute(196, "Type", "primary");
-                        __builder4.AddAttribute(197, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                        __builder4.AddAttribute(197, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 92 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                             NewOnSubmit
@@ -825,7 +825,7 @@ using System.Text.Json;
             __builder.CloseComponent();
             __builder.AddMarkupContent(201, "\r\n\r\n");
             __builder.OpenComponent<AntDesign.Drawer>(202);
-            __builder.AddAttribute(203, "Closable", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(203, "Closable", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 97 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                   true
@@ -834,7 +834,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(204, "Width", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(204, "Width", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 97 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                360
@@ -843,7 +843,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(205, "Visible", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(205, "Visible", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 97 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                              dwVisible2
@@ -852,7 +852,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(206, "Title", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<Microsoft.AspNetCore.Components.RenderFragment, System.String>>(
+            __builder.AddAttribute(206, "Title", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<Microsoft.AspNetCore.Components.RenderFragment, System.String>>(
 #nullable restore
 #line 97 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                                  "修改信息"
@@ -861,7 +861,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(207, "OnClose", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
+            __builder.AddAttribute(207, "OnClose", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, 
 #nullable restore
 #line 97 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                                                     ()=> { dwVisible2 = false; }
@@ -947,7 +947,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-                        , 225, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Type = __value, context.Type)), 226, () => context.Type, 227, (__builder5) => {
+                        , 225, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Type = __value, context.Type)), 226, () => context.Type, 227, (__builder5) => {
                             __Blazor.FMSystem.Client.Pages.Records.TypeInference.CreateRadio_17(__builder5, 228, 229, true, 230, 
 #nullable restore
 #line 108 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
@@ -1016,7 +1016,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-                        , 247, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Category = __value, context.Category)), 248, () => context.Category);
+                        , 247, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Category = __value, context.Category)), 248, () => context.Category);
                     }
                     ));
                     __builder3.CloseComponent();
@@ -1064,7 +1064,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-                        , 260, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Account = __value, context.Account)), 261, () => context.Account);
+                        , 260, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Account = __value, context.Account)), 261, () => context.Account);
                     }
                     ));
                     __builder3.CloseComponent();
@@ -1080,7 +1080,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-                        , 269, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Value = __value, context.Value)), 270, () => context.Value, 271, (__builder5) => {
+                        , 269, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Value = __value, context.Value)), 270, () => context.Value, 271, (__builder5) => {
                             __builder5.AddMarkupContent(272, " ￥ ");
                         }
                         , 273, (__builder5) => {
@@ -1110,7 +1110,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-                        , 283, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.CreateTime = __value, context.CreateTime)), 284, () => context.CreateTime);
+                        , 283, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.CreateTime = __value, context.CreateTime)), 284, () => context.CreateTime);
                     }
                     ));
                     __builder3.CloseComponent();
@@ -1126,13 +1126,13 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-                        , 291, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Description = __value, context.Description)), 292, () => context.Description);
+                        , 291, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => context.Description = __value, context.Description)), 292, () => context.Description);
                     }
                     ));
                     __builder3.CloseComponent();
                     __builder3.AddMarkupContent(293, "\r\n        ");
                     __builder3.OpenComponent<AntDesign.FormItem>(294);
-                    __builder3.AddAttribute(295, "WrapperColOffset", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
+                    __builder3.AddAttribute(295, "WrapperColOffset", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
 #nullable restore
 #line 140 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                     6
@@ -1141,7 +1141,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(296, "WrapperColSpan", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
+                    __builder3.AddAttribute(296, "WrapperColSpan", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Int32>>(
 #nullable restore
 #line 140 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                        24
@@ -1153,7 +1153,7 @@ using System.Text.Json;
                     __builder3.AddAttribute(297, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder4) => {
                         __builder4.OpenComponent<AntDesign.Button>(298);
                         __builder4.AddAttribute(299, "Type", "default");
-                        __builder4.AddAttribute(300, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                        __builder4.AddAttribute(300, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 141 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                               ()=> { dwVisible2 = false; }
@@ -1170,7 +1170,7 @@ using System.Text.Json;
                         __builder4.AddMarkupContent(303, "\r\n            ");
                         __builder4.OpenComponent<AntDesign.Button>(304);
                         __builder4.AddAttribute(305, "Type", "primary");
-                        __builder4.AddAttribute(306, "OnClick", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+                        __builder4.AddAttribute(306, "OnClick", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 142 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                             EditOnSubmit
@@ -1204,7 +1204,7 @@ using System.Text.Json;
             __builder.AddMarkupContent(310, "\r\n\r\n");
             __builder.OpenComponent<AntDesign.Modal>(311);
             __builder.AddAttribute(312, "Title", "提示");
-            __builder.AddAttribute(313, "Width", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Double>>(
+            __builder.AddAttribute(313, "Width", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Double>>(
 #nullable restore
 #line 148 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
               300
@@ -1213,7 +1213,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(314, "Visible", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(314, "Visible", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 149 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                  modalVisible
@@ -1222,7 +1222,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(315, "OnOk", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(315, "OnOk", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 150 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
              OnDelete
@@ -1231,7 +1231,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(316, "OnCancel", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(316, "OnCancel", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 151 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                    () => { modalVisible = false; }
@@ -1286,7 +1286,7 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-            , 331, Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tablePageIndex = __value, tablePageIndex)), 332, 
+            , 331, Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Int32>(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tablePageIndex = __value, tablePageIndex)), 332, 
 #nullable restore
 #line 156 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                                                                                                                selectedRecords
@@ -1294,9 +1294,9 @@ using System.Text.Json;
 #line default
 #line hidden
 #nullable disable
-            , 333, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => selectedRecords = __value, selectedRecords)), 334, (context) => (__builder2) => {
+            , 333, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => selectedRecords = __value, selectedRecords)), 334, (context) => (__builder2) => {
                 __builder2.OpenComponent<AntDesign.Selection>(335);
-                __builder2.AddAttribute(336, "Key", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(336, "Key", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
 #nullable restore
 #line 157 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                           context.Id.ToString()
@@ -1397,7 +1397,7 @@ using System.Text.Json;
             );
             __builder.AddMarkupContent(359, "\r\n    ");
             __builder.OpenComponent<AntDesign.Pagination>(360);
-            __builder.AddAttribute(361, "Current", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(361, "Current", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 168 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                          tablePageIndex
@@ -1406,7 +1406,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(362, "DefaultCurrent", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(362, "DefaultCurrent", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 168 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                          1
@@ -1415,7 +1415,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(363, "Total", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
+            __builder.AddAttribute(363, "Total", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Int32>(
 #nullable restore
 #line 168 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                                     showingRecords.Length
@@ -1424,7 +1424,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(364, "OnChange", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<AntDesign.PaginationEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<AntDesign.PaginationEventArgs>(this, 
+            __builder.AddAttribute(364, "OnChange", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<AntDesign.PaginationEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<AntDesign.PaginationEventArgs>(this, 
 #nullable restore
 #line 168 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                                                                                                        (args)=> { tablePageIndex = args.Page; }
@@ -1439,7 +1439,7 @@ using System.Text.Json;
             __builder.AddMarkupContent(366, "\r\n\r\n");
             __builder.OpenComponent<AntDesign.Modal>(367);
             __builder.AddAttribute(368, "Title", "信息详情");
-            __builder.AddAttribute(369, "Visible", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+            __builder.AddAttribute(369, "Visible", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 172 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                  detailVisible
@@ -1448,7 +1448,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(370, "OnOk", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(370, "OnOk", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 173 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
               HandleOk
@@ -1457,7 +1457,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(371, "OnCancel", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(371, "OnCancel", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Web.MouseEventArgs>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 174 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                   HandleCancel
@@ -1466,7 +1466,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(372, "OkText", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, Microsoft.AspNetCore.Components.RenderFragment>?>(
+            __builder.AddAttribute(372, "OkText", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, Microsoft.AspNetCore.Components.RenderFragment>?>(
 #nullable restore
 #line 175 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                  "修改"
@@ -1475,7 +1475,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(373, "CancelText", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, Microsoft.AspNetCore.Components.RenderFragment>?>(
+            __builder.AddAttribute(373, "CancelText", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, Microsoft.AspNetCore.Components.RenderFragment>?>(
 #nullable restore
 #line 176 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
                      "关闭"
@@ -1484,7 +1484,7 @@ using System.Text.Json;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(374, "Width", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Double>>(
+            __builder.AddAttribute(374, "Width", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<OneOf.OneOf<System.String, System.Double>>(
 #nullable restore
 #line 177 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
               320
@@ -1504,13 +1504,15 @@ using System.Text.Json;
 #nullable disable
                 __builder2.OpenElement(377, "p");
                 __builder2.AddMarkupContent(378, "收/支: ");
+                __builder2.AddContent(379, 
 #nullable restore
 #line 180 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
-__builder2.AddContent(379, p);
+             p
 
 #line default
 #line hidden
 #nullable disable
+                );
                 __builder2.CloseElement();
 #nullable restore
 #line 181 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
@@ -1521,24 +1523,28 @@ __builder2.AddContent(379, p);
 #nullable disable
                 __builder2.OpenElement(380, "p");
                 __builder2.AddMarkupContent(381, "分类: ");
+                __builder2.AddContent(382, 
 #nullable restore
 #line 182 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
-__builder2.AddContent(382, c);
+            c
 
 #line default
 #line hidden
 #nullable disable
+                );
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(383, "\r\n    ");
                 __builder2.OpenElement(384, "p");
                 __builder2.AddMarkupContent(385, "金额: ");
+                __builder2.AddContent(386, 
 #nullable restore
 #line 183 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
-__builder2.AddContent(386, detailRecord.Value);
+            detailRecord.Value
 
 #line default
 #line hidden
 #nullable disable
+                );
                 __builder2.CloseElement();
 #nullable restore
 #line 184 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
@@ -1549,35 +1555,41 @@ __builder2.AddContent(386, detailRecord.Value);
 #nullable disable
                 __builder2.OpenElement(387, "p");
                 __builder2.AddMarkupContent(388, "账户: ");
+                __builder2.AddContent(389, 
 #nullable restore
 #line 185 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
-__builder2.AddContent(389, a);
+            a
 
 #line default
 #line hidden
 #nullable disable
+                );
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(390, "\r\n    ");
                 __builder2.OpenElement(391, "p");
                 __builder2.AddMarkupContent(392, "创建时间: ");
+                __builder2.AddContent(393, 
 #nullable restore
 #line 186 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
-__builder2.AddContent(393, detailRecord.CreateTime.ToString("yyyy年MM月dd日"));
+              detailRecord.CreateTime.ToString("yyyy年MM月dd日")
 
 #line default
 #line hidden
 #nullable disable
+                );
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(394, "\r\n    ");
                 __builder2.OpenElement(395, "p");
                 __builder2.AddMarkupContent(396, "说明: ");
+                __builder2.AddContent(397, 
 #nullable restore
 #line 187 "E:\Project C#\FinancialManagementSystem\FMSystem.Client\Pages\Records.razor"
-__builder2.AddContent(397, detailRecord.Description);
+            detailRecord.Description
 
 #line default
 #line hidden
 #nullable disable
+                );
                 __builder2.CloseElement();
             }
             ));
